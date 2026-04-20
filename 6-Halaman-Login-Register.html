@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masuk / Daftar - MakanDiSulSel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-orange: #F97316;
+            --secondary-orange: #FB923C;
+            --light-orange: #FFEDD5;
+            --primary-blue: #0F4C81;
+            --secondary-blue: #1E6F9F;
+            --light-blue: #E6F0FA;
+            --text-dark: #334155;
+            --text-light: #FFFFFF;
+            --cream-bg: #FFF9F0;
+            --gray-bg: #F8FAFC;
+            --shadow-color: rgba(15, 76, 129, 0.15);
+            --border-light: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+        }
+
+        .auth-container {
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 400px;
+            padding: 25px 25px 20px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+
+        .logo img {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-orange);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(249, 115, 22, 0.4);
+        }
+
+        .guest-message {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            background: var(--light-blue);
+            padding: 8px 12px;
+            border-radius: 12px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-light);
+            padding-bottom: 3px;
+        }
+
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .tab.active {
+            background: var(--light-orange);
+            color: var(--primary-orange);
+        }
+
+        .form-container {
+            display: block;
+        }
+
+        .form-container.hidden {
+            display: none;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--primary-blue);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-orange);
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 12px 0;
+        }
+
+        .checkbox-group input {
+            width: auto;
+        }
+
+        .checkbox-group label {
+            font-size: 0.85rem;
+            margin-bottom: 0;
+        }
+
+        .btn-login {
+            width: 100%;
+            background: var(--primary-orange);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login:hover {
+            background: var(--secondary-orange);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(249, 115, 22, 0.3);
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin: 10px 0;
+        }
+
+        .forgot-password a {
+            color: var(--primary-blue);
+            font-size: 0.8rem;
+        }
+
+        .forgot-password a:hover {
+            color: var(--primary-orange);
+        }
+
+        .divider {
+            text-align: center;
+            margin: 20px 0 15px;
+            position: relative;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background: var(--border-light);
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        .divider span {
+            background: white;
+            padding: 0 10px;
+            color: #999;
+            font-size: 0.8rem;
+        }
+
+        .social-login {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background: var(--light-orange);
+            border-color: var(--primary-orange);
+            transform: translateY(-2px);
+        }
+
+        .social-btn i {
+            font-size: 1rem;
+        }
+
+        .facebook i {
+            color: #3b5998;
+        }
+
+        .google i {
+            color: #DB4437;
+        }
+
+        .terms {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        .terms a {
+            color: var(--primary-orange);
+            font-weight: 600;
+        }
+
+        .back-home {
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        .back-home a {
+            color: var(--primary-blue);
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .back-home a:hover {
+            color: var(--primary-orange);
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <!-- Logo - Klik untuk kembali ke Beranda -->
+        <div class="logo" onclick="window.location.href='1-Home-Landing-MakanDiSulSel.html'">
+            <img src="Properti MakanDiSulSel/Logo MakanDiSulSel.png" alt="MakanDiSulSel Logo" onerror="this.style.background='linear-gradient(135deg, #0F4C81, #1E6F9F)'; this.style.padding='15px';">
+        </div>
+
+        <!-- Pesan Opsi untuk Pengguna Baru -->
+        <div class="guest-message">
+            🍜 Baru pertama kali? <strong>Buat Akun</strong> untuk berbagi ulasan!
+        </div>
+
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('login')">Masuk</div>
+            <div class="tab" onclick="switchTab('register')">Daftar</div>
+        </div>
+
+        <!-- Form Login -->
+        <div id="login-form" class="form-container">
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" placeholder="contoh@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" placeholder="Minimal 6 karakter" required>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">Ingat saya</label>
+                </div>
+
+                <div class="forgot-password">
+                    <a href="#">Lupa password?</a>
+                </div>
+
+                <button type="submit" class="btn-login">Masuk</button>
+            </form>
+        </div>
+
+        <!-- Form Register -->
+        <div id="register-form" class="form-container hidden">
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="register-name">Nama Lengkap</label>
+                    <input type="text" id="register-name" placeholder="Masukkan nama Anda" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" placeholder="contoh@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="register-password">Password</label>
+                    <input type="password" id="register-password" placeholder="Minimal 6 karakter" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="register-confirm">Konfirmasi Password</label>
+                    <input type="password" id="register-confirm" placeholder="Masukkan ulang password" required>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">Saya menyetujui <a href="#" style="color: var(--primary-orange);">Syarat & Ketentuan</a></label>
+                </div>
+
+                <button type="submit" class="btn-login">Daftar Sekarang</button>
+            </form>
+        </div>
+
+        <!-- Divider Sosial Media -->
+        <div class="divider">
+            <span>atau masuk dengan</span>
+        </div>
+
+        <!-- Social Login -->
+        <div class="social-login">
+            <button class="social-btn facebook" onclick="alert('Login dengan Facebook akan segera hadir!')">
+                <i class="fab fa-facebook-f"></i>
+                <span>Facebook</span>
+            </button>
+            <button class="social-btn google" onclick="alert('Login dengan Google akan segera hadir!')">
+                <i class="fab fa-google"></i>
+                <span>Google</span>
+            </button>
+        </div>
+
+        <div class="terms">
+            Dengan masuk, Anda menyetujui <a href="#">Syarat & Ketentuan</a> dan <a href="#">Kebijakan Privasi</a> kami.
+        </div>
+
+        <div class="back-home">
+            <a href="1-Home-Landing-MakanDiSulSel.html"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tab) {
+            const tabs = document.querySelectorAll('.tab');
+            const loginForm = document.getElementById('login-form');
+            const registerForm = document.getElementById('register-form');
+
+            if (tab === 'login') {
+                tabs[0].classList.add('active');
+                tabs[1].classList.remove('active');
+                loginForm.classList.remove('hidden');
+                registerForm.classList.add('hidden');
+            } else {
+                tabs[0].classList.remove('active');
+                tabs[1].classList.add('active');
+                loginForm.classList.add('hidden');
+                registerForm.classList.remove('hidden');
+            }
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Selamat datang kembali! Fitur login sedang dalam pengembangan.');
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const password = document.getElementById('register-password').value;
+            const confirm = document.getElementById('register-confirm').value;
+
+            if (password !== confirm) {
+                alert('Password dan konfirmasi password tidak cocok!');
+                return;
+            }
+
+            alert('Terima kasih telah mendaftar! Akun Anda akan segera diaktifkan.');
+        });
+    </script>
+</body>
+</html>

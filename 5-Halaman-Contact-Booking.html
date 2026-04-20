@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak Kami - MakanDiSulSel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ============================================= */
+        /* VARIABEL WARNA - ORANGE & BIRU LAUT */
+        /* ============================================= */
+        :root {
+            --primary-orange: #F97316;
+            --secondary-orange: #ffb951;
+            --light-orange: #FFEDD5;
+            --primary-blue: #0F4C81;
+            --secondary-blue: #1E6F9F;
+            --light-blue: #E6F0FA;
+            --text-dark: #334155;
+            --text-light: #FFFFFF;
+            --cream-bg: #FFF9F0;
+            --gray-bg: #F8FAFC;
+            --shadow-color: rgba(15, 76, 129, 0.15);
+            --border-light: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+            background-color: var(--cream-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ============================================= */
+        /* NAVBAR - SAMA DENGAN HOME */
+        /* ============================================= */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
+
+        .logo {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-orange);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
+        }
+
+        .nav-links {
+            display: none;
+        }
+
+        .nav-links a {
+            background: var(--cream-bg);
+            padding: 8px 16px;
+            border-radius: 30px;
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--primary-orange);
+            color: white;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-icons i {
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+            background: rgba(255, 249, 240, 0.15);
+            padding: 8px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .nav-icons i:hover {
+            background: var(--primary-orange);
+        }
+
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border: 2px solid white;
+            cursor: pointer;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+                gap: 15px;
+                align-items: center;
+            }
+
+            .navbar {
+                padding: 15px 40px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .logo img {
+                width: 65px;
+                height: 65px;
+                border-width: 3px;
+            }
+        }
+
+        /* ============================================= */
+        /* PAGE HEADER */
+        /* ============================================= */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            padding: 40px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .page-header h1 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            background: rgba(255, 249, 240, 0.2);
+            padding: 15px 25px;
+            border-radius: 50px;
+            display: inline-block;
+        }
+
+        .page-header p {
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 249, 240, 0.15);
+            padding: 12px 24px;
+            border-radius: 30px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            margin-top: 20px;
+            padding: 10px 24px;
+            background: rgba(255, 249, 240, 0.2);
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: var(--primary-orange);
+            transform: translateX(-3px);
+        }
+
+        /* ============================================= */
+        /* CONTAINER & CONTACT GRID */
+        /* ============================================= */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .section-title {
+            background: var(--cream-bg);
+            padding: 10px 20px;
+            border-radius: 30px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            border-left: 4px solid var(--primary-orange);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        /* ============================================= */
+        /* CONTACT INFO CARD */
+        /* ============================================= */
+        .contact-info {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 25px var(--shadow-color);
+            border: 1px solid var(--light-orange);
+        }
+
+        .contact-info h2 {
+            background: var(--cream-bg);
+            padding: 10px 20px;
+            border-radius: 30px;
+            display: inline-block;
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            border-left: 3px solid var(--primary-orange);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            background: var(--cream-bg);
+            border-radius: 15px;
+            border: 1px solid var(--light-orange);
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .info-text h4 {
+            margin-bottom: 5px;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            background: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .info-text p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-top: 8px;
+        }
+
+        .social-media {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .social-media h3 {
+            background: var(--cream-bg);
+            padding: 8px 18px;
+            border-radius: 30px;
+            display: inline-block;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--cream-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-orange);
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-orange);
+        }
+
+        .social-icon:hover {
+            background: var(--primary-orange);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* ============================================= */
+        /* CONTACT FORM */
+        /* ============================================= */
+        .contact-form {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 25px var(--shadow-color);
+            border: 1px solid var(--light-orange);
+        }
+
+        .contact-form h2 {
+            background: var(--cream-bg);
+            padding: 10px 20px;
+            border-radius: 30px;
+            display: inline-block;
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            border-left: 3px solid var(--primary-orange);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-blue);
+            background: var(--cream-bg);
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid var(--border-light);
+            border-radius: 15px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background: var(--cream-bg);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-orange);
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+            background: white;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            background: var(--primary-orange);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(249, 115, 22, 0.3);
+        }
+
+        .btn-submit:hover {
+            background: var(--secondary-orange);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.4);
+        }
+
+        @media (min-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ============================================= */
+        /* MAP SECTION */
+        /* ============================================= */
+        .map-section {
+            margin-top: 40px;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 350px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px var(--shadow-color);
+            border: 1px solid var(--light-orange);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* ============================================= */
+        /* CTA KOMUNITAS */
+        /* ============================================= */
+        .community-cta {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            margin: 40px 0;
+            border-radius: 25px;
+            padding: 35px 25px;
+            text-align: center;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 35px var(--shadow-color);
+        }
+
+        .community-cta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(15, 76, 129, 0.3);
+        }
+
+        .community-cta h3 {
+            color: white;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            background: rgba(255, 249, 240, 0.2);
+            padding: 12px 24px;
+            border-radius: 50px;
+            display: inline-block;
+        }
+
+        .community-cta h3 i {
+            color: var(--primary-orange);
+            margin-right: 10px;
+        }
+
+        .community-cta p {
+            opacity: 0.9;
+            margin-bottom: 20px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            background: rgba(255, 249, 240, 0.15);
+            padding: 10px 20px;
+            border-radius: 30px;
+        }
+
+        .community-cta .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary-orange);
+            color: white;
+            padding: 14px 30px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+
+        .community-cta .btn:hover {
+            background: var(--secondary-orange);
+            transform: scale(1.05);
+            gap: 15px;
+        }
+
+        /* ============================================= */
+        /* FOOTER - SAMA DENGAN HOME */
+        /* ============================================= */
+        .footer {
+            background: #1a2634;
+            color: white;
+            padding: 40px 20px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-left {
+            flex: 2;
+        }
+
+        .footer-left h3 {
+            color: white;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .footer-left h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-orange);
+        }
+
+        .footer-description {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            max-width: 500px;
+        }
+
+        .footer-contact-info {
+            margin-top: 10px;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: #ddd;
+            font-size: 0.95rem;
+        }
+
+        .footer-contact-item i {
+            width: 20px;
+            color: var(--primary-orange);
+            font-size: 1.1rem;
+        }
+
+        .footer-contact-item a {
+            color: #ddd;
+            transition: color 0.3s ease;
+        }
+
+        .footer-contact-item a:hover {
+            color: var(--primary-orange);
+        }
+
+        .social-icons-footer {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-icon-footer {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon-footer:hover {
+            background: var(--primary-orange);
+            transform: translateY(-3px);
+        }
+
+        .footer-right {
+            flex: 1;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.85rem;
+            max-width: 1200px;
+            margin: 30px auto 0;
+        }
+
+        .footer-bottom a {
+            color: #ccc;
+            margin: 0 5px;
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--primary-orange);
+            text-decoration: none;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+            
+            .footer-left {
+                padding-right: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation - SAMA DENGAN HOME -->
+    <nav class="navbar">
+        <div class="logo" onclick="window.location.href='1-Home-Landing-MakanDiSulSel.html'">
+            <img src="Properti MakanDiSulSel/Logo MakanDiSulSel.png" alt="MakanDiSulSel Logo">
+        </div>
+        <div class="nav-links">
+            <a href="1-Home-Landing-MakanDiSulSel.html">Beranda</a>
+            <a href="2-Halaman-Produk-Services-Daftar-Kuliner.html">Jelajahi Kuliner</a>
+            <a href="3-Halaman-Detail-Produk-Service.html">Produk</a>
+            <a href="4-Halaman-Artikel-Blog.html">Artikel</a>
+            <a href="5-Halaman-Contact-Booking.html" class="active">Kontak</a>
+            <a href="7-Halaman-Komunitas.html">Komunitas</a>
+        </div>
+        <div class="nav-icons">
+            <i class="far fa-heart" onclick="alert('Fitur favorit akan segera hadir!')"></i>
+            <div class="profile-icon" onclick="window.location.href='6-Halaman-Login-Register.html'">
+                <i class="far fa-user"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Hubungi Kami</h1>
+        <p>Ada pertanyaan atau ingin bekerjasama? Silakan hubungi tim MakanDiSulSel</p>
+        <a href="1-Home-Landing-MakanDiSulSel.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Kembali ke Beranda
+        </a>
+    </section>
+
+    <div class="container">
+        <div class="contact-grid">
+            <!-- Info Kontak -->
+            <div class="contact-info">
+                <h2><i class="fas fa-address-card"></i> Informasi Kontak</h2>
+                
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>Alamat</h4>
+                            <p>Jl. Poros Gowa No. 123, Sungguminasa, Gowa, Sulawesi Selatan 92111</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>Telepon / WhatsApp</h4>
+                            <p>+62 812 3456 7890 (Admin)<br>+62 811 2223 4445 (Kerjasama)</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>Email</h4>
+                            <p>MakanDiSulSel@gmail.com<br>kerjasama@makandisulsel.com</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="info-text">
+                            <h4>Jam Operasional</h4>
+                            <p>Senin - Jumat: 09.00 - 18.00 WITA<br>Sabtu: 09.00 - 15.00 WITA<br>Minggu & Libur Nasional: Tutup</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="social-media">
+                    <h3><i class="fas fa-share-alt"></i> Ikuti Kami</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Kontak -->
+            <div class="contact-form">
+                <h2><i class="fas fa-paper-plane"></i> Kirim Pesan</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name"><i class="fas fa-user"></i> Nama Lengkap</label>
+                        <input type="text" id="name" placeholder="Masukkan nama Anda" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="email" placeholder="contoh@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone"><i class="fas fa-phone"></i> Nomor Telepon (opsional)</label>
+                        <input type="tel" id="phone" placeholder="0812 3456 7890">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject"><i class="fas fa-tag"></i> Subjek</label>
+                        <select id="subject" required>
+                            <option value="">Pilih subjek pesan</option>
+                            <option value="informasi">Informasi Kuliner</option>
+                            <option value="kerjasama">Kerjasama / Promosi</option>
+                            <option value="saran">Saran & Kritik</option>
+                            <option value="klaim-usaha">Klaim Tempat Usaha</option>
+                            <option value="lainnya">Lainnya</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message"><i class="fas fa-message"></i> Pesan</label>
+                        <textarea id="message" placeholder="Tulis pesan Anda di sini..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane"></i> Kirim Pesan
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- CTA Komunitas -->
+        <div class="community-cta" onclick="window.location.href='7-Halaman-Komunitas.html'">
+            <h3><i class="fas fa-users"></i> Gabung Komunitas Pecinta Kuliner!</h3>
+            <p>Bagikan pengalaman, foto, video, dan lokasi tempat makan favoritmu bersama ribuan anggota lainnya!</p>
+            <span class="btn">Gabung Sekarang <i class="fas fa-arrow-right"></i></span>
+        </div>
+
+        <!-- Map Section -->
+        <div class="map-section">
+            <h2 class="section-title"><i class="fas fa-map-pin"></i> Lokasi Kami</h2>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.8751108277596!2d119.428222!3d-5.183111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbee1c3c3c3c3c3%3A0x3c3c3c3c3c3c3c!2sGowa%2C%20Sulawesi%20Selatan!5e0!3m2!1sid!2sid!4v1645678901234!5m2!1sid!2sid" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer - SAMA DENGAN HOME -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <h3>MakanDiSulSel</h3>
+                <p class="footer-description">
+                    Portal komunitas kuliner untuk pecinta makanan di Makassar, Gowa, dan sekitarnya. 
+                    Rekomendasi jujur dari komunitas, bukan dari iklan.
+                </p>
+                
+                <div class="footer-contact-info">
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Makassar, Sulawesi Selatan</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:MakanDiSulSel@gmail.com">MakanDiSulSel@gmail.com</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <a href="tel:+6281234567890">+62 812 3456 7890</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <a href="https://wa.me/6281234567890" target="_blank">0812-3456-7890</a>
+                    </div>
+                </div>
+
+                <div class="social-icons-footer">
+                    <a href="#" class="social-icon-footer"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon-footer"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon-footer"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon-footer"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="social-icon-footer"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-right"></div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 MakanDiSulSel - Portal Komunitas & Pusat Kuliner Makassar Raya</p>
+            <p style="margin-top: 5px;">
+                <a href="1-Home-Landing-MakanDiSulSel.html">Beranda</a> • 
+                <a href="2-Halaman-Produk-Services-Daftar-Kuliner.html">Kuliner</a> • 
+                <a href="3-Halaman-Detail-Produk-Service.html">Produk</a> • 
+                <a href="4-Halaman-Artikel-Blog.html">Artikel</a> • 
+                <a href="5-Halaman-Contact-Booking.html">Kontak</a> • 
+                <a href="7-Halaman-Komunitas.html">Komunitas</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulasi pengiriman form
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            
+            alert(`Terima kasih ${name}! Pesan Anda telah kami terima. Tim MakanDiSulSel akan segera menghubungi Anda melalui ${email}.`);
+            this.reset();
+        });
+    </script>
+</body>
+</html>

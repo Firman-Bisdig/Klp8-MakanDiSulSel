@@ -1,0 +1,2254 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produk Bumbu - MakanDiSulSel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ============================================= */
+        /* VARIABEL WARNA - ORANGE & BIRU LAUT */
+        /* ============================================= */
+        :root {
+            --primary-orange: #F97316;
+            --secondary-orange: #ffb951;
+            --light-orange: #FFEDD5;
+            --primary-blue: #0F4C81;
+            --secondary-blue: #1E6F9F;
+            --light-blue: #E6F0FA;
+            --text-dark: #334155;
+            --text-light: #FFFFFF;
+            --cream-bg: #FFF9F0;
+            --gray-bg: #F8FAFC;
+            --shadow-color: rgba(15, 76, 129, 0.15);
+            --border-light: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+            background-color: var(--cream-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ============================================= */
+        /* NAVBAR - SAMA DENGAN HOME */
+        /* ============================================= */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
+
+        .logo {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-orange);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
+        }
+
+        .nav-links {
+            display: none;
+        }
+
+        .nav-links a {
+            background: var(--cream-bg);
+            padding: 8px 16px;
+            border-radius: 30px;
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--primary-orange);
+            color: white;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-icons i {
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+            background: rgba(255, 249, 240, 0.15);
+            padding: 8px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .nav-icons i:hover {
+            background: var(--primary-orange);
+        }
+
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border: 2px solid white;
+            cursor: pointer;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+                gap: 15px;
+                align-items: center;
+            }
+
+            .navbar {
+                padding: 15px 40px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .logo img {
+                width: 65px;
+                height: 65px;
+                border-width: 3px;
+            }
+        }
+
+        /* ============================================= */
+        /* PAGE HEADER */
+        /* ============================================= */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            padding: 40px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .page-header h1 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            background: rgba(255, 249, 240, 0.2);
+            padding: 15px 25px;
+            border-radius: 50px;
+            display: inline-block;
+        }
+
+        .page-header p {
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 20px;
+            background: rgba(255, 249, 240, 0.15);
+            padding: 12px 24px;
+            border-radius: 30px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            padding: 10px 24px;
+            background: rgba(255, 249, 240, 0.2);
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: var(--primary-orange);
+            transform: translateX(-3px);
+        }
+
+        /* ============================================= */
+        /* SEARCH & FILTER SECTION */
+        /* ============================================= */
+        .search-filter-section {
+            padding: 20px;
+            background: white;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .search-filter-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .search-box {
+            background: var(--cream-bg);
+            border-radius: 30px;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            border: 2px solid var(--light-orange);
+        }
+
+        .search-box i {
+            color: var(--primary-orange);
+            margin-right: 10px;
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            padding: 10px 0;
+            background: transparent;
+            outline: none;
+        }
+
+        .search-box button {
+            background: var(--primary-orange);
+            border: none;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .search-box button:hover {
+            background: var(--secondary-orange);
+        }
+
+        .filter-options {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+
+        .filter-chip {
+            background: var(--cream-bg);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            border: 1px solid var(--light-orange);
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-chip:hover,
+        .filter-chip.active {
+            background: var(--primary-orange);
+            color: white;
+            border-color: var(--primary-orange);
+        }
+
+        .community-chip {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            border: none;
+        }
+
+        .community-chip i {
+            margin-right: 6px;
+        }
+
+        .community-chip:hover {
+            background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
+            transform: translateY(-2px);
+        }
+
+        @media (min-width: 768px) {
+            .search-filter-container {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .search-box {
+                flex: 1;
+            }
+        }
+
+        /* ============================================= */
+        /* CATEGORY TABS */
+        /* ============================================= */
+        .category-tabs {
+            display: flex;
+            gap: 10px;
+            padding: 20px 20px 0;
+            overflow-x: auto;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category-tab {
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            background: var(--cream-bg);
+            color: var(--primary-blue);
+            border: 1px solid var(--light-orange);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .category-tab i {
+            margin-right: 8px;
+            color: var(--primary-orange);
+        }
+
+        .category-tab:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(249, 115, 22, 0.1);
+        }
+
+        .category-tab.active {
+            background: var(--primary-orange);
+            color: white;
+            border-color: var(--primary-orange);
+        }
+
+        .category-tab.active i {
+            color: white;
+        }
+
+        /* ============================================= */
+        /* TOP PAGINATION - HANYA DI KANAN ATAS */
+        /* ============================================= */
+        .top-pagination {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto 15px;
+            padding: 10px 0;
+        }
+
+        .pagination-buttons {
+            display: flex;
+            gap: 8px;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 40px;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            border: 1px solid var(--light-orange);
+        }
+
+        .page-btn-top {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--cream-bg);
+            border: 1px solid var(--light-orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .page-btn-top:hover,
+        .page-btn-top.active {
+            background: var(--primary-orange);
+            color: white;
+            border-color: var(--primary-orange);
+        }
+
+        .nav-arrow {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+        }
+
+        .nav-arrow:hover {
+            background: var(--primary-orange);
+        }
+
+        /* ============================================= */
+        /* PRODUK GRID - RAPIH & SIMETRIS */
+        /* ============================================= */
+        .produk-section {
+            padding: 10px 20px 30px;
+        }
+
+        .produk-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .produk-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px var(--shadow-color);
+            border: 1px solid var(--light-orange);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            animation: fadeIn 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .produk-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(249, 115, 22, 0.15);
+        }
+
+        .produk-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .produk-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .produk-card:hover .produk-image img {
+            transform: scale(1.1);
+        }
+
+        .produk-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-orange);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            z-index: 10;
+            border: 2px solid white;
+        }
+
+        .badge-best { background: #dc2626; }
+        .badge-populer { background: var(--primary-blue); }
+        .badge-new { background: #10b981; }
+        .badge-premium { background: #8b5cf6; }
+        .badge-hemat { background: #f59e0b; }
+
+        .produk-content {
+            padding: 18px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .produk-category {
+            display: inline-block;
+            background: var(--primary-orange);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            width: fit-content;
+        }
+
+        .produk-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+            gap: 10px;
+        }
+
+        .produk-header h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+            background: var(--cream-bg);
+            padding: 6px 14px;
+            border-radius: 30px;
+            line-height: 1.4;
+        }
+
+        .produk-rating {
+            color: var(--primary-orange);
+            font-weight: 600;
+            font-size: 0.85rem;
+            background: var(--cream-bg);
+            padding: 5px 10px;
+            border-radius: 30px;
+            white-space: nowrap;
+        }
+
+        .produk-rating i {
+            margin-right: 3px;
+        }
+
+        .produk-lokasi {
+            color: #666;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: var(--cream-bg);
+            padding: 5px 12px;
+            border-radius: 30px;
+            width: fit-content;
+        }
+
+        .produk-lokasi i {
+            color: var(--primary-orange);
+            font-size: 0.75rem;
+        }
+
+        .produk-deskripsi {
+            color: #666;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            background: var(--cream-bg);
+            padding: 12px 14px;
+            border-radius: 15px;
+            flex: 1;
+            min-height: 70px;
+        }
+
+        .produk-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-light);
+            margin-top: auto;
+        }
+
+        .produk-harga {
+            font-weight: 700;
+            color: var(--primary-blue);
+            background: var(--cream-bg);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+        }
+
+        .produk-harga span {
+            color: var(--primary-orange);
+            font-size: 1.1rem;
+            margin-left: 5px;
+            font-weight: 800;
+        }
+
+        .produk-link {
+            color: var(--primary-orange);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.85rem;
+            background: var(--cream-bg);
+            padding: 6px 14px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .produk-link:hover {
+            background: var(--primary-orange);
+            color: white;
+        }
+
+        @media (min-width: 768px) {
+            .produk-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .produk-header h3 {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .produk-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .produk-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* ============================================= */
+        /* CTA KOMUNITAS - SAMA DENGAN HALAMAN KULINER */
+        /* ============================================= */
+        .community-cta {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            margin: 40px 20px;
+            border-radius: 25px;
+            padding: 35px 25px;
+            text-align: center;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 35px var(--shadow-color);
+        }
+
+        .community-cta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(15, 76, 129, 0.3);
+        }
+
+        .community-cta h3 {
+            color: white;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            background: rgba(255, 249, 240, 0.2);
+            padding: 12px 24px;
+            border-radius: 50px;
+            display: inline-block;
+        }
+
+        .community-cta h3 i {
+            color: var(--primary-orange);
+            margin-right: 10px;
+        }
+
+        .community-cta p {
+            opacity: 0.9;
+            margin-bottom: 20px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            background: rgba(255, 249, 240, 0.15);
+            padding: 10px 20px;
+            border-radius: 30px;
+            line-height: 1.6;
+        }
+
+        .community-cta .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--primary-orange);
+            color: white;
+            padding: 14px 30px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+
+        .community-cta .btn:hover {
+            background: var(--secondary-orange);
+            transform: scale(1.05);
+            gap: 15px;
+        }
+
+        /* ============================================= */
+        /* FOOTER - SAMA DENGAN HOME */
+        /* ============================================= */
+        .footer {
+            background: #1a2634;
+            color: white;
+            padding: 40px 20px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-left {
+            flex: 2;
+        }
+
+        .footer-left h3 {
+            color: white;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .footer-left h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-orange);
+        }
+
+        .footer-description {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            max-width: 500px;
+        }
+
+        .footer-contact-info {
+            margin-top: 10px;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: #ddd;
+            font-size: 0.95rem;
+        }
+
+        .footer-contact-item i {
+            width: 20px;
+            color: var(--primary-orange);
+            font-size: 1.1rem;
+        }
+
+        .footer-contact-item a {
+            color: #ddd;
+            transition: color 0.3s ease;
+        }
+
+        .footer-contact-item a:hover {
+            color: var(--primary-orange);
+        }
+
+        .social-icons-footer {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-icon-footer {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon-footer:hover {
+            background: var(--primary-orange);
+            transform: translateY(-3px);
+        }
+
+        .footer-right {
+            flex: 1;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.85rem;
+            max-width: 1200px;
+            margin: 30px auto 0;
+        }
+
+        .footer-bottom a {
+            color: #ccc;
+            margin: 0 5px;
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--primary-orange);
+            text-decoration: none;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+            
+            .footer-left {
+                padding-right: 40px;
+            }
+        }
+
+        /* ============================================= */
+        /* MODAL PEMESANAN LENGKAP */
+        /* ============================================= */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .order-modal {
+            background: white;
+            border-radius: 25px;
+            padding: 30px;
+            max-width: 550px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h3 {
+            font-size: 1.3rem;
+            background: var(--cream-bg);
+            padding: 8px 18px;
+            border-radius: 30px;
+        }
+
+        .modal-close {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: var(--cream-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--primary-orange);
+            color: white;
+        }
+
+        .order-product-info {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: var(--cream-bg);
+            border-radius: 15px;
+        }
+
+        .order-product-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 15px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .order-product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .order-product-detail h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .order-product-detail p {
+            color: var(--primary-orange);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-blue);
+            background: var(--cream-bg);
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid var(--border-light);
+            border-radius: 15px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background: var(--cream-bg);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-orange);
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+            background: white;
+        }
+
+        .form-group textarea {
+            height: 80px;
+            resize: vertical;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .qty-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-orange);
+            color: white;
+            border: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .qty-btn:hover {
+            background: var(--secondary-orange);
+        }
+
+        .qty-input {
+            width: 60px;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* Payment Method */
+        .payment-methods {
+            margin: 20px 0;
+        }
+
+        .payment-title {
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .payment-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .payment-option {
+            padding: 12px 10px;
+            background: var(--cream-bg);
+            border: 1px solid var(--border-light);
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .payment-option i {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .payment-option span {
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .payment-option:hover,
+        .payment-option.active {
+            background: var(--primary-orange);
+            color: white;
+            border-color: var(--primary-orange);
+        }
+
+        .payment-option.active i,
+        .payment-option.active span {
+            color: white;
+        }
+
+        /* Bank Transfer Details */
+        .bank-details {
+            display: none;
+            background: var(--light-blue);
+            padding: 15px;
+            border-radius: 15px;
+            margin: 15px 0;
+        }
+
+        .bank-details.active {
+            display: block;
+        }
+
+        .bank-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .bank-item:last-child {
+            border-bottom: none;
+        }
+
+        .bank-name {
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+
+        .bank-number {
+            font-family: monospace;
+            font-size: 1rem;
+        }
+
+        .copy-btn {
+            background: none;
+            border: none;
+            color: var(--primary-orange);
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        /* QRIS Display */
+        .qris-details {
+            display: none;
+            text-align: center;
+            padding: 15px;
+            background: var(--light-blue);
+            border-radius: 15px;
+            margin: 15px 0;
+        }
+
+        .qris-details.active {
+            display: block;
+        }
+
+        .qris-placeholder {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #ddd, #eee);
+            margin: 10px auto;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #666;
+        }
+
+        .order-total {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            padding: 15px;
+            border-radius: 15px;
+            margin: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .order-total span:first-child {
+            font-weight: 600;
+        }
+
+        .order-total span:last-child {
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+
+        .modal-btn {
+            width: 100%;
+            background: var(--primary-orange);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .modal-btn:hover {
+            background: var(--secondary-orange);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation - SAMA DENGAN HOME -->
+    <nav class="navbar">
+        <div class="logo" onclick="window.location.href='1-Home-Landing-MakanDiSulSel.html'">
+            <img src="Properti MakanDiSulSel/Logo MakanDiSulSel.png" alt="MakanDiSulSel Logo">
+        </div>
+        <div class="nav-links">
+            <a href="1-Home-Landing-MakanDiSulSel.html">Beranda</a>
+            <a href="2-Halaman-Produk-Services-Daftar-Kuliner.html">Jelajahi Kuliner</a>
+            <a href="3-Halaman-Detail-Produk-Service.html" class="active">Produk</a>
+            <a href="4-Halaman-Artikel-Blog.html">Artikel</a>
+            <a href="5-Halaman-Contact-Booking.html">Kontak</a>
+            <a href="7-Halaman-Komunitas.html">Komunitas</a>
+        </div>
+        <div class="nav-icons">
+            <i class="far fa-heart" onclick="alert('Fitur favorit akan segera hadir!')"></i>
+            <div class="profile-icon" onclick="window.location.href='6-Halaman-Login-Register.html'">
+                <i class="far fa-user"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Bumbu Siap Pakai Sulawesi Selatan</h1>
+        <p>Temukan aneka bumbu masak autentik dari berbagai daerah di Sulawesi Selatan</p>
+        <a href="2-Halaman-Produk-Services-Daftar-Kuliner.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Kembali ke Daftar Kuliner
+        </a>
+    </section>
+
+    <!-- Search & Filter -->
+    <section class="search-filter-section">
+        <div class="search-filter-container">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Cari bumbu... (contoh: coto, pallubutung, konro)">
+                <button onclick="searchProduk()">Cari</button>
+            </div>
+            <div class="filter-options">
+                <span class="filter-chip active" onclick="filterProduk('semua', this)">Semua</span>
+                <span class="filter-chip" onclick="filterProduk('bumbu-sup', this)">Sup & Soto</span>
+                <span class="filter-chip" onclick="filterProduk('bumbu-bakar', this)">Bakar</span>
+                <span class="filter-chip" onclick="filterProduk('bumbu-tumis', this)">Tumis</span>
+                <span class="filter-chip" onclick="filterProduk('bumbu-kue', this)">Kue & Cemilan</span>
+                <span class="filter-chip" onclick="filterProduk('terlaris', this)">Terlaris</span>
+                <span class="filter-chip community-chip" onclick="window.location.href='7-Halaman-Komunitas.html'">
+                    <i class="fas fa-users"></i> Komunitas
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Tabs -->
+    <div class="category-tabs">
+        <div class="category-tab active" onclick="showCategory('semua', this); resetToPage1()">
+            <i class="fas fa-mortar-pestle"></i> Semua
+        </div>
+        <div class="category-tab" onclick="showCategory('bumbu-sup', this); resetToPage1()">
+            <i class="fas fa-utensils"></i> Sup & Soto
+        </div>
+        <div class="category-tab" onclick="showCategory('bumbu-bakar', this); resetToPage1()">
+            <i class="fas fa-fire"></i> Bakar
+        </div>
+        <div class="category-tab" onclick="showCategory('bumbu-tumis', this); resetToPage1()">
+            <i class="fas fa-mortar-pestle"></i> Tumis
+        </div>
+        <div class="category-tab" onclick="showCategory('bumbu-kue', this); resetToPage1()">
+            <i class="fas fa-cookie"></i> Kue & Cemilan
+        </div>
+    </div>
+
+    <!-- ============================================= -->
+    <!-- HALAMAN 1 - PRODUK GRID -->
+    <!-- ============================================= -->
+    <section class="produk-section" id="page1">
+        <div class="top-pagination">
+            <div class="pagination-buttons">
+                <span class="page-btn-top nav-arrow" onclick="prevPage()"><i class="fas fa-chevron-left"></i></span>
+                <span class="page-btn-top active" onclick="showPage(1)">1</span>
+                <span class="page-btn-top" onclick="showPage(2)">2</span>
+                <span class="page-btn-top" onclick="showPage(3)">3</span>
+                <span class="page-btn-top nav-arrow" onclick="nextPage()"><i class="fas fa-chevron-right"></i></span>
+            </div>
+        </div>
+        
+        <div class="produk-grid" id="produkGrid1">
+            
+            <!-- Bumbu Coto Makassar -->
+            <div class="produk-card" data-category="bumbu-sup" data-name="bumbu coto" data-id="coto-makassar" data-price="25000" onclick="event.stopPropagation(); openOrderModal('coto-makassar', 'Bumbu Coto Makassar', 25000, 'Properti MakanDiSulSel/Bumbu/CotoMakassar.png')">
+                <div class="produk-image">
+                    <img src="Properti MakanDiSulSel/Bumbu/CotoMakassar.png" alt="Bumbu Coto Makassar" onerror="this.style.background='linear-gradient(135deg, #F97316, #ffb951)'; this.style.padding='20px';">
+                    <span class="produk-badge badge-best">Best Seller</span>
+                </div>
+                <div class="produk-content">
+                    <span class="produk-category">Bumbu Sup & Soto</span>
+                    <div class="produk-header">
+                        <h3>Bumbu Coto Makassar</h3>
+                        <div class="produk-rating"><i class="fas fa-star"></i> 5.0</div>
+                    </div>
+                    <div class="produk-lokasi">
+                        <i class="fas fa-map-marker-alt"></i> Makassar
+                    </div>
+                    <p class="produk-deskripsi">Rempah autentik kacang tanah, lengkuas, serai untuk coto.</p>
+                    <div class="produk-footer">
+                        <span class="produk-harga"><span>Rp25K</span>/pouch</span>
+                        <span class="produk-link" onclick="event.stopPropagation(); openOrderModal('coto-makassar', 'Bumbu Coto Makassar', 25000, 'Properti MakanDiSulSel/Bumbu/CotoMakassar.png')">Pesan <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bumbu Pallubutung -->
+            <div class="produk-card" data-category="bumbu-sup" data-name="bumbu pallubutung" data-id="pallubutung" data-price="23000" onclick="event.stopPropagation(); openOrderModal('pallubutung', 'Bumbu Pallubutung', 23000, 'Properti MakanDiSulSel/Bumbu/Pallubutung.png')">
+                <div class="produk-image">
+                    <img src="Properti MakanDiSulSel/Bumbu/Pallubutung.png" alt="Bumbu Pallubutung" onerror="this.style.background='linear-gradient(135deg, #0F4C81, #1E6F9F)'; this.style.padding='20px';">
+                    <span class="produk-badge badge-populer">Populer</span>
+                </div>
+                <div class="produk-content">
+                    <span class="produk-category">Bumbu Sup & Soto</span>
+                    <div class="produk-header">
+                        <h3>Bumbu Pallubutung</h3>
+                        <div class="produk-rating"><i class="fas fa-star"></i> 4.9</div>
+                    </div>
+                    <div class="produk-lokasi">
+                        <i class="fas fa-map-marker-alt"></i> Gowa
+                    </div>
+                    <p class="produk-deskripsi">Bumbu kuah kuning segar khas Gowa dengan kunyit dan jahe.</p>
+                    <div class="produk-footer">
+                        <span class="produk-harga"><span>Rp23K</span>/pouch</span>
+                        <span class="produk-link" onclick="event.stopPropagation(); openOrderModal('pallubutung', 'Bumbu Pallubutung', 23000, 'Properti MakanDiSulSel/Bumbu/Pallubutung.png')">Pesan <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bumbu Sop Konro -->
+            <div class="produk-card" data-category="bumbu-sup" data-name="bumbu konro" data-id="sop-konro" data-price="30000" onclick="event.stopPropagation(); openOrderModal('sop-konro', 'Bumbu Sop Konro', 30000, 'Properti MakanDiSulSel/Bumbu/SopKonro.png')">
+                <div class="produk-image">
+                    <img src="Properti MakanDiSulSel/Bumbu/SopKonro.png" alt="Bumbu Sop Konro" onerror="this.style.background='linear-gradient(135deg, #dc2626, #991b1b)'; this.style.padding='20px';">
+                    <span class="produk-badge badge-best">Best Seller</span>
+                </div>
+                <div class="produk-content">
+                    <span class="produk-category">Bumbu Sup & Soto</span>
+                    <div class="produk-header">
+                        <h3>Bumbu Sop Konro</h3>
+                        <div class="produk-rating"><i class="fas fa-star"></i> 5.0</div>
+                    </div>
+                    <div class="produk-lokasi">
+                        <i class="fas fa-map-marker-alt"></i> Makassar
+                    </div>
+                    <p class="produk-deskripsi">Bumbu hitam kaya rempah kluwek, ketumbar untuk sop iga sapi.</p>
+                    <div class="produk-footer">
+                        <span class="produk-harga"><span>Rp30K</span>/pouch</span>
+                        <span class="produk-link" onclick="event.stopPropagation(); openOrderModal('sop-konro', 'Bumbu Sop Konro', 30000, 'Properti MakanDiSulSel/Bumbu/SopKonro.png')">Pesan <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bumbu Sop Saudara -->
+            <div class="produk-card" data-category="bumbu-sup" data-name="bumbu sop saudara" data-id="sop-saudara" data-price="22000" onclick="event.stopPropagation(); openOrderModal('sop-saudara', 'Bumbu Sop Saudara', 22000, 'Properti MakanDiSulSel/Bumbu/SopSaudara.png')">
+                <div class="produk-image">
+                    <img src="Properti MakanDiSulSel/Bumbu/SopSaudara.png" alt="Bumbu Sop Saudara" onerror="this.style.background='linear-gradient(135deg, #10b981, #059669)'; this.style.padding='20px';">
+                </div>
+                <div class="produk-content">
+                    <span class="produk-category">Bumbu Sup & Soto</span>
+                    <div class="produk-header">
+                        <h3>Bumbu Sop Saudara</h3>
+                        <div class="produk-rating"><i class="fas fa-star"></i> 4.8</div>
+                    </div>
+                    <div class="produk-lokasi">
+                        <i class="fas fa-map-marker-alt"></i> Pangkep
+                    </div>
+                    <p class="produk-deskripsi">Bumbu sop bening khas Pangkep dengan rempah ringan.</p>
+                    <div class="produk-footer">
+                        <span class="produk-harga"><span>Rp22K</span>/pouch</span>
+                        <span class="produk-link" onclick="event.stopPropagation(); openOrderModal('sop-saudara', 'Bumbu Sop Saudara', 22000, 'Properti MakanDiSulSel/Bumbu/SopSaudara.png')">Pesan <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bumbu Konro Bakar -->
+            <div class="produk-card" data-category="bumbu-bakar" data-name="bumbu konro bakar" data-id="konro-bakar" data-price="28000" onclick="event.stopPropagation(); openOrderModal('konro-bakar', 'Bumbu Konro Bakar', 28000, 'Properti MakanDiSulSel/Bumbu/KonroBakar.png')">
+                <div class="produk-image">
+                    <img src="Properti MakanDiSulSel/Bumbu/KonroBakar.png" alt="Bumbu Konro Bakar" onerror="this.style.background='linear-gradient(135deg, #F97316, #ffb951)'; this.style.padding='20px';">
+                    <span class="produk-badge badge-best">Best Seller</span>
+                </div>
+                <div class="produk-content">
+                    <span class="produk-category">Bumbu Bakar</span>
+                    <div class="produk-header">
+                        <h3>Bumbu Konro Bakar</h3>
+                        <div class="produk-rating"><i class="fas fa-star"></i> 5.0</div>
+                    </div>
+                    <div class="produk-lokasi">
+                        <i class="fas fa-map-marker-alt"></i> Makassar
+                    </div>
+                    <p class="produk-deskripsi">Bumbu oles bakar khas Makassar dengan kecap manis.</p>
+                    <div class="produk-footer">
+                        <span class="produk-harga"><span>Rp28K</span>/pouch</span>
+                        <span class="produk-link" onclick="event.stopPropagation(); openOrderModal('konro-bakar', 'Bumbu Konro Bakar', 28000, 'Properti MakanDiSulSel/Bumbu/KonroBakar.png')">Pesan <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bumbu Ikan Bakar Maros -->
+            <div class="produk-card" data-category="bumbu-bakar" data-name="bumbu ikan bakar maros" data-id="ikan-bakar-maros" data-price="20000" onclick="event.stopPropagation(); openOrderModal('ikan-bakar-maros', 'Bumbu Ikan Bakar Maros', 20000, 'Properti MakanDiSulSel/Bumbu/IkanBakarMaros.png')">
+                <div class="produk-image">
+                    <img src="Properti MakanDiSulSel/Bumbu/IkanBakarMaros.png" alt="Bumbu Ikan Bakar Maros" onerror="this.style.background='linear-gradient(135deg, #0F4C81, #1E6F9F)'; this.style.padding='20px';">
+                    <span class="produk-badge badge-populer">Populer</span>
+                </div>
+                <div class="produk-content">
+                    <span class="produk-category">Bumbu Bakar</span>
+                    <div class="produk-header">
+                        <h3>Bumbu Ikan Bakar Maros</h3>
+                        <div class="produk-rating"><i class="fas fa-star"></i> 4.9</div>
+                    </div>
+                    <div class="produk-lokasi">
+                        <i class="fas fa-map-marker-alt"></i> Maros
+                    </div>
+                    <p class="produk-deskripsi">Bumbu bakar seafood dengan asam jawa dan kunyit.</p>
+                    <div class="produk-footer">
+                        <span class="produk-harga"><span>Rp20K</span>/pouch</span>
+                        <span class="produk-link" onclick="event.stopPropagation(); openOrderModal('ikan-bakar-maros', 'Bumbu Ikan Bakar Maros', 20000, 'Properti MakanDiSulSel/Bumbu/IkanBakarMaros.png')">Pesan <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bumbu Ayam Bakar Bugis -->
+            <div class="produk-card" data-category="bumbu-bakar" data-name="bumbu ayam bakar bugis" data-id="ayam-bakar-bugis" data-price="24000" onclick="event.stopPropagation(); openOrderModal('ayam-bakar-bugis', 'Bumbu Ayam Bakar Bugis', 24000, 'Properti MakanDiSulSel/Bumbu/AyamBakar.png')">
+                <div class="produk-image">
+                    <img src="Properti MakanDiSulSel/Bumbu/AyamBakar.png" alt="Bumbu Ayam Bakar Bugis" onerror="this.style.background='linear-gradient(135deg, #10b981, #059669)'; this.style.padding='20px';">
+                    <span class="produk-badge badge-new">Baru</span>
+                </div>
+                <div class="produk-content">
+                    <span class="produk-category">Bumbu Bakar</span>
+                    <div class="produk-header">
+                        <h3>Bumbu Ayam Bakar Bugis</h3>
+                        <div class="produk-rating"><i class="fas fa-star"></i> 4.7</div>
+                    </div>
+                    <div class="produk-lokasi">
+                        <i class="fas fa-map-marker-alt"></i> Bone
+                    </div>
+                    <p class="produk-deskripsi">Bumbu bakar manis pedas khas Bugis dengan gula merah.</p>
+                    <div class="produk-footer">
+                        <span class="produk-harga"><span>Rp24K</span>/pouch</span>
+                        <span class="produk-link" onclick="event.stopPropagation(); openOrderModal('ayam-bakar-bugis', 'Bumbu Ayam Bakar Bugis', 24000, 'Properti MakanDiSulSel/Bumbu/AyamBakar.png')">Pesan <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bumbu Nasu Palekko -->
+            <div class="produk-card" data-category="bumbu-tumis" data-name="bumbu nasu palekko" data-id="nasu-palekko" data-price="27000" onclick="event.stopPropagation(); openOrderModal('nasu-palekko', 'Bumbu Nasu Palekko', 27000, 'Properti MakanDiSulSel/Bumbu/NasuPalekko.png')">
+                <div class="produk-image">
+                    <img src="Properti MakanDiSulSel/Bumbu/NasuPalekko.png" alt="Bumbu Nasu Palekko" onerror="this.style.background='linear-gradient(135deg, #8b5cf6, #6d28d9)'; this.style.padding='20px';">
+                    <span class="produk-badge badge-premium">Premium</span>
+                </div>
+                <div class="produk-content">
+                    <span class="produk-category">Bumbu Tumis</span>
+                    <div class="produk-header">
+                        <h3>Bumbu Nasu Palekko</h3>
+                        <div class="produk-rating"><i class="fas fa-star"></i> 4.9</div>
+                    </div>
+                    <div class="produk-lokasi">
+                        <i class="fas fa-map-marker-alt"></i> Bone
+                    </div>
+                    <p class="produk-deskripsi">Bumbu pedas khas Bugis untuk ayam kampung.</p>
+                    <div class="produk-footer">
+                        <span class="produk-harga"><span>Rp27K</span>/pouch</span>
+                        <span class="produk-link" onclick="event.stopPropagation(); openOrderModal('nasu-palekko', 'Bumbu Nasu Palekko', 27000, 'Properti MakanDiSulSel/Bumbu/NasuPalekko.png')">Pesan <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================= -->
+    <!-- HALAMAN 2 - PRODUK GRID -->
+    <!-- ============================================= -->
+    <section class="produk-section" id="page2" style="display: none;">
+        <div class="top-pagination">
+            <div class="pagination-buttons">
+                <span class="page-btn-top nav-arrow" onclick="prevPage()"><i class="fas fa-chevron-left"></i></span>
+                <span class="page-btn-top" onclick="showPage(1)">1</span>
+                <span class="page-btn-top active" onclick="showPage(2)">2</span>
+                <span class="page-btn-top" onclick="showPage(3)">3</span>
+                <span class="page-btn-top nav-arrow" onclick="nextPage()"><i class="fas fa-chevron-right"></i></span>
+            </div>
+        </div>
+        
+        <div class="produk-grid" id="produkGrid2">
+            
+            <!-- Bumbu Rica-Rica Toraja -->
+            <div class="produk-card" data-category="bumbu-tumis" data-name="bumbu rica-rica" data-id="rica-rica-toraja" data-price="24000" onclick="event.stopPropagation(); openOrderModal('rica-rica-toraja', 'Bumbu Rica-Rica Toraja', 24000, 'Properti MakanDiSulSel/Bumbu/RicaToraja.png')">
+                <div class="produk-image">
+                    <img src="Properti MakanDiSulSel/Bumbu/RicaToraja.png" alt="Bumbu Rica-Rica" onerror="this.style.background='linear-gradient(135deg, #dc2626, #991b1b)'; this.style.padding='20px';">
+                    <span class="produk-badge badge-populer">Populer</span>
+                </div>
+                <div class="produk-content">
+                    <span class="produk-category">Bumbu Tumis</span>
+                    <div class="produk-header">
+                        <h3>Bumbu Rica-Rica Toraja</h3>
+                        <div class="produk-rating"><i class="fas fa-star"></i> 4.8</div>
+                    </div>
+                    <div class="produk-lokasi">
+                        <i class="fas fa-map-marker-alt"></i> Toraja
+                    </div>
+                    <p class="produk-deskripsi">Bumbu pedas segar dengan daun jeruk, serai, dan cabai rawit.</p>
+                    <div class="produk-footer">
+                        <span class="produk-harga"><span>Rp24K</span>/pouch</span>
+                        <span class="produk-link" onclick="event.stopPropagation(); openOrderModal('rica-rica-toraja', 'Bumbu Rica-Rica Toraja', 24000, 'Properti MakanDiSulSel/Bumbu/RicaToraja.png')">Pesan <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bumbu Woku Luwu -->
+            <div class="produk-card" data-category="bumbu-tumis" data-name="bumbu woku" data-id="woku-luwu" data-price="22000" onclick="event.stopPropagation(); openOrderModal('woku-luwu', 'Bumbu Woku Luwu', 22000, 'Properti MakanDiSulSel/Bumbu/WokuLuwu.png')">
+                <div class="produk-image">
+                    <img src="Properti MakanDiSulSel/Bumbu/WokuLuwu.png" alt="Bumbu Woku" onerror="this.style.background='linear-gradient(135deg, #10b981, #059669)'; this.style.padding='20px';">
+                </div>
+                <div class="produk-content">
+                    <span class="produk-category">Bumbu Tumis</span>
+                    <div class="produk-header">
+                        <h3>Bumbu Woku Luwu</h3>
+                        <div class="produk-rating"><i class="fas fa-star"></i> 4.7</div>
+                    </div>
+                    <div class="produk-lokasi">
+                        <i class="fas fa-map-marker-alt"></i> Luwu
+                    </div>
+                    <p class="produk-deskripsi">Bumbu kuning khas dengan kemangi untuk ayam/ikan.</p>
+                    <div class="produk-footer">
+                        <span class="produk-harga"><span>Rp22K</span>/pouch</span>
+                        <span class="produk-link" onclick="event.stopPropagation(); openOrderModal('woku-luwu', 'Bumbu Woku Luwu', 22000, 'Properti MakanDiSulSel/Bumbu/WokuLuwu.png')">Pesan <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bumbu Pallumara Selayar -->
+            <div class="produk-card" data-category="bumbu-sup" data-name="bumbu pallumara" data-id="pallumara-selayar" data-price="21000" onclick="event.stopPropagation(); openOrderModal('pallumara-selayar', 'Bumbu Pallumara Selayar', 21000, 'Properti MakanDiSulSel/Bumbu/PallumaraSelayar.png')">
+                <div class="produk-image">
+                    <img src="Properti MakanDiSulSel/Bumbu/PallumaraSelayar.png" alt="Bumbu Pallumara" onerror="this.style.background='linear-gradient(135deg, #f59e0b, #d97706)'; this.style.padding='20px';">
+                    <span class="produk-badge badge-new">Baru</span>
+                </div>
+                <div class="produk-content">
+                    <span class="produk-category">Bumbu Sup & Soto</span>
+                    <div class="produk-header">
+                        <h3>Bumbu Pallumara Selayar</h3>
+                        <div class="produk-rating"><i class="fas fa-star"></i> 4.6</div>
+                    </div>
+                    <div class="produk-lokasi">
+                        <i class="fas fa-map-marker-alt"></i> Selayar
+                    </div>
+                    <p class="produk-deskripsi">Bumbu kuah kuning asam segar untuk ikan.</p>
+                    <div class="produk-footer">
+                        <span class="produk-harga"><span>Rp21K</span>/pouch</span>
+                        <span class="produk-link" onclick="event.stopPropagation(); openOrderModal('pallumara-selayar', 'Bumbu Pallumara Selayar', 21000, 'Properti MakanDiSulSel/Bumbu/PallumaraSelayar.png')">Pesan <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bumbu Bebek Palekko Sidrap -->
+            <div class="produk-card" data-category="bumbu-tumis" data-name="bumbu bebek palekko" data-id="bebek-palekko" data-price="32000" onclick="event.stopPropagation(); openOrderModal('bebek-palekko', 'Bumbu Bebek Palekko Sidrap', 32000, 'Properti MakanDiSulSel/Bumbu/BebekPalekkoSidrap.jpg')">
+                <div class="produk-image">
+                    <img src="Properti MakanDiSulSel/Bumbu/BebekPalekkoSidrap.jpg" alt="Bumbu Bebek Palekko" onerror="this.style.background='linear-gradient(135deg, #8b5cf6, #6d28d9)'; this.style.padding='20px';">
+                    <span class="produk-badge badge-premium">Premium</span>
+                </div>
+                <div class="produk-content">
+                    <span class="produk-category">Bumbu Tumis</span>
+                    <div class="produk-header">
+                        <h3>Bumbu Bebek Palekko Sidrap</h3>
+                        <div class="produk-rating"><i class="fas fa-star"></i> 4.9</div>
+                    </div>
+                    <div class="produk-lokasi">
+                        <i class="fas fa-map-marker-alt"></i> Sidrap
+                    </div>
+                    <p class="produk-deskripsi">Bumbu pedas hitam khas Sidrap untuk bebek.</p>
+                    <div class="produk-footer">
+                        <span class="produk-harga"><span>Rp32K</span>/pouch</span>
+                        <span class="produk-link" onclick="event.stopPropagation(); openOrderModal('bebek-palekko', 'Bumbu Bebek Palekko Sidrap', 32000, 'Properti MakanDiSulSel/Bumbu/BebekPalekkoSidrap.jpg')">Pesan <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bumbu Ikan Bakar Pinrang -->
+            <div class="produk-card" data-category="bumbu-bakar" data-name="bumbu ikan bakar pinrang" data-id="ikan-bakar-pinrang" data-price="19000" onclick="event.stopPropagation(); openOrderModal('ikan-bakar-pinrang', 'Bumbu Ikan Bakar Pinrang', 19000, 'Properti MakanDiSulSel/Bumbu/IkanBakarPinrang.jpg')">
+                <div class="produk-image">
+                    <img src="Properti MakanDiSulSel/Bumbu/IkanBakarPinrang.jpg" alt="Bumbu Ikan Bakar Pinrang" onerror="this.style.background='linear-gradient(135deg, #f59e0b, #d97706)'; this.style.padding='20px';">
+                </div>
+                <div class="produk-content">
+                    <span class="produk-category">Bumbu Bakar</span>
+                    <div class="produk-header">
+                        <h3>Bumbu Ikan Bakar Pinrang</h3>
+                        <div class="produk-rating"><i class="fas fa-star"></i> 4.5</div>
+                    </div>
+                    <div class="produk-lokasi">
+                        <i class="fas fa-map-marker-alt"></i> Pinrang
+                    </div>
+                    <p class="produk-deskripsi">Bumbu bakar pedas manis dengan gula aren.</p>
+                    <div class="produk-footer">
+                        <span class="produk-harga"><span>Rp19K</span>/pouch</span>
+                        <span class="produk-link" onclick="event.stopPropagation(); openOrderModal('ikan-bakar-pinrang', 'Bumbu Ikan Bakar Pinrang', 19000, 'Properti MakanDiSulSel/Bumbu/IkanBakarPinrang.jpg')">Pesan <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bumbu Coto Gowa -->
+            <div class="produk-card" data-category="bumbu-sup" data-name="bumbu coto gowa" data-id="coto-gowa" data-price="26000" onclick="event.stopPropagation(); openOrderModal('coto-gowa', 'Bumbu Coto Gowa', 26000, 'Properti MakanDiSulSel/Bumbu/CotoGowa.jpg')">
+                <div class="produk-image">
+                    <img src="Properti MakanDiSulSel/Bumbu/CotoGowa.jpg" alt="Bumbu Coto Gowa" onerror="this.style.background='linear-gradient(135deg, #F97316, #ffb951)'; this.style.padding='20px';">
+                    <span class="produk-badge badge-populer">Populer</span>
+                </div>
+                <div class="produk-content">
+                    <span class="produk-category">Bumbu Sup & Soto</span>
+                    <div class="produk-header">
+                        <h3>Bumbu Coto Gowa</h3>
+                        <div class="produk-rating"><i class="fas fa-star"></i> 4.8</div>
+                    </div>
+                    <div class="produk-lokasi">
+                        <i class="fas fa-map-marker-alt"></i> Gowa
+                    </div>
+                    <p class="produk-deskripsi">Bumbu coto khas Gowa dengan kacang tanah pilihan.</p>
+                    <div class="produk-footer">
+                        <span class="produk-harga"><span>Rp26K</span>/pouch</span>
+                        <span class="produk-link" onclick="event.stopPropagation(); openOrderModal('coto-gowa', 'Bumbu Coto Gowa', 26000, 'Properti MakanDiSulSel/Bumbu/CotoGowa.jpg')">Pesan <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bumbu Kapurung Palopo -->
+            <div class="produk-card" data-category="bumbu-sup" data-name="bumbu kapurung" data-id="kapurung-palopo" data-price="23000" onclick="event.stopPropagation(); openOrderModal('kapurung-palopo', 'Bumbu Kapurung Palopo', 23000, 'Properti MakanDiSulSel/Bumbu/KapurungPalopo.jpg')">
+                <div class="produk-image">
+                    <img src="Properti MakanDiSulSel/Bumbu/KapurungPalopo.jpg" alt="Bumbu Kapurung" onerror="this.style.background='linear-gradient(135deg, #10b981, #059669)'; this.style.padding='20px';">
+                    <span class="produk-badge badge-new">Baru</span>
+                </div>
+                <div class="produk-content">
+                    <span class="produk-category">Bumbu Sup & Soto</span>
+                    <div class="produk-header">
+                        <h3>Bumbu Kapurung Palopo</h3>
+                        <div class="produk-rating"><i class="fas fa-star"></i> 4.7</div>
+                    </div>
+                    <div class="produk-lokasi">
+                        <i class="fas fa-map-marker-alt"></i> Palopo
+                    </div>
+                    <p class="produk-deskripsi">Bumbu kuah kuning untuk kapurung dengan ikan teri.</p>
+                    <div class="produk-footer">
+                        <span class="produk-harga"><span>Rp23K</span>/pouch</span>
+                        <span class="produk-link" onclick="event.stopPropagation(); openOrderModal('kapurung-palopo', 'Bumbu Kapurung Palopo', 23000, 'Properti MakanDiSulSel/Bumbu/KapurungPalopo.jpg')">Pesan <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bumbu Ayam Goreng Mandar -->
+            <div class="produk-card" data-category="bumbu-tumis" data-name="bumbu ayam goreng mandar" data-id="ayam-goreng-mandar" data-price="22000" onclick="event.stopPropagation(); openOrderModal('ayam-goreng-mandar', 'Bumbu Ayam Goreng Mandar', 22000, 'Properti MakanDiSulSel/Bumbu/AyamGorengMandar.jpg')">
+                <div class="produk-image">
+                    <img src="Properti MakanDiSulSel/Bumbu/AyamGorengMandar.jpg" alt="Bumbu Ayam Goreng Mandar" onerror="this.style.background='linear-gradient(135deg, #f59e0b, #d97706)'; this.style.padding='20px';">
+                </div>
+                <div class="produk-content">
+                    <span class="produk-category">Bumbu Tumis</span>
+                    <div class="produk-header">
+                        <h3>Bumbu Ayam Goreng Mandar</h3>
+                        <div class="produk-rating"><i class="fas fa-star"></i> 4.6</div>
+                    </div>
+                    <div class="produk-lokasi">
+                        <i class="fas fa-map-marker-alt"></i> Polewali Mandar
+                    </div>
+                    <p class="produk-deskripsi">Bumbu ungkep khas Mandar untuk ayam goreng gurih.</p>
+                    <div class="produk-footer">
+                        <span class="produk-harga"><span>Rp22K</span>/pouch</span>
+                        <span class="produk-link" onclick="event.stopPropagation(); openOrderModal('ayam-goreng-mandar', 'Bumbu Ayam Goreng Mandar', 22000, 'Properti MakanDiSulSel/Bumbu/AyamGorengMandar.jpg')">Pesan <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ============================================= -->
+    <!-- HALAMAN 3 - PRODUK GRID -->
+    <!-- ============================================= -->
+    <section class="produk-section" id="page3" style="display: none;">
+        <div class="top-pagination">
+            <div class="pagination-buttons">
+                <span class="page-btn-top nav-arrow" onclick="prevPage()"><i class="fas fa-chevron-left"></i></span>
+                <span class="page-btn-top" onclick="showPage(1)">1</span>
+                <span class="page-btn-top" onclick="showPage(2)">2</span>
+                <span class="page-btn-top active" onclick="showPage(3)">3</span>
+                <span class="page-btn-top nav-arrow" onclick="nextPage()"><i class="fas fa-chevron-right"></i></span>
+            </div>
+        </div>
+        
+        <div class="produk-grid" id="produkGrid3">
+            
+            <!-- Bumbu Saus Pisang Ijo -->
+            <div class="produk-card" data-category="bumbu-kue" data-name="saus pisang ijo" data-id="saus-pisang-ijo" data-price="18000" onclick="event.stopPropagation(); openOrderModal('saus-pisang-ijo', 'Bumbu Saus Pisang Ijo', 18000, 'Properti MakanDiSulSel/Bumbu/PisangIjo.jpg')">
+                <div class="produk-image">
+                    <img src="Properti MakanDiSulSel/Bumbu/PisangIjo.jpg" alt="Bumbu Saus Pisang Ijo" onerror="this.style.background='linear-gradient(135deg, #0F4C81, #1E6F9F)'; this.style.padding='20px';">
+                    <span class="produk-badge badge-best">Best Seller</span>
+                </div>
+                <div class="produk-content">
+                    <span class="produk-category">Bumbu Kue & Cemilan</span>
+                    <div class="produk-header">
+                        <h3>Bumbu Saus Pisang Ijo</h3>
+                        <div class="produk-rating"><i class="fas fa-star"></i> 5.0</div>
+                    </div>
+                    <div class="produk-lokasi">
+                        <i class="fas fa-map-marker-alt"></i> Makassar
+                    </div>
+                    <p class="produk-deskripsi">Saus santan gurih dan sirup merah siap pakai.</p>
+                    <div class="produk-footer">
+                        <span class="produk-harga"><span>Rp18K</span>/pack</span>
+                        <span class="produk-link" onclick="event.stopPropagation(); openOrderModal('saus-pisang-ijo', 'Bumbu Saus Pisang Ijo', 18000, 'Properti MakanDiSulSel/Bumbu/PisangIjo.jpg')">Pesan <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bumbu Sarabba Instan -->
+            <div class="produk-card" data-category="bumbu-kue" data-name="sarabba instan" data-id="sarabba-instan" data-price="15000" onclick="event.stopPropagation(); openOrderModal('sarabba-instan', 'Bumbu Sarabba Instan', 15000, 'Properti MakanDiSulSel/Bumbu/SarabbaInstan.jpg')">
+                <div class="produk-image">
+                    <img src="Properti MakanDiSulSel/Bumbu/SarabbaInstan.jpg" alt="Bumbu Sarabba Instan" onerror="this.style.background='linear-gradient(135deg, #f59e0b, #d97706)'; this.style.padding='20px';">
+                    <span class="produk-badge badge-populer">Populer</span>
+                </div>
+                <div class="produk-content">
+                    <span class="produk-category">Bumbu Kue & Cemilan</span>
+                    <div class="produk-header">
+                        <h3>Bumbu Sarabba Instan</h3>
+                        <div class="produk-rating"><i class="fas fa-star"></i> 4.9</div>
+                    </div>
+                    <div class="produk-lokasi">
+                        <i class="fas fa-map-marker-alt"></i> Makassar
+                    </div>
+                    <p class="produk-deskripsi">Wedang jahe rempah instan, tinggal seduh air panas.</p>
+                    <div class="produk-footer">
+                        <span class="produk-harga"><span>Rp15K</span>/pack</span>
+                        <span class="produk-link" onclick="event.stopPropagation(); openOrderModal('sarabba-instan', 'Bumbu Sarabba Instan', 15000, 'Properti MakanDiSulSel/Bumbu/SarabbaInstan.jpg')">Pesan <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bumbu Tepung Pisang Ape -->
+            <div class="produk-card" data-category="bumbu-kue" data-name="tepung pisang ape" data-id="tepung-pisang-ape" data-price="12000" onclick="event.stopPropagation(); openOrderModal('tepung-pisang-ape', 'Bumbu Tepung Pisang Ape', 12000, 'Properti MakanDiSulSel/Bumbu/PisangApe.jpg')">
+                <div class="produk-image">
+                    <img src="Properti MakanDiSulSel/Bumbu/PisangApe.jpg" alt="Bumbu Tepung Pisang Ape" onerror="this.style.background='linear-gradient(135deg, #f59e0b, #d97706)'; this.style.padding='20px';">
+                    <span class="produk-badge badge-new">Baru</span>
+                </div>
+                <div class="produk-content">
+                    <span class="produk-category">Bumbu Kue & Cemilan</span>
+                    <div class="produk-header">
+                        <h3>Bumbu Tepung Pisang Ape</h3>
+                        <div class="produk-rating"><i class="fas fa-star"></i> 4.7</div>
+                    </div>
+                    <div class="produk-lokasi">
+                        <i class="fas fa-map-marker-alt"></i> Gowa
+                    </div>
+                    <p class="produk-deskripsi">Tepung siap pakai untuk pisang ape crispy.</p>
+                    <div class="produk-footer">
+                        <span class="produk-harga"><span>Rp12K</span>/pack</span>
+                        <span class="produk-link" onclick="event.stopPropagation(); openOrderModal('tepung-pisang-ape', 'Bumbu Tepung Pisang Ape', 12000, 'Properti MakanDiSulSel/Bumbu/PisangApe.jpg')">Pesan <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bumbu Gado-Gado -->
+            <div class="produk-card" data-category="bumbu-kue" data-name="bumbu gado-gado" data-id="bumbu-gado-gado" data-price="20000" onclick="event.stopPropagation(); openOrderModal('bumbu-gado-gado', 'Bumbu Gado-Gado', 20000, 'Properti MakanDiSulSel/Bumbu/Gado-Gado.jpg')">
+                <div class="produk-image">
+                    <img src="Properti MakanDiSulSel/Bumbu/Gado-Gado.jpg" alt="Bumbu Gado-Gado" onerror="this.style.background='linear-gradient(135deg, #8b5cf6, #6d28d9)'; this.style.padding='20px';">
+                </div>
+                <div class="produk-content">
+                    <span class="produk-category">Bumbu Kue & Cemilan</span>
+                    <div class="produk-header">
+                        <h3>Bumbu Gado-Gado</h3>
+                        <div class="produk-rating"><i class="fas fa-star"></i> 4.8</div>
+                    </div>
+                    <div class="produk-lokasi">
+                        <i class="fas fa-map-marker-alt"></i> Makassar
+                    </div>
+                    <p class="produk-deskripsi">Bumbu kacang kental untuk gado-gado dan siomay.</p>
+                    <div class="produk-footer">
+                        <span class="produk-harga"><span>Rp20K</span>/pack</span>
+                        <span class="produk-link" onclick="event.stopPropagation(); openOrderModal('bumbu-gado-gado', 'Bumbu Gado-Gado', 20000, 'Properti MakanDiSulSel/Bumbu/Gado-Gado.jpg')">Pesan <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bumbu Jalangkote -->
+            <div class="produk-card" data-category="bumbu-kue" data-name="bumbu jalangkote" data-id="bumbu-jalangkote" data-price="17000" onclick="event.stopPropagation(); openOrderModal('bumbu-jalangkote', 'Bumbu Jalangkote', 17000, 'Properti MakanDiSulSel/Bumbu/Jalangkote.jpg')">
+                <div class="produk-image">
+                    <img src="Properti MakanDiSulSel/Bumbu/Jalangkote.jpg" alt="Bumbu Jalangkote" onerror="this.style.background='linear-gradient(135deg, #f59e0b, #d97706)'; this.style.padding='20px';">
+                    <span class="produk-badge badge-populer">Populer</span>
+                </div>
+                <div class="produk-content">
+                    <span class="produk-category">Bumbu Kue & Cemilan</span>
+                    <div class="produk-header">
+                        <h3>Bumbu Jalangkote</h3>
+                        <div class="produk-rating"><i class="fas fa-star"></i> 4.7</div>
+                    </div>
+                    <div class="produk-lokasi">
+                        <i class="fas fa-map-marker-alt"></i> Makassar
+                    </div>
+                    <p class="produk-deskripsi">Bumbu isian jalangkote (pastel) khas Makassar.</p>
+                    <div class="produk-footer">
+                        <span class="produk-harga"><span>Rp17K</span>/pack</span>
+                        <span class="produk-link" onclick="event.stopPropagation(); openOrderModal('bumbu-jalangkote', 'Bumbu Jalangkote', 17000, 'Properti MakanDiSulSel/Bumbu/Jalangkote.jpg')">Pesan <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bumbu Barongko -->
+            <div class="produk-card" data-category="bumbu-kue" data-name="bumbu barongko" data-id="bumbu-barongko" data-price="16000" onclick="event.stopPropagation(); openOrderModal('bumbu-barongko', 'Bumbu Barongko', 16000, 'Properti MakanDiSulSel/Bumbu/Barongko.jpg')">
+                <div class="produk-image">
+                    <img src="Properti MakanDiSulSel/Bumbu/Barongko.jpg" alt="Bumbu Barongko" onerror="this.style.background='linear-gradient(135deg, #10b981, #059669)'; this.style.padding='20px';">
+                </div>
+                <div class="produk-content">
+                    <span class="produk-category">Bumbu Kue & Cemilan</span>
+                    <div class="produk-header">
+                        <h3>Bumbu Barongko</h3>
+                        <div class="produk-rating"><i class="fas fa-star"></i> 4.6</div>
+                    </div>
+                    <div class="produk-lokasi">
+                        <i class="fas fa-map-marker-alt"></i> Bulukumba
+                    </div>
+                    <p class="produk-deskripsi">Tepung siap pakai untuk kue barongko khas Bugis.</p>
+                    <div class="produk-footer">
+                        <span class="produk-harga"><span>Rp16K</span>/pack</span>
+                        <span class="produk-link" onclick="event.stopPropagation(); openOrderModal('bumbu-barongko', 'Bumbu Barongko', 16000, 'Properti MakanDiSulSel/Bumbu/Barongko.jpg')">Pesan <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bumbu Konro Bakar Enrekang -->
+            <div class="produk-card" data-category="bumbu-bakar" data-name="bumbu konro bakar enrekang" data-id="konro-bakar-enrekang" data-price="33000" onclick="event.stopPropagation(); openOrderModal('konro-bakar-enrekang', 'Bumbu Konro Bakar Enrekang', 33000, 'Properti MakanDiSulSel/Bumbu/KonroBakarEnrekang.jpg')">
+                <div class="produk-image">
+                    <img src="Properti MakanDiSulSel/Bumbu/KonroBakarEnrekang.jpg" alt="Bumbu Konro Bakar Enrekang" onerror="this.style.background='linear-gradient(135deg, #dc2626, #991b1b)'; this.style.padding='20px';">
+                    <span class="produk-badge badge-premium">Premium</span>
+                </div>
+                <div class="produk-content">
+                    <span class="produk-category">Bumbu Bakar</span>
+                    <div class="produk-header">
+                        <h3>Bumbu Konro Bakar Enrekang</h3>
+                        <div class="produk-rating"><i class="fas fa-star"></i> 4.9</div>
+                    </div>
+                    <div class="produk-lokasi">
+                        <i class="fas fa-map-marker-alt"></i> Enrekang
+                    </div>
+                    <p class="produk-deskripsi">Bumbu konro bakar dengan rempah pegunungan.</p>
+                    <div class="produk-footer">
+                        <span class="produk-harga"><span>Rp33K</span>/pouch</span>
+                        <span class="produk-link" onclick="event.stopPropagation(); openOrderModal('konro-bakar-enrekang', 'Bumbu Konro Bakar Enrekang', 33000, 'Properti MakanDiSulSel/Bumbu/KonroBakarEnrekang.jpg')">Pesan <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bumbu Tauco Selayar -->
+            <div class="produk-card" data-category="bumbu-tumis" data-name="bumbu tauco selayar" data-id="tauco-selayar" data-price="18000" onclick="event.stopPropagation(); openOrderModal('tauco-selayar', 'Bumbu Tauco Selayar', 18000, 'Properti MakanDiSulSel/Bumbu/TaucoSelayar.jpg')">
+                <div class="produk-image">
+                    <img src="Properti MakanDiSulSel/Bumbu/TaucoSelayar.jpg" alt="Bumbu Tauco Selayar" onerror="this.style.background='linear-gradient(135deg, #8b5cf6, #6d28d9)'; this.style.padding='20px';">
+                    <span class="produk-badge badge-hemat">Hemat</span>
+                </div>
+                <div class="produk-content">
+                    <span class="produk-category">Bumbu Tumis</span>
+                    <div class="produk-header">
+                        <h3>Bumbu Tauco Selayar</h3>
+                        <div class="produk-rating"><i class="fas fa-star"></i> 4.5</div>
+                    </div>
+                    <div class="produk-lokasi">
+                        <i class="fas fa-map-marker-alt"></i> Selayar
+                    </div>
+                    <p class="produk-deskripsi">Bumbu tauco fermentasi untuk tumis tahu dan ikan.</p>
+                    <div class="produk-footer">
+                        <span class="produk-harga"><span>Rp18K</span>/pack</span>
+                        <span class="produk-link" onclick="event.stopPropagation(); openOrderModal('tauco-selayar', 'Bumbu Tauco Selayar', 18000, 'Properti MakanDiSulSel/Bumbu/TaucoSelayar.jpg')">Pesan <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA Komunitas -->
+    <div class="community-cta" onclick="window.location.href='7-Halaman-Komunitas.html'">
+        <h3><i class="fas fa-users"></i> Gabung Komunitas Pecinta Kuliner!</h3>
+        <p>Bagikan pengalaman, foto, video, dan lokasi tempat makan favoritmu bersama ribuan anggota lainnya!</p>
+        <span class="btn">Gabung Sekarang <i class="fas fa-arrow-right"></i></span>
+    </div>
+
+    <!-- Modal Pemesanan Lengkap -->
+    <div class="modal-overlay" id="orderModal" onclick="closeModalOnOverlay(event)">
+        <div class="order-modal" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3><i class="fas fa-shopping-cart"></i> Pesan Bumbu</h3>
+                <div class="modal-close" onclick="closeOrderModal()">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            
+            <div class="order-product-info" id="orderProductInfo"></div>
+            
+            <form id="orderForm" onsubmit="submitOrder(event)">
+                <input type="hidden" id="orderProductId">
+                <input type="hidden" id="orderProductPrice">
+                
+                <div class="form-group">
+                    <label for="customerName"><i class="fas fa-user"></i> Nama Pemesan</label>
+                    <input type="text" id="customerName" placeholder="Masukkan nama lengkap" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customerPhone"><i class="fas fa-phone"></i> Nomor Telepon/WA</label>
+                    <input type="tel" id="customerPhone" placeholder="0812 3456 7890" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customerAddress"><i class="fas fa-map-marker-alt"></i> Alamat Pengiriman</label>
+                    <textarea id="customerAddress" placeholder="Masukkan alamat lengkap" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="orderQuantity"><i class="fas fa-shopping-basket"></i> Jumlah Pesanan</label>
+                    <div class="quantity-control">
+                        <button type="button" class="qty-btn" onclick="decrementQty()">-</button>
+                        <input type="number" id="orderQuantity" class="qty-input" value="1" min="1" max="20" readonly>
+                        <button type="button" class="qty-btn" onclick="incrementQty()">+</button>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="orderNotes"><i class="fas fa-pen"></i> Catatan (opsional)</label>
+                    <textarea id="orderNotes" placeholder="Contoh: Tidak pedas, tambah sambal, dll."></textarea>
+                </div>
+                
+                <!-- Metode Pembayaran -->
+                <div class="payment-methods">
+                    <div class="payment-title"><i class="fas fa-credit-card"></i> Metode Pembayaran</div>
+                    <div class="payment-options">
+                        <div class="payment-option active" data-payment="transfer" onclick="selectPayment('transfer')">
+                            <i class="fas fa-university"></i>
+                            <span>Transfer Bank</span>
+                        </div>
+                        <div class="payment-option" data-payment="qris" onclick="selectPayment('qris')">
+                            <i class="fas fa-qrcode"></i>
+                            <span>QRIS</span>
+                        </div>
+                        <div class="payment-option" data-payment="cod" onclick="selectPayment('cod')">
+                            <i class="fas fa-hand-holding-usd"></i>
+                            <span>Bayar di Tempat</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Detail Transfer Bank -->
+                <div class="bank-details" id="bankDetails">
+                    <div class="bank-item">
+                        <span class="bank-name"><i class="fas fa-building"></i> BCA</span>
+                        <span class="bank-number">123-456-7890</span>
+                        <button type="button" class="copy-btn" onclick="copyToClipboard('123-456-7890')"><i class="fas fa-copy"></i></button>
+                    </div>
+                    <div class="bank-item">
+                        <span class="bank-name"><i class="fas fa-building"></i> Mandiri</span>
+                        <span class="bank-number">098-765-4321</span>
+                        <button type="button" class="copy-btn" onclick="copyToClipboard('098-765-4321')"><i class="fas fa-copy"></i></button>
+                    </div>
+                    <div class="bank-item">
+                        <span class="bank-name"><i class="fas fa-building"></i> BRI</span>
+                        <span class="bank-number">567-890-1234</span>
+                        <button type="button" class="copy-btn" onclick="copyToClipboard('567-890-1234')"><i class="fas fa-copy"></i></button>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #666; margin-top: 10px;">* Lakukan transfer dan kirim bukti via WhatsApp setelah pesan</p>
+                </div>
+                
+                <!-- Detail QRIS -->
+                <div class="qris-details" id="qrisDetails">
+                    <div class="qris-placeholder">
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+                    <p style="font-size: 0.85rem; color: #666;">Scan QR Code untuk pembayaran</p>
+                    <p style="font-size: 0.8rem; color: #10b981;"><i class="fas fa-check-circle"></i> Tersedia: Gopay, OVO, DANA, LinkAja</p>
+                </div>
+                
+                <div class="order-total">
+                    <span><i class="fas fa-receipt"></i> Total Pembayaran</span>
+                    <span id="orderTotal">Rp0</span>
+                </div>
+                
+                <button type="submit" class="modal-btn">
+                    <i class="fas fa-paper-plane"></i> Pesan Sekarang
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <h3>MakanDiSulSel</h3>
+                <p class="footer-description">
+                    Portal komunitas kuliner untuk pecinta makanan di Makassar, Gowa, dan sekitarnya. 
+                    Rekomendasi jujur dari komunitas, bukan dari iklan.
+                </p>
+                
+                <div class="footer-contact-info">
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Makassar, Sulawesi Selatan</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:MakanDiSulSel@gmail.com">MakanDiSulSel@gmail.com</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <a href="tel:+6281234567890">+62 812 3456 7890</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <a href="https://wa.me/6281234567890" target="_blank">0812-3456-7890</a>
+                    </div>
+                </div>
+
+                <div class="social-icons-footer">
+                    <a href="#" class="social-icon-footer"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon-footer"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon-footer"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon-footer"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="social-icon-footer"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-right"></div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 MakanDiSulSel - Portal Komunitas & Pusat Kuliner Makassar Raya</p>
+            <p style="margin-top: 5px;">
+                <a href="1-Home-Landing-MakanDiSulSel.html">Beranda</a> • 
+                <a href="2-Halaman-Produk-Services-Daftar-Kuliner.html">Kuliner</a> • 
+                <a href="3-Halaman-Detail-Produk-Service.html">Produk</a> • 
+                <a href="4-Halaman-Artikel-Blog.html">Artikel</a> • 
+                <a href="5-Halaman-Contact-Booking.html">Kontak</a> • 
+                <a href="7-Halaman-Komunitas.html">Komunitas</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        let currentPage = 1;
+        const totalPages = 3;
+        let currentProduct = null;
+        let selectedPayment = 'transfer';
+
+        function showPage(pageNum) {
+            currentPage = pageNum;
+            document.getElementById('page1').style.display = 'none';
+            document.getElementById('page2').style.display = 'none';
+            document.getElementById('page3').style.display = 'none';
+            document.getElementById('page' + pageNum).style.display = 'block';
+            document.querySelectorAll('.page-btn-top').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll(`.page-btn-top[onclick="showPage(${pageNum})"]`).forEach(btn => btn.classList.add('active'));
+            document.querySelector('.produk-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function prevPage() { if (currentPage > 1) showPage(currentPage - 1); }
+        function nextPage() { if (currentPage < totalPages) showPage(currentPage + 1); }
+        function resetToPage1() { if (currentPage !== 1) showPage(1); }
+
+        function formatPrice(price) {
+            return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+
+        function selectPayment(method) {
+            selectedPayment = method;
+            document.querySelectorAll('.payment-option').forEach(opt => opt.classList.remove('active'));
+            document.querySelector(`.payment-option[data-payment="${method}"]`).classList.add('active');
+            
+            document.getElementById('bankDetails').classList.remove('active');
+            document.getElementById('qrisDetails').classList.remove('active');
+            
+            if (method === 'transfer') {
+                document.getElementById('bankDetails').classList.add('active');
+            } else if (method === 'qris') {
+                document.getElementById('qrisDetails').classList.add('active');
+            }
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard?.writeText(text).then(() => {
+                alert('Nomor rekening berhasil disalin!');
+            }).catch(() => {
+                prompt('Salin nomor rekening:', text);
+            });
+        }
+
+        function openOrderModal(productId, productName, productPrice, productImg) {
+            currentProduct = { id: productId, name: productName, price: productPrice, img: productImg };
+            
+            document.getElementById('orderProductId').value = productId;
+            document.getElementById('orderProductPrice').value = productPrice;
+            document.getElementById('orderQuantity').value = 1;
+            
+            const productInfo = document.getElementById('orderProductInfo');
+            productInfo.innerHTML = `
+                <div class="order-product-image">
+                    <img src="${productImg}" alt="${productName}" onerror="this.style.background='linear-gradient(135deg, #F97316, #ffb951)'; this.style.padding='10px';">
+                </div>
+                <div class="order-product-detail">
+                    <h4>${productName}</h4>
+                    <p>Rp ${formatPrice(productPrice)}</p>
+                </div>
+            `;
+            
+            selectedPayment = 'transfer';
+            document.querySelectorAll('.payment-option').forEach(opt => opt.classList.remove('active'));
+            document.querySelector('.payment-option[data-payment="transfer"]').classList.add('active');
+            document.getElementById('bankDetails').classList.add('active');
+            document.getElementById('qrisDetails').classList.remove('active');
+            
+            updateOrderTotal();
+            document.getElementById('orderModal').style.display = 'flex';
+        }
+
+        function closeOrderModal() {
+            document.getElementById('orderModal').style.display = 'none';
+            document.getElementById('orderForm').reset();
+            currentProduct = null;
+        }
+
+        function closeModalOnOverlay(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                closeOrderModal();
+            }
+        }
+
+        function incrementQty() {
+            const qtyInput = document.getElementById('orderQuantity');
+            let qty = parseInt(qtyInput.value);
+            if (qty < 20) { qtyInput.value = qty + 1; updateOrderTotal(); }
+        }
+
+        function decrementQty() {
+            const qtyInput = document.getElementById('orderQuantity');
+            let qty = parseInt(qtyInput.value);
+            if (qty > 1) { qtyInput.value = qty - 1; updateOrderTotal(); }
+        }
+
+        function updateOrderTotal() {
+            const price = parseInt(document.getElementById('orderProductPrice').value) || 0;
+            const qty = parseInt(document.getElementById('orderQuantity').value) || 1;
+            const total = price * qty;
+            document.getElementById('orderTotal').textContent = `Rp ${formatPrice(total)}`;
+        }
+
+        function submitOrder(event) {
+            event.preventDefault();
+            
+            const customerName = document.getElementById('customerName').value;
+            const customerPhone = document.getElementById('customerPhone').value;
+            const customerAddress = document.getElementById('customerAddress').value;
+            const quantity = document.getElementById('orderQuantity').value;
+            const notes = document.getElementById('orderNotes').value || '-';
+            
+            if (!customerName || !customerPhone || !customerAddress) {
+                alert('Mohon lengkapi semua data yang diperlukan!');
+                return;
+            }
+            
+            const total = parseInt(document.getElementById('orderProductPrice').value) * parseInt(quantity);
+            
+            const paymentMethods = {
+                'transfer': 'Transfer Bank',
+                'qris': 'QRIS',
+                'cod': 'Bayar di Tempat (COD)'
+            };
+            const paymentMethod = paymentMethods[selectedPayment];
+            
+            let paymentInfo = '';
+            if (selectedPayment === 'transfer') {
+                paymentInfo = `\n*Metode Pembayaran:* ${paymentMethod}\n*Silakan transfer ke rekening BCA/Mandiri/BRI yang tersedia.*`;
+            } else if (selectedPayment === 'qris') {
+                paymentInfo = `\n*Metode Pembayaran:* ${paymentMethod}\n*Scan QR Code yang tersedia untuk pembayaran.*`;
+            } else {
+                paymentInfo = `\n*Metode Pembayaran:* ${paymentMethod}\n*Pembayaran dilakukan saat barang diterima.*`;
+            }
+            
+            const message = `*PESANAN BUMBU - MakanDiSulSel*%0A%0A` +
+                `*Nama Pemesan:* ${customerName}%0A` +
+                `*No. Telepon:* ${customerPhone}%0A` +
+                `*Alamat:* ${customerAddress}%0A%0A` +
+                `*Pesanan:*%0A` +
+                `- ${currentProduct.name} (${quantity} pouch) - Rp ${formatPrice(total)}%0A` +
+                `*Catatan:* ${notes}%0A%0A` +
+                `*Total Pembayaran:* Rp ${formatPrice(total)}` +
+                paymentInfo;
+            
+            window.open(`https://wa.me/6281234567890?text=${message}`, '_blank');
+            
+            alert(`Terima kasih ${customerName}! Pesanan Anda telah dikirim via WhatsApp dengan metode ${paymentMethod}. Tim kami akan segera memproses pesanan Anda.`);
+            
+            closeOrderModal();
+        }
+
+        function searchProduk() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+            document.getElementById('page1').style.display = 'block';
+            document.getElementById('page2').style.display = 'block';
+            document.getElementById('page3').style.display = 'block';
+            
+            const allProdukCards = document.querySelectorAll('.produk-card');
+            if (searchTerm === '') {
+                allProdukCards.forEach(card => card.style.display = 'flex');
+                showPage(1);
+                return;
+            }
+
+            let hasilDitemukan = 0;
+            allProdukCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const category = card.querySelector('.produk-category').textContent.toLowerCase();
+                const lokasi = card.querySelector('.produk-lokasi')?.textContent.toLowerCase() || '';
+                if (title.includes(searchTerm) || category.includes(searchTerm) || lokasi.includes(searchTerm)) {
+                    card.style.display = 'flex'; hasilDitemukan++;
+                } else { card.style.display = 'none'; }
+            });
+
+            if (hasilDitemukan === 0) {
+                alert('Maaf, produk yang Anda cari tidak ditemukan. Coba kata kunci lain.');
+                allProdukCards.forEach(card => card.style.display = 'flex');
+                showPage(1);
+            }
+        }
+
+        function filterProduk(kategori, element) {
+            const chips = document.querySelectorAll('.filter-chip:not(.community-chip)');
+            chips.forEach(chip => chip.classList.remove('active'));
+            element.classList.add('active');
+            document.getElementById('page1').style.display = 'block';
+            document.getElementById('page2').style.display = 'block';
+            document.getElementById('page3').style.display = 'block';
+            
+            const allProdukCards = document.querySelectorAll('.produk-card');
+            if (kategori === 'semua') {
+                allProdukCards.forEach(card => card.style.display = 'flex');
+            } else if (kategori === 'terlaris') {
+                allProdukCards.forEach(card => {
+                    const badge = card.querySelector('.produk-badge');
+                    if (badge && (badge.textContent.includes('Best Seller') || badge.textContent.includes('Populer'))) {
+                        card.style.display = 'flex';
+                    } else { card.style.display = 'none'; }
+                });
+            } else {
+                allProdukCards.forEach(card => {
+                    if (card.getAttribute('data-category') === kategori) {
+                        card.style.display = 'flex';
+                    } else { card.style.display = 'none'; }
+                });
+            }
+            showPage(1);
+        }
+
+        function showCategory(kategori, element) {
+            const tabs = document.querySelectorAll('.category-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            element.classList.add('active');
+            document.getElementById('page1').style.display = 'block';
+            document.getElementById('page2').style.display = 'block';
+            document.getElementById('page3').style.display = 'block';
+            
+            const allProdukCards = document.querySelectorAll('.produk-card');
+            if (kategori === 'semua') {
+                allProdukCards.forEach(card => card.style.display = 'flex');
+            } else {
+                allProdukCards.forEach(card => {
+                    if (card.getAttribute('data-category') === kategori) {
+                        card.style.display = 'flex';
+                    } else { card.style.display = 'none'; }
+                });
+            }
+            showPage(1);
+            document.querySelector('.produk-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') searchProduk();
+        });
+    </script>
+</body>
+</html>

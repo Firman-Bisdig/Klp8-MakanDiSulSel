@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artikel Kuliner - MakanDiSulSel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ============================================= */
+        /* VARIABEL WARNA - ORANGE & BIRU LAUT */
+        /* ============================================= */
+        :root {
+            --primary-orange: #F97316;
+            --secondary-orange: #ffb951;
+            --light-orange: #FFEDD5;
+            --primary-blue: #0F4C81;
+            --secondary-blue: #1E6F9F;
+            --light-blue: #E6F0FA;
+            --text-dark: #334155;
+            --text-light: #FFFFFF;
+            --cream-bg: #FFF9F0;
+            --gray-bg: #F8FAFC;
+            --shadow-color: rgba(15, 76, 129, 0.15);
+            --border-light: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+            background-color: var(--cream-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ============================================= */
+        /* NAVBAR - SAMA DENGAN HOME */
+        /* ============================================= */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
+
+        .logo {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-orange);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
+        }
+
+        .nav-links {
+            display: none;
+        }
+
+        .nav-links a {
+            background: var(--cream-bg);
+            padding: 8px 16px;
+            border-radius: 30px;
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--primary-orange);
+            color: white;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-icons i {
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+            background: rgba(255, 249, 240, 0.15);
+            padding: 8px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .nav-icons i:hover {
+            background: var(--primary-orange);
+        }
+
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border: 2px solid white;
+            cursor: pointer;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+                gap: 15px;
+                align-items: center;
+            }
+
+            .navbar {
+                padding: 15px 40px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .logo img {
+                width: 65px;
+                height: 65px;
+                border-width: 3px;
+            }
+        }
+
+        /* ============================================= */
+        /* PAGE HEADER */
+        /* ============================================= */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            padding: 40px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .page-header h1 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            background: rgba(255, 249, 240, 0.2);
+            padding: 15px 25px;
+            border-radius: 50px;
+            display: inline-block;
+        }
+
+        .page-header p {
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 249, 240, 0.15);
+            padding: 12px 24px;
+            border-radius: 30px;
+        }
+
+        /* ============================================= */
+        /* KATEGORI SECTION */
+        /* ============================================= */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .kategori-section {
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .kategori-chip {
+            background: var(--cream-bg);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--primary-blue);
+            border: 1px solid var(--light-orange);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .kategori-chip i {
+            margin-right: 6px;
+            color: var(--primary-orange);
+        }
+
+        .kategori-chip:hover,
+        .kategori-chip.active {
+            background: var(--primary-orange);
+            color: white;
+            border-color: var(--primary-orange);
+        }
+
+        .kategori-chip.active i {
+            color: white;
+        }
+
+        .community-chip {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            border: none;
+        }
+
+        .community-chip i {
+            color: white;
+        }
+
+        .community-chip:hover {
+            background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
+            transform: translateY(-2px);
+        }
+
+        /* ============================================= */
+        /* ARTIKEL GRID - SIMETRIS SEPERTI PRODUK */
+        /* ============================================= */
+        .artikel-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .artikel-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px var(--shadow-color);
+            border: 1px solid var(--light-orange);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            animation: fadeIn 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .artikel-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(249, 115, 22, 0.15);
+        }
+
+        .artikel-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .artikel-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .artikel-card:hover .artikel-image img {
+            transform: scale(1.1);
+        }
+
+        .artikel-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-orange);
+            color: white;
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            z-index: 10;
+            border: 2px solid white;
+        }
+
+        .badge-trending { background: #dc2626; }
+        .badge-populer { background: var(--primary-blue); }
+        .badge-new { background: #10b981; }
+
+        .artikel-content {
+            padding: 18px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .artikel-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 0.75rem;
+            margin-bottom: 12px;
+            background: var(--cream-bg);
+            padding: 8px 14px;
+            border-radius: 30px;
+        }
+
+        .artikel-meta i {
+            color: var(--primary-orange);
+            margin-right: 4px;
+        }
+
+        .artikel-category {
+            display: inline-block;
+            background: var(--primary-orange);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            width: fit-content;
+        }
+
+        .artikel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+            gap: 10px;
+        }
+
+        .artikel-header h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+            background: var(--cream-bg);
+            padding: 6px 14px;
+            border-radius: 30px;
+            line-height: 1.4;
+        }
+
+        .artikel-excerpt {
+            color: #666;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            background: var(--cream-bg);
+            padding: 12px 14px;
+            border-radius: 15px;
+            flex: 1;
+            min-height: 70px;
+        }
+
+        .artikel-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-light);
+            margin-top: auto;
+        }
+
+        .artikel-tag {
+            background: var(--light-orange);
+            color: var(--primary-orange);
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .artikel-link {
+            color: var(--primary-orange);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.85rem;
+            background: var(--cream-bg);
+            padding: 6px 14px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .artikel-link:hover {
+            background: var(--primary-orange);
+            color: white;
+        }
+
+        /* ============================================= */
+        /* MODAL ARTIKEL */
+        /* ============================================= */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .artikel-modal {
+            background: white;
+            border-radius: 25px;
+            padding: 30px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .modal-header h2 {
+            font-size: 1.5rem;
+            background: var(--cream-bg);
+            padding: 8px 18px;
+            border-radius: 30px;
+        }
+
+        .modal-close {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--cream-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .modal-close:hover {
+            background: var(--primary-orange);
+            color: white;
+        }
+
+        .artikel-meta-modal {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .artikel-meta-modal i {
+            color: var(--primary-orange);
+            margin-right: 5px;
+        }
+
+        .artikel-image-modal {
+            width: 100%;
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+
+        .artikel-image-modal img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .artikel-body {
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        .artikel-body h3 {
+            margin: 25px 0 15px;
+            font-size: 1.2rem;
+        }
+
+        .artikel-body p {
+            margin-bottom: 15px;
+        }
+
+        .artikel-body ul, .artikel-body ol {
+            margin: 15px 0 15px 25px;
+        }
+
+        .artikel-body li {
+            margin-bottom: 8px;
+        }
+
+        .artikel-tag-modal {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag-item {
+            background: var(--light-orange);
+            color: var(--primary-orange);
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        @media (min-width: 768px) {
+            .artikel-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .artikel-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* ============================================= */
+        /* CTA KOMUNITAS */
+        /* ============================================= */
+        .community-cta {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            margin: 40px 0;
+            border-radius: 25px;
+            padding: 35px 25px;
+            text-align: center;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 35px var(--shadow-color);
+        }
+
+        .community-cta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(15, 76, 129, 0.3);
+        }
+
+        .community-cta h3 {
+            color: white;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            background: rgba(255, 249, 240, 0.2);
+            padding: 12px 24px;
+            border-radius: 50px;
+            display: inline-block;
+        }
+
+        .community-cta h3 i {
+            color: var(--primary-orange);
+            margin-right: 10px;
+        }
+
+        .community-cta p {
+            opacity: 0.9;
+            margin-bottom: 20px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            background: rgba(255, 249, 240, 0.15);
+            padding: 10px 20px;
+            border-radius: 30px;
+        }
+
+        .community-cta .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary-orange);
+            color: white;
+            padding: 14px 30px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+
+        .community-cta .btn:hover {
+            background: var(--secondary-orange);
+            transform: scale(1.05);
+            gap: 15px;
+        }
+
+        /* ============================================= */
+        /* FOOTER - SAMA DENGAN HOME */
+        /* ============================================= */
+        .footer {
+            background: #1a2634;
+            color: white;
+            padding: 40px 20px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-left {
+            flex: 2;
+        }
+
+        .footer-left h3 {
+            color: white;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .footer-left h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-orange);
+        }
+
+        .footer-description {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            max-width: 500px;
+        }
+
+        .footer-contact-info {
+            margin-top: 10px;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: #ddd;
+            font-size: 0.95rem;
+        }
+
+        .footer-contact-item i {
+            width: 20px;
+            color: var(--primary-orange);
+            font-size: 1.1rem;
+        }
+
+        .footer-contact-item a {
+            color: #ddd;
+            transition: color 0.3s ease;
+        }
+
+        .footer-contact-item a:hover {
+            color: var(--primary-orange);
+        }
+
+        .social-icons-footer {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-icon-footer {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon-footer:hover {
+            background: var(--primary-orange);
+            transform: translateY(-3px);
+        }
+
+        .footer-right {
+            flex: 1;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.85rem;
+            max-width: 1200px;
+            margin: 30px auto 0;
+        }
+
+        .footer-bottom a {
+            color: #ccc;
+            margin: 0 5px;
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--primary-orange);
+            text-decoration: none;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+            
+            .footer-left {
+                padding-right: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation - SAMA DENGAN HOME -->
+    <nav class="navbar">
+        <div class="logo" onclick="window.location.href='1-Home-Landing-MakanDiSulSel.html'">
+            <img src="Properti MakanDiSulSel/Logo MakanDiSulSel.png" alt="MakanDiSulSel Logo">
+        </div>
+        <div class="nav-links">
+            <a href="1-Home-Landing-MakanDiSulSel.html">Beranda</a>
+            <a href="2-Halaman-Produk-Services-Daftar-Kuliner.html">Jelajahi Kuliner</a>
+            <a href="3-Halaman-Detail-Produk-Service.html">Produk</a>
+            <a href="4-Halaman-Artikel-Blog.html" class="active">Artikel</a>
+            <a href="5-Halaman-Contact-Booking.html">Kontak</a>
+            <a href="7-Halaman-Komunitas.html">Komunitas</a>
+        </div>
+        <div class="nav-icons">
+            <i class="far fa-heart" onclick="alert('Fitur favorit akan segera hadir!')"></i>
+            <div class="profile-icon" onclick="window.location.href='6-Halaman-Login-Register.html'">
+                <i class="far fa-user"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Artikel & Tips Kuliner</h1>
+        <p>Baca artikel menarik seputar kuliner Sulawesi Selatan</p>
+    </section>
+
+    <!-- Container -->
+    <div class="container">
+        <!-- Kategori Section -->
+        <div class="kategori-section">
+            <span class="kategori-chip active" onclick="filterArtikel('semua', this)"><i class="fas fa-list"></i> Semua</span>
+            <span class="kategori-chip" onclick="filterArtikel('Rekomendasi', this)"><i class="fas fa-star"></i> Rekomendasi</span>
+            <span class="kategori-chip" onclick="filterArtikel('Resep', this)"><i class="fas fa-book-open"></i> Resep</span>
+            <span class="kategori-chip" onclick="filterArtikel('Sejarah', this)"><i class="fas fa-history"></i> Sejarah</span>
+            <span class="kategori-chip" onclick="filterArtikel('Tips', this)"><i class="fas fa-lightbulb"></i> Tips</span>
+            <span class="kategori-chip" onclick="filterArtikel('Kuliner', this)"><i class="fas fa-utensils"></i> Kuliner</span>
+            <span class="kategori-chip community-chip" onclick="window.location.href='7-Halaman-Komunitas.html'">
+                <i class="fas fa-users"></i> Komunitas
+            </span>
+        </div>
+
+        <!-- Artikel Grid -->
+        <div class="artikel-grid" id="artikelGrid">
+            <!-- Artikel 1 -->
+            <div class="artikel-card" data-kategori="Rekomendasi" onclick="openArtikel(1)">
+                <div class="artikel-image">
+                    <img src="Properti MakanDiSulSel/FotoSuasana/WarungMakanBakar.png" alt="5 Tempat Bakar-Bakar" onerror="this.style.background='linear-gradient(135deg, #F97316, #ffb951)'; this.style.padding='20px';">
+                    <span class="artikel-badge badge-trending">Trending</span>
+                </div>
+                <div class="artikel-content">
+                    <span class="artikel-category">Rekomendasi</span>
+                    <div class="artikel-meta">
+                        <span><i class="far fa-calendar-alt"></i> 15 Feb 2026</span>
+                        <span><i class="far fa-clock"></i> 5 menit</span>
+                    </div>
+                    <div class="artikel-header">
+                        <h3>5 Tempat Bakar-Bakar Enak di Gowa</h3>
+                    </div>
+                    <p class="artikel-excerpt">Dari Ikan Bakar sampai Ayam Rica, ini dia tempat favorit warga Gowa untuk dinner malam minggu...</p>
+                    <div class="artikel-footer">
+                        <span class="artikel-tag">Gowa</span>
+                        <span class="artikel-link" onclick="event.stopPropagation(); openArtikel(1)">Baca <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Artikel 2 -->
+            <div class="artikel-card" data-kategori="Sejarah" onclick="openArtikel(2)">
+                <div class="artikel-image">
+                    <img src="Properti MakanDiSulSel/Foto Makanan/Pisang Ijo.jpg" alt="Pisang Ijo" onerror="this.style.background='linear-gradient(135deg, #0F4C81, #1E6F9F)'; this.style.padding='20px';">
+                    <span class="artikel-badge badge-populer">Populer</span>
+                </div>
+                <div class="artikel-content">
+                    <span class="artikel-category">Sejarah</span>
+                    <div class="artikel-meta">
+                        <span><i class="far fa-calendar-alt"></i> 10 Feb 2026</span>
+                        <span><i class="far fa-clock"></i> 7 menit</span>
+                    </div>
+                    <div class="artikel-header">
+                        <h3>Pisang Ijo: Sejarah dan Tempat Legendaris</h3>
+                    </div>
+                    <p class="artikel-excerpt">Kuliner khas Makassar yang wajib dicoba. Ini dia sejarah dan tempat terbaiknya...</p>
+                    <div class="artikel-footer">
+                        <span class="artikel-tag">Makassar</span>
+                        <span class="artikel-link" onclick="event.stopPropagation(); openArtikel(2)">Baca <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Artikel 3 -->
+            <div class="artikel-card" data-kategori="Resep" onclick="openArtikel(3)">
+                <div class="artikel-image">
+                    <img src="Properti MakanDiSulSel/Foto Makanan/Coto Makassar.png" alt="Coto Makassar" onerror="this.style.background='linear-gradient(135deg, #F97316, #ffb951)'; this.style.padding='20px';">
+                    <span class="artikel-badge badge-new">Baru</span>
+                </div>
+                <div class="artikel-content">
+                    <span class="artikel-category">Resep</span>
+                    <div class="artikel-meta">
+                        <span><i class="far fa-calendar-alt"></i> 5 Feb 2026</span>
+                        <span><i class="far fa-clock"></i> 6 menit</span>
+                    </div>
+                    <div class="artikel-header">
+                        <h3>Rahasia Kuah Coto Makassar yang Gurih</h3>
+                    </div>
+                    <p class="artikel-excerpt">Resep turun-temurun dari penjual Coto legendaris. Simak tips dan triknya...</p>
+                    <div class="artikel-footer">
+                        <span class="artikel-tag">Makassar</span>
+                        <span class="artikel-link" onclick="event.stopPropagation(); openArtikel(3)">Baca <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Artikel 4 - Pallubutung -->
+            <div class="artikel-card" data-kategori="Kuliner" onclick="openArtikel(4)">
+                <div class="artikel-image">
+                    <img src="Properti MakanDiSulSel/Foto Makanan/Pallubutung.jpg" alt="Pallubutung" onerror="this.style.background='linear-gradient(135deg, #0F4C81, #1E6F9F)'; this.style.padding='20px';">
+                </div>
+                <div class="artikel-content">
+                    <span class="artikel-category">Kuliner</span>
+                    <div class="artikel-meta">
+                        <span><i class="far fa-calendar-alt"></i> 28 Jan 2026</span>
+                        <span><i class="far fa-clock"></i> 4 menit</span>
+                    </div>
+                    <div class="artikel-header">
+                        <h3>Pallubutung: Kuliner Khas Gowa</h3>
+                    </div>
+                    <p class="artikel-excerpt">Mengenal lebih dekat kuliner khas Gowa. Dari sejarah hingga tempat makan terenak...</p>
+                    <div class="artikel-footer">
+                        <span class="artikel-tag">Gowa</span>
+                        <span class="artikel-link" onclick="event.stopPropagation(); openArtikel(4)">Baca <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Artikel 5 - Konro -->
+            <div class="artikel-card" data-kategori="Rekomendasi" onclick="openArtikel(5)">
+                <div class="artikel-image">
+                    <img src="Properti MakanDiSulSel/FotoSuasana/WarungKonro.jpg" alt="Konro" onerror="this.style.background='linear-gradient(135deg, #dc2626, #991b1b)'; this.style.padding='20px';">
+                    <span class="artikel-badge badge-populer">Populer</span>
+                </div>
+                <div class="artikel-content">
+                    <span class="artikel-category">Rekomendasi</span>
+                    <div class="artikel-meta">
+                        <span><i class="far fa-calendar-alt"></i> 20 Jan 2026</span>
+                        <span><i class="far fa-clock"></i> 8 menit</span>
+                    </div>
+                    <div class="artikel-header">
+                        <h3>5 Tempat Konro Terenak di Makassar</h3>
+                    </div>
+                    <p class="artikel-excerpt">Rekomendasi tempat konro favorit warga Makassar, dari legendaris hingga kekinian...</p>
+                    <div class="artikel-footer">
+                        <span class="artikel-tag">Makassar</span>
+                        <span class="artikel-link" onclick="event.stopPropagation(); openArtikel(5)">Baca <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Artikel 6 - Seafood -->
+            <div class="artikel-card" data-kategori="Tips" onclick="openArtikel(6)">
+                <div class="artikel-image">
+                    <img src="Properti MakanDiSulSel/FotoSuasana/Seafood.jpg" alt="Seafood" onerror="this.style.background='linear-gradient(135deg, #10b981, #059669)'; this.style.padding='20px';">
+                </div>
+                <div class="artikel-content">
+                    <span class="artikel-category">Tips</span>
+                    <div class="artikel-meta">
+                        <span><i class="far fa-calendar-alt"></i> 15 Jan 2026</span>
+                        <span><i class="far fa-clock"></i> 5 menit</span>
+                    </div>
+                    <div class="artikel-header">
+                        <h3>Tips Memilih Seafood Segar</h3>
+                    </div>
+                    <p class="artikel-excerpt">Panduan memilih seafood segar di pasar tradisional untuk hasil masakan maksimal...</p>
+                    <div class="artikel-footer">
+                        <span class="artikel-tag">Tips</span>
+                        <span class="artikel-link" onclick="event.stopPropagation(); openArtikel(6)">Baca <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Artikel 7 - Kapurung -->
+            <div class="artikel-card" data-kategori="Kuliner" onclick="openArtikel(7)">
+                <div class="artikel-image">
+                    <img src="Properti MakanDiSulSel/Foto Makanan/Kapurung.jpg" alt="Kapurung Palopo" onerror="this.style.background='linear-gradient(135deg, #10b981, #059669)'; this.style.padding='20px';">
+                    <span class="artikel-badge badge-new">Baru</span>
+                </div>
+                <div class="artikel-content">
+                    <span class="artikel-category">Kuliner</span>
+                    <div class="artikel-meta">
+                        <span><i class="far fa-calendar-alt"></i> 12 Mar 2026</span>
+                        <span><i class="far fa-clock"></i> 6 menit</span>
+                    </div>
+                    <div class="artikel-header">
+                        <h3>Kapurung: Sagu Kenyal Khas Palopo</h3>
+                    </div>
+                    <p class="artikel-excerpt">Mengenal kapurung, makanan khas Palopo berbahan sagu dengan kuah kuning segar...</p>
+                    <div class="artikel-footer">
+                        <span class="artikel-tag">Palopo</span>
+                        <span class="artikel-link" onclick="event.stopPropagation(); openArtikel(7)">Baca <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Artikel 8 - Nasu Palekko -->
+            <div class="artikel-card" data-kategori="Resep" onclick="openArtikel(8)">
+                <div class="artikel-image">
+                    <img src="Properti MakanDiSulSel/Foto Makanan/Nasu Palekko.jpg" alt="Nasu Palekko" onerror="this.style.background='linear-gradient(135deg, #8b5cf6, #6d28d9)'; this.style.padding='20px';">
+                </div>
+                <div class="artikel-content">
+                    <span class="artikel-category">Resep</span>
+                    <div class="artikel-meta">
+                        <span><i class="far fa-calendar-alt"></i> 8 Mar 2026</span>
+                        <span><i class="far fa-clock"></i> 7 menit</span>
+                    </div>
+                    <div class="artikel-header">
+                        <h3>Resep Nasu Palekko Pedas Khas Bone</h3>
+                    </div>
+                    <p class="artikel-excerpt">Ayam kampung masak pedas khas Bugis yang bikin nagih. Simak resep lengkapnya...</p>
+                    <div class="artikel-footer">
+                        <span class="artikel-tag">Bone</span>
+                        <span class="artikel-link" onclick="event.stopPropagation(); openArtikel(8)">Baca <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Artikel 9 - Barongko -->
+            <div class="artikel-card" data-kategori="Kuliner" onclick="openArtikel(9)">
+                <div class="artikel-image">
+                    <img src="Properti MakanDiSulSel/Foto Makanan/Barongko.jpg" alt="Barongko" onerror="this.style.background='linear-gradient(135deg, #f59e0b, #d97706)'; this.style.padding='20px';">
+                </div>
+                <div class="artikel-content">
+                    <span class="artikel-category">Kuliner</span>
+                    <div class="artikel-meta">
+                        <span><i class="far fa-calendar-alt"></i> 5 Mar 2026</span>
+                        <span><i class="far fa-clock"></i> 4 menit</span>
+                    </div>
+                    <div class="artikel-header">
+                        <h3>Barongko: Kue Pisang Khas Bulukumba</h3>
+                    </div>
+                    <p class="artikel-excerpt">Kue pisang lembut khas Bugis yang cocok untuk takjil atau cemilan...</p>
+                    <div class="artikel-footer">
+                        <span class="artikel-tag">Bulukumba</span>
+                        <span class="artikel-link" onclick="event.stopPropagation(); openArtikel(9)">Baca <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Komunitas -->
+        <div class="community-cta" onclick="window.location.href='7-Halaman-Komunitas.html'">
+            <h3><i class="fas fa-users"></i> Gabung Komunitas Pecinta Kuliner!</h3>
+            <p>Bagikan pengalaman, foto, video, dan lokasi tempat makan favoritmu bersama ribuan anggota lainnya!</p>
+            <span class="btn">Gabung Sekarang <i class="fas fa-arrow-right"></i></span>
+        </div>
+    </div>
+
+    <!-- Modal Artikel -->
+    <div class="modal-overlay" id="artikelModal" onclick="closeModalOnOverlay(event)">
+        <div class="artikel-modal" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h2 id="modalTitle">Judul Artikel</h2>
+                <div class="modal-close" onclick="closeArtikelModal()">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <div class="artikel-meta-modal">
+                <span id="modalDate"><i class="far fa-calendar-alt"></i> 1 Jan 2026</span>
+                <span id="modalReadTime"><i class="far fa-clock"></i> 5 menit</span>
+                <span id="modalCategory"><i class="fas fa-tag"></i> Kuliner</span>
+            </div>
+            <div class="artikel-image-modal" id="modalImageContainer">
+                <img id="modalImage" src="" alt="">
+            </div>
+            <div class="artikel-body" id="modalBody">
+                <!-- Isi artikel akan diisi dinamis -->
+            </div>
+            <div class="artikel-tag-modal" id="modalTags">
+                <!-- Tags akan diisi dinamis -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer - SAMA DENGAN HOME -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <h3>MakanDiSulSel</h3>
+                <p class="footer-description">
+                    Portal komunitas kuliner untuk pecinta makanan di Makassar, Gowa, dan sekitarnya. 
+                    Rekomendasi jujur dari komunitas, bukan dari iklan.
+                </p>
+                
+                <div class="footer-contact-info">
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Makassar, Sulawesi Selatan</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:MakanDiSulSel@gmail.com">MakanDiSulSel@gmail.com</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <a href="tel:+6281234567890">+62 812 3456 7890</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <a href="https://wa.me/6281234567890" target="_blank">0812-3456-7890</a>
+                    </div>
+                </div>
+
+                <div class="social-icons-footer">
+                    <a href="#" class="social-icon-footer"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon-footer"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon-footer"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon-footer"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="social-icon-footer"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-right"></div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 MakanDiSulSel - Portal Komunitas & Pusat Kuliner Makassar Raya</p>
+            <p style="margin-top: 5px;">
+                <a href="1-Home-Landing-MakanDiSulSel.html">Beranda</a> • 
+                <a href="2-Halaman-Produk-Services-Daftar-Kuliner.html">Kuliner</a> • 
+                <a href="3-Halaman-Detail-Produk-Service.html">Produk</a> • 
+                <a href="4-Halaman-Artikel-Blog.html">Artikel</a> • 
+                <a href="5-Halaman-Contact-Booking.html">Kontak</a> • 
+                <a href="7-Halaman-Komunitas.html">Komunitas</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Data Artikel Lengkap
+        const artikelData = {
+            1: {
+                title: "5 Tempat Bakar-Bakar Enak di Gowa untuk Malam Minggu",
+                date: "15 Februari 2026",
+                readTime: "5 menit",
+                category: "Rekomendasi",
+                image: "Properti MakanDiSulSel/FotoSuasana/WarungMakanBakar.png",
+                tags: ["Gowa", "Bakar-Bakar", "Malam Minggu"],
+                content: `
+                    <p>Malam Minggu adalah waktu yang pas untuk kumpul bareng teman atau keluarga. Salah satu kegiatan yang paling seru adalah makan bareng di tempat bakar-bakar. Di Gowa, ada banyak tempat bakar-bakar enak yang wajib kamu coba. Yuk simak rekomendasinya!</p>
+                    
+                    <h3>1. Warung Bakar Pak Dede</h3>
+                    <p>Tempat ini terkenal dengan Ikan Bakar Jimbarannya yang lezat. Ikannya segar, bumbunya meresap sampai ke dalam. Harganya juga bersahabat, mulai dari Rp35.000 per porsi. Tempatnya luas dan cocok untuk rombongan besar.</p>
+                    
+                    <h3>2. Ayam Rica Daeng Naba</h3>
+                    <p>Kalau kamu suka pedas, wajib mampir ke sini. Ayam Rica-ricanya pedas nampol tapi bikin nagih. Porsinya besar dan bisa untuk berdua. Harganya Rp30.000 per porsi. Tempatnya sederhana tapi selalu ramai pengunjung.</p>
+                    
+                    <h3>3. Seafood Bakar Lae-Lae</h3>
+                    <p>Tempat ini menyajikan aneka seafood bakar seperti cumi, udang, dan kerang. Semua seafoodnya segar karena langsung diambil dari tambak. Bumbu bakarnya khas dengan rasa manis pedas. Harganya mulai dari Rp25.000.</p>
+                    
+                    <h3>4. Sate Kambing Muda Pak Haji</h3>
+                    <p>Buat yang suka daging kambing, tempat ini wajib dikunjungi. Dagingnya empuk, tidak bau prengus, dan bumbu kacangnya kental gurih. Satu porsi isi 10 tusuk harganya Rp40.000.</p>
+                    
+                    <h3>5. Ikan Bakar Dua Putri</h3>
+                    <p>Letaknya di pinggir jalan poros Gowa. Ikan bakarnya enak dengan sambal dabu-dabu yang segar. Tempatnya bersih dan pelayanannya cepat. Harganya Rp30.000 per ekor ikan ukuran sedang.</p>
+                    
+                    <p>Nah, itu dia 5 tempat bakar-bakar enak di Gowa yang bisa kamu kunjungi bareng orang tersayang. Jangan lupa datang lebih awal karena biasanya tempat-tempat ini penuh saat malam Minggu!</p>
+                `
+            },
+            2: {
+                title: "Pisang Ijo: Sejarah dan 5 Tempat Legendaris di Makassar",
+                date: "10 Februari 2026",
+                readTime: "7 menit",
+                category: "Sejarah",
+                image: "Properti MakanDiSulSel/Foto Makanan/Pisang Ijo.jpg",
+                tags: ["Makassar", "Pisang Ijo", "Kuliner Legendaris"],
+                content: `
+                    <p>Siapa yang tidak kenal Pisang Ijo? Makanan khas Makassar ini sudah terkenal sampai ke seluruh Indonesia. Pisang yang dibungkus adonan hijau lalu disiram saus santan kental dan sirup merah ini memang punya rasa yang unik dan menyegarkan.</p>
+                    
+                    <h3>Sejarah Singkat Pisang Ijo</h3>
+                    <p>Pisang Ijo sudah ada sejak tahun 1960-an. Konon, makanan ini pertama kali dibuat oleh seorang ibu rumah tangga di Makassar yang ingin membuat takjil untuk keluarga. Karena warnanya yang hijau dari daun suji, makanan ini kemudian dinamakan Pisang Ijo.</p>
+                    
+                    <h3>5 Tempat Pisang Ijo Legendaris di Makassar</h3>
+                    
+                    <h3>1. Pisang Ijo Bunda</h3>
+                    <p>Sudah buka sejak 1985, tempat ini adalah pelopor Pisang Ijo di Makassar. Pisangnya besar, saus santannya kental, dan sirupnya manis pas. Harganya Rp15.000 per porsi.</p>
+                    
+                    <h3>2. Pisang Ijo Aisyah</h3>
+                    <p>Letaknya di Jalan Sultan Alauddin. Pisang Ijo di sini terkenal dengan es serutnya yang melimpah. Cocok untuk pelepas dahaga saat cuaca panas. Harganya Rp12.000 per porsi.</p>
+                    
+                    <h3>3. Pisang Ijo Daeng Tata</h3>
+                    <p>Tempat ini selalu ramai saat bulan puasa. Pisang Ijonya punya ciri khas adonan yang lebih tebal dan kenyal. Saus santannya juga lebih gurih. Harganya Rp14.000.</p>
+                    
+                    <h3>4. Pisang Ijo Mami</h3>
+                    <p>Terletak di daerah Tamalanrea, dekat kampus UNHAS. Tempat ini jadi favorit mahasiswa karena harganya yang terjangkau dan porsinya banyak. Harganya cuma Rp10.000.</p>
+                    
+                    <h3>5. Pisang Ijo Raya</h3>
+                    <p>Tempat ini legendaris di daerah Mariso. Pisang Ijonya disajikan dengan tambahan bubur sumsum yang bikin rasanya makin kaya. Harganya Rp18.000.</p>
+                    
+                    <p>Itu dia sejarah dan 5 tempat Pisang Ijo legendaris di Makassar. Kalau kamu ke Makassar, jangan lupa mampir ya!</p>
+                `
+            },
+            3: {
+                title: "Rahasia Kuah Coto Makassar yang Gurih, Bisa Dicoba di Rumah!",
+                date: "5 Februari 2026",
+                readTime: "6 menit",
+                category: "Resep",
+                image: "Properti MakanDiSulSel/Foto Makanan/Coto Makassar.png",
+                tags: ["Makassar", "Coto", "Resep"],
+                content: `
+                    <p>Coto Makassar adalah sup daging sapi dengan kuah kental berwarna kecokelatan. Rasanya gurih, kaya rempah, dan sangat cocok dimakan dengan buras atau ketupat. Mau bikin sendiri di rumah? Ini resepnya!</p>
+                    
+                    <h3>Bahan-Bahan:</h3>
+                    <ul>
+                        <li>500 gram daging sapi (bagian sandung lamur)</li>
+                        <li>250 gram jeroan sapi (paru, jantung, hati) - opsional</li>
+                        <li>200 gram kacang tanah, sangrai dan haluskan</li>
+                        <li>2 liter air untuk merebus</li>
+                        <li>2 batang serai, memarkan</li>
+                        <li>3 lembar daun salam</li>
+                        <li>2 ruas lengkuas, memarkan</li>
+                        <li>2 ruas jahe, memarkan</li>
+                    </ul>
+                    
+                    <h3>Bumbu Halus:</h3>
+                    <ul>
+                        <li>8 siung bawang merah</li>
+                        <li>5 siung bawang putih</li>
+                        <li>1 sdm ketumbar, sangrai</li>
+                        <li>1 sdt jintan, sangrai</li>
+                        <li>3 butir kemiri, sangrai</li>
+                        <li>1 ruas kunyit</li>
+                        <li>Garam dan gula secukupnya</li>
+                    </ul>
+                    
+                    <h3>Cara Membuat:</h3>
+                    <ol>
+                        <li>Rebus daging sapi dan jeroan dalam air mendidih selama 5 menit. Buang air rebusan pertama untuk menghilangkan kotoran.</li>
+                        <li>Rebus kembali daging dengan 2 liter air bersih. Tambahkan serai, daun salam, lengkuas, dan jahe. Masak hingga daging empuk (sekitar 1,5 jam).</li>
+                        <li>Angkat daging, potong-potong sesuai selera. Sisihkan kaldunya.</li>
+                        <li>Tumis bumbu halus hingga harum dan matang. Masukkan ke dalam kaldu.</li>
+                        <li>Tambahkan kacang tanah yang sudah dihaluskan. Aduk rata dan masak dengan api kecil hingga kuah mengental.</li>
+                        <li>Masukkan kembali potongan daging ke dalam kuah. Tambahkan garam dan gula secukupnya.</li>
+                        <li>Masak terus dengan api kecil sambil sesekali diaduk agar tidak gosong. Masak sekitar 30 menit sampai bumbu meresap.</li>
+                        <li>Sajikan Coto Makassar dengan buras, daun bawang, seledri, bawang goreng, dan sambal tauco.</li>
+                    </ol>
+                    
+                    <h3>Tips:</h3>
+                    <ul>
+                        <li>Gunakan daging yang ada sedikit lemaknya agar kuah lebih gurih.</li>
+                        <li>Jangan skip proses membuang air rebusan pertama, ini penting untuk menghilangkan bau amis.</li>
+                        <li>Masak dengan api kecil dan sabar, karena kunci kelezatan Coto ada pada proses memasak yang lama.</li>
+                    </ul>
+                    
+                    <p>Selamat mencoba di rumah! Dijamin hasilnya tidak kalah dengan Coto di restoran terkenal.</p>
+                `
+            },
+            4: {
+                title: "Pallubutung: Kuliner Khas Gowa yang Wajib Dicoba",
+                date: "28 Januari 2026",
+                readTime: "4 menit",
+                category: "Kuliner",
+                image: "Properti MakanDiSulSel/Foto Makanan/Pallubutung.jpg",
+                tags: ["Gowa", "Pallubutung", "Kuliner Khas"],
+                content: `
+                    <p>Kalau ke Gowa, jangan lupa cicipi Pallubutung. Makanan ini adalah ikan bandeng atau nila yang dimasak dengan kuah kuning segar. Rasanya asam, gurih, dan sedikit pedas. Sangat cocok dimakan dengan buras atau nasi putih hangat.</p>
+                    
+                    <h3>Apa Itu Pallubutung?</h3>
+                    <p>Pallubutung berasal dari kata "lubutung" yang dalam bahasa Makassar berarti "ikan bandeng". Jadi Pallubutung adalah masakan ikan bandeng dengan kuah kuning. Tapi sekarang banyak juga yang menggunakan ikan nila.</p>
+                    
+                    <h3>Ciri Khas Pallubutung</h3>
+                    <p>Yang membedakan Pallubutung dengan masakan kuah kuning lainnya adalah penggunaan asam jawa dan kunyit yang cukup banyak. Ini menghasilkan kuah yang segar dengan warna kuning cerah. Biasanya disajikan dengan buras (nasi yang dibungkus daun pisang) dan sambal terasi.</p>
+                    
+                    <h3>Tempat Makan Pallubutung Terenak di Gowa</h3>
+                    
+                    <h3>1. Pallubutung Daeng Rapi</h3>
+                    <p>Terletak di Jalan Poros Malino, tempat ini sudah terkenal sejak lama. Ikan yang digunakan selalu segar, diambil langsung dari tambak di sekitar Gowa. Kuahnya segar dan tidak amis. Harganya Rp30.000 per porsi.</p>
+                    
+                    <h3>2. Warung Makan Mama Ita</h3>
+                    <p>Di sini kamu bisa pilih mau pakai ikan bandeng atau nila. Porsinya besar, satu ekor ikan utuh. Kuahnya lebih pedas dibanding tempat lain. Cocok buat yang suka pedas. Harganya Rp25.000.</p>
+                    
+                    <h3>3. Rumah Makan Pallubutung Sungguminasa</h3>
+                    <p>Letaknya di pusat kota Sungguminasa. Tempatnya bersih dan nyaman. Selain Pallubutung, mereka juga menyajikan aneka masakan khas Gowa lainnya. Harganya Rp35.000 per porsi.</p>
+                    
+                    <p>Itu dia informasi tentang Pallubutung, kuliner khas Gowa yang wajib kamu coba. Dijamin ketagihan!</p>
+                `
+            },
+            5: {
+                title: "5 Tempat Konro Terenak di Makassar Versi Warga Lokal",
+                date: "20 Januari 2026",
+                readTime: "8 menit",
+                category: "Rekomendasi",
+                image: "Properti MakanDiSulSel/FotoSuasana/WarungKonro.jpg",
+                tags: ["Makassar", "Konro", "Rekomendasi"],
+                content: `
+                    <p>Konro adalah sup iga sapi dengan kuah hitam pekat kaya rempah. Makanan khas Makassar ini punya cita rasa yang unik dan sangat lezat. Daging iga yang dimasak lama sampai empuk membuat siapa pun ketagihan.</p>
+                    
+                    <h3>5 Tempat Konro Terenak di Makassar</h3>
+                    
+                    <h3>1. Konro Karebosi</h3>
+                    <p>Ini adalah tempat konro paling legendaris di Makassar. Sudah buka sejak tahun 1950-an. Kuah konronya hitam pekat dengan rasa rempah yang kuat. Dagingnya sangat empuk dan mudah lepas dari tulang. Harganya Rp45.000 per porsi.</p>
+                    
+                    <h3>2. Konro Bakar Daeng Tata</h3>
+                    <p>Selain konro kuah, tempat ini juga terkenal dengan konro bakarnya. Iga sapi dibakar dengan bumbu kecap manis yang meresap. Rasanya manis gurih dengan aroma bakaran yang khas. Harganya Rp50.000 per porsi.</p>
+                    
+                    <h3>3. Konro Sop Saudara</h3>
+                    <p>Berbeda dengan konro pada umumnya, tempat ini menyajikan konro dengan kuah bening. Rasanya lebih ringan tapi tetap gurih. Cocok buat yang tidak suka makanan terlalu berat. Harganya Rp40.000.</p>
+                    
+                    <h3>4. Warung Konro Bawakaraeng</h3>
+                    <p>Tempat sederhana di pinggir jalan ini selalu ramai pengunjung. Porsinya besar, bisa untuk dua orang. Kuahnya kental dengan potongan daging yang melimpah. Harganya Rp35.000.</p>
+                    
+                    <h3>5. Konro Bakar Panaikang</h3>
+                    <p>Terkenal dengan konro bakar iga sapi pilihan. Dagingnya tebal dan empuk. Disajikan dengan sambal kecap yang pedas manis. Tempatnya luas dan cocok untuk acara keluarga. Harganya Rp55.000.</p>
+                    
+                    <p>Nah, itu dia 5 tempat konro terenak di Makassar versi warga lokal. Selamat mencoba!</p>
+                `
+            },
+            6: {
+                title: "Tips Memilih Seafood Segar di Pasar Tradisional Makassar",
+                date: "15 Januari 2026",
+                readTime: "5 menit",
+                category: "Tips",
+                image: "Properti MakanDiSulSel/FotoSuasana/Seafood.jpg",
+                tags: ["Tips", "Seafood", "Pasar"],
+                content: `
+                    <p>Memilih seafood segar di pasar tradisional memang butuh keahlian khusus. Kalau salah pilih, masakan jadi tidak enak dan bisa bikin sakit perut. Nah, berikut tips memilih seafood segar ala warga Makassar!</p>
+                    
+                    <h3>1. Ikan Segar</h3>
+                    <p>Ciri ikan segar: mata jernih dan menonjol, insang merah cerah, daging kenyal (kalau ditekan cepat kembali), dan tidak berbau amis menyengat. Di Pasar Paotere, kamu bisa dapat ikan segar langsung dari nelayan.</p>
+                    
+                    <h3>2. Cumi Segar</h3>
+                    <p>Cumi segar punya warna kulit putih bening dengan bintik-bintik ungu yang masih jelas. Teksturnya kenyal dan tidak berlendir berlebihan. Hindari cumi yang sudah berwarna kemerahan atau kebiruan.</p>
+                    
+                    <h3>3. Udang Segar</h3>
+                    <p>Udang segar warnanya cerah, kepala masih menempel kuat dengan badan, dan tidak berbau busuk. Kalau udang sudah lembek dan kepalanya mudah lepas, berarti sudah tidak segar.</p>
+                    
+                    <h3>4. Kerang Segar</h3>
+                    <p>Kerang yang masih segar cangkangnya tertutup rapat. Kalau cangkangnya terbuka, coba ketuk perlahan. Kalau menutup, berarti masih hidup dan segar. Kalau tidak menutup, berarti sudah mati dan sebaiknya jangan dibeli.</p>
+                    
+                    <h3>5. Kepiting Segar</h3>
+                    <p>Kepiting segar masih bergerak aktif. Angkat kepiting, kalau kakinya menggantung lemas berarti sudah tidak segar. Pilih kepiting yang berat, karena biasanya lebih banyak dagingnya.</p>
+                    
+                    <h3>Tips Tambahan:</h3>
+                    <ul>
+                        <li>Datanglah ke pasar pagi-pagi sekali, sekitar jam 5-7 pagi. Di jam ini seafood masih sangat segar karena baru datang dari nelayan.</li>
+                        <li>Jangan ragu untuk mencium seafood yang akan dibeli. Seafood segar baunya khas laut, bukan amis busuk.</li>
+                        <li>Bawa cooler box atau tas pendingin untuk menjaga kesegaran seafood selama perjalanan pulang.</li>
+                    </ul>
+                    
+                    <p>Dengan tips ini, kamu bisa memilih seafood segar dengan percaya diri. Selamat berbelanja!</p>
+                `
+            },
+            7: {
+                title: "Kapurung: Sagu Kenyal Khas Palopo yang Menyegarkan",
+                date: "12 Maret 2026",
+                readTime: "6 menit",
+                category: "Kuliner",
+                image: "Properti MakanDiSulSel/Foto Makanan/Kapurung.jpg",
+                tags: ["Palopo", "Kapurung", "Kuliner Khas"],
+                content: `
+                    <p>Kapurung adalah makanan khas Palopo, Sulawesi Selatan. Makanan ini terbuat dari sagu yang diolah menjadi bola-bola kenyal, lalu disajikan dengan kuah kuning berisi ikan teri dan aneka sayuran. Rasanya segar, gurih, dan sedikit asam.</p>
+                    
+                    <h3>Apa Itu Kapurung?</h3>
+                    <p>Kapurung berasal dari kata "pugalu" yang dalam bahasa setempat berarti "diaduk". Proses pembuatannya memang melibatkan pengadukan sagu dengan air panas hingga menjadi adonan kenyal yang bisa dibentuk bola-bola.</p>
+                    
+                    <h3>Ciri Khas Kapurung</h3>
+                    <p>Yang membuat Kapurung istimewa adalah kuah kuningnya. Kuah ini terbuat dari ikan teri, kunyit, dan asam jawa. Rasanya segar dengan perpaduan gurih ikan dan asam yang ringan. Sayuran yang digunakan biasanya kacang panjang, kangkung, dan labu siam.</p>
+                    
+                    <h3>Tempat Makan Kapurung Terenak di Palopo</h3>
+                    
+                    <h3>1. Kapurung Haji Bara</h3>
+                    <p>Terletak di pusat kota Palopo, tempat ini sudah terkenal sejak puluhan tahun lalu. Kapurungnya punya ciri khas kuah yang lebih kental dan rasa ikan yang kuat. Harganya Rp20.000 per porsi.</p>
+                    
+                    <h3>2. Warung Kapurung Mama Ita</h3>
+                    <p>Tempat sederhana ini selalu ramai pengunjung, terutama saat jam makan siang. Porsinya besar dengan bola sagu yang melimpah. Harganya Rp15.000.</p>
+                    
+                    <h3>3. Kapurung Pasar Sentral</h3>
+                    <p>Kalau kamu ke Pasar Sentral Palopo, wajib mampir ke lapak Kapurung di bagian belakang pasar. Rasanya autentik dan harganya sangat terjangkau, cuma Rp12.000.</p>
+                    
+                    <h3>Cara Menikmati Kapurung</h3>
+                    <p>Kapurung paling enak dinikmati selagi hangat. Kamu bisa menambahkan perasan jeruk nipis dan sambal untuk rasa yang lebih segar dan pedas. Makan dengan sendok atau langsung diseruput kuahnya.</p>
+                    
+                    <p>Kalau kamu sedang berkunjung ke Palopo, jangan lupa cicipi Kapurung ya. Dijamin pengalaman kuliner yang tidak terlupakan!</p>
+                `
+            },
+            8: {
+                title: "Resep Nasu Palekko Pedas Khas Bone yang Bikin Nagih",
+                date: "8 Maret 2026",
+                readTime: "7 menit",
+                category: "Resep",
+                image: "Properti MakanDiSulSel/Foto Makanan/Nasu Palekko.jpg",
+                tags: ["Bone", "Nasu Palekko", "Resep"],
+                content: `
+                    <p>Nasu Palekko adalah masakan ayam kampung pedas khas Bone, Sulawesi Selatan. "Nasu" artinya masak, sedangkan "Palekko" artinya ayam. Jadi Nasu Palekko adalah ayam masak pedas dengan bumbu yang meresap hingga ke tulang.</p>
+                    
+                    <h3>Ciri Khas Nasu Palekko</h3>
+                    <p>Yang membuat Nasu Palekko beda dari ayam pedas lainnya adalah penggunaan cabai rawit yang sangat banyak. Rasanya benar-benar pedas nampol! Selain itu, ayam yang digunakan adalah ayam kampung yang dagingnya lebih kenyal dan gurih.</p>
+                    
+                    <h3>Bahan-Bahan:</h3>
+                    <ul>
+                        <li>1 ekor ayam kampung, potong 8 bagian</li>
+                        <li>20 buah cabai rawit merah (bisa dikurangi kalau tidak suka terlalu pedas)</li>
+                        <li>10 buah cabai merah keriting</li>
+                        <li>8 siung bawang merah</li>
+                        <li>5 siung bawang putih</li>
+                        <li>2 ruas jahe</li>
+                        <li>2 ruas lengkuas</li>
+                        <li>2 batang serai</li>
+                        <li>3 lembar daun jeruk</li>
+                        <li>1 sdt garam</li>
+                        <li>1 sdt gula merah</li>
+                        <li>Minyak untuk menumis</li>
+                    </ul>
+                    
+                    <h3>Cara Membuat:</h3>
+                    <ol>
+                        <li>Cuci bersih ayam, lumuri dengan garam dan air jeruk nipis. Diamkan 15 menit, lalu bilas.</li>
+                        <li>Haluskan cabai rawit, cabai merah, bawang merah, bawang putih, dan jahe.</li>
+                        <li>Tumis bumbu halus bersama lengkuas, serai, dan daun jeruk hingga harum.</li>
+                        <li>Masukkan potongan ayam, aduk rata hingga ayam berubah warna.</li>
+                        <li>Tambahkan air secukupnya, garam, dan gula merah. Masak dengan api kecil hingga ayam empuk dan bumbu meresap (sekitar 45-60 menit).</li>
+                        <li>Setelah ayam empuk, besarkan api dan masak hingga kuah menyusut dan berminyak.</li>
+                        <li>Angkat dan sajikan dengan nasi putih hangat.</li>
+                    </ol>
+                    
+                    <h3>Tips:</h3>
+                    <ul>
+                        <li>Gunakan ayam kampung asli untuk hasil terbaik.</li>
+                        <li>Kalau tidak suka terlalu pedas, kurangi jumlah cabai rawitnya.</li>
+                        <li>Masak dengan api kecil dan sabar agar bumbu benar-benar meresap.</li>
+                    </ul>
+                    
+                    <p>Selamat mencoba! Siapkan nasi sebanyak-banyaknya karena dijamin bakal nambah terus!</p>
+                `
+            },
+            9: {
+                title: "Barongko: Kue Pisang Khas Bulukumba yang Lembut dan Legit",
+                date: "5 Maret 2026",
+                readTime: "4 menit",
+                category: "Kuliner",
+                image: "Properti MakanDiSulSel/Foto Makanan/Barongko.jpg",
+                tags: ["Bulukumba", "Barongko", "Kue Tradisional"],
+                content: `
+                    <p>Barongko adalah kue tradisional khas Bulukumba, Sulawesi Selatan. Kue ini terbuat dari pisang kepok yang dihaluskan, dicampur dengan santan, telur, dan gula, lalu dibungkus daun pisang dan dikukus. Hasilnya adalah kue yang lembut, manis, dan legit.</p>
+                    
+                    <h3>Sejarah Singkat Barongko</h3>
+                    <p>Barongko sudah ada sejak zaman kerajaan di Bulukumba. Konon, kue ini awalnya adalah hidangan untuk para bangsawan. Tapi sekarang, Barongko sudah menjadi kue sehari-hari yang bisa dinikmati semua kalangan.</p>
+                    
+                    <h3>Ciri Khas Barongko</h3>
+                    <p>Yang membuat Barongko istimewa adalah teksturnya yang sangat lembut, hampir seperti puding. Rasanya manis alami dari pisang dan gula, dengan aroma harum daun pisang yang khas. Warnanya cokelat keemasan dan sangat menggoda.</p>
+                    
+                    <h3>Tempat Membeli Barongko Terenak di Bulukumba</h3>
+                    
+                    <h3>1. Barongko Hj. Fatimah</h3>
+                    <p>Terletak di pusat kota Bulukumba, tempat ini sudah terkenal sejak 1980-an. Barongkonya lembut dengan rasa manis yang pas. Harganya Rp5.000 per bungkus.</p>
+                    
+                    <h3>2. Pasar Sentral Bulukumba</h3>
+                    <p>Di pasar ini kamu bisa menemukan banyak penjual Barongko dengan harga yang sangat terjangkau, mulai dari Rp3.000 per bungkus. Rasanya tidak kalah enak dengan yang di toko terkenal.</p>
+                    
+                    <h3>3. Oleh-Oleh Khas Bulukumba</h3>
+                    <p>Toko ini khusus menjual oleh-oleh khas Bulukumba, termasuk Barongko. Kemasannya rapi dan bisa tahan sampai 2 hari di suhu ruang. Harganya Rp7.000 per bungkus.</p>
+                    
+                    <h3>Cara Menikmati Barongko</h3>
+                    <p>Barongko paling enak dinikmati saat masih hangat. Tapi kalau sudah dingin juga tetap enak. Kamu bisa memakannya langsung atau sebagai teman minum kopi atau teh.</p>
+                    
+                    <p>Kalau kamu ke Bulukumba, jangan lupa beli Barongko untuk oleh-oleh ya. Dijamin keluarga di rumah bakal suka!</p>
+                `
+            }
+        };
+
+        // Fungsi filter artikel
+        function filterArtikel(kategori, element) {
+            const chips = document.querySelectorAll('.kategori-chip:not(.community-chip)');
+            chips.forEach(chip => chip.classList.remove('active'));
+            if (element) element.classList.add('active');
+            
+            const cards = document.querySelectorAll('.artikel-card');
+            
+            if (kategori === 'semua') {
+                cards.forEach(card => card.style.display = 'flex');
+            } else {
+                cards.forEach(card => {
+                    if (card.getAttribute('data-kategori') === kategori) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+        }
+
+        // Fungsi buka artikel
+        function openArtikel(id) {
+            const artikel = artikelData[id];
+            if (!artikel) return;
+            
+            document.getElementById('modalTitle').textContent = artikel.title;
+            document.getElementById('modalDate').innerHTML = `<i class="far fa-calendar-alt"></i> ${artikel.date}`;
+            document.getElementById('modalReadTime').innerHTML = `<i class="far fa-clock"></i> ${artikel.readTime}`;
+            document.getElementById('modalCategory').innerHTML = `<i class="fas fa-tag"></i> ${artikel.category}`;
+            document.getElementById('modalImage').src = artikel.image;
+            document.getElementById('modalImage').alt = artikel.title;
+            document.getElementById('modalBody').innerHTML = artikel.content;
+            
+            const tagsContainer = document.getElementById('modalTags');
+            tagsContainer.innerHTML = artikel.tags.map(tag => `<span class="tag-item">${tag}</span>`).join('');
+            
+            document.getElementById('artikelModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeArtikelModal() {
+            document.getElementById('artikelModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function closeModalOnOverlay(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                closeArtikelModal();
+            }
+        }
+
+        // Set kategori default
+        document.addEventListener('DOMContentLoaded', function() {
+            filterArtikel('semua', document.querySelector('.kategori-chip.active'));
+        });
+    </script>
+</body>
+</html>
