@@ -12,16 +12,17 @@
         :root {
             --primary-orange: #F97316;
             --secondary-orange: #ffb951;
-            --light-orange: #FFEDD5;
+            --light-orange: #FFF0E0;
+            --medium-orange: #FFE0C0;
             --primary-blue: #0F4C81;
             --secondary-blue: #1E6F9F;
-            --light-blue: #E6F0FA;
+            --light-blue: #E8F2FC;
             --text-dark: #334155;
             --text-light: #FFFFFF;
-            --cream-bg: #FFF9F0;
-            --gray-bg: #F8FAFC;
+            --cream-bg: #FFFCF5;
+            --gray-bg: #FAFBFC;
             --shadow-color: rgba(15, 76, 129, 0.15);
-            --border-light: rgba(0, 0, 0, 0.1);
+            --border-light: rgba(0, 0, 0, 0.08);
         }
 
         * {
@@ -94,13 +95,14 @@
         }
 
         .nav-links a {
-            background: var(--cream-bg);
+            background: var(--medium-orange);
             padding: 8px 16px;
             border-radius: 30px;
             color: var(--primary-blue);
             font-weight: 600;
             font-size: 0.9rem;
             transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(249, 115, 22, 0.1);
         }
 
         .nav-links a:hover,
@@ -119,7 +121,7 @@
             color: white;
             font-size: 1.3rem;
             cursor: pointer;
-            background: rgba(255, 249, 240, 0.15);
+            background: rgba(255, 240, 224, 0.18);
             padding: 8px;
             border-radius: 50%;
             transition: all 0.3s ease;
@@ -188,10 +190,11 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            background: var(--cream-bg);
+            background: var(--light-orange);
             padding: 10px 20px;
             border-radius: 40px;
-            border: 1px solid var(--light-orange);
+            border: 1px solid var(--primary-orange);
+            box-shadow: 0 2px 8px rgba(249, 115, 22, 0.1);
         }
 
         .current-location i {
@@ -276,12 +279,13 @@
         }
 
         .search-box {
-            background: var(--cream-bg);
+            background: var(--light-orange);
             border-radius: 30px;
             padding: 8px 16px;
             display: flex;
             align-items: center;
-            border: 2px solid var(--light-orange);
+            border: 2px solid var(--primary-orange);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.1);
         }
 
         .search-box i {
@@ -321,16 +325,17 @@
         }
 
         .filter-chip {
-            background: var(--cream-bg);
+            background: var(--medium-orange);
             padding: 8px 18px;
             border-radius: 30px;
             font-size: 0.9rem;
             font-weight: 600;
             color: var(--primary-blue);
-            border: 1px solid var(--light-orange);
+            border: 1px solid var(--primary-orange);
             white-space: nowrap;
             cursor: pointer;
             transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(249, 115, 22, 0.1);
         }
 
         .filter-chip:hover,
@@ -381,7 +386,7 @@
             color: white;
             font-size: 1.5rem;
             margin-bottom: 8px;
-            background: rgba(255, 249, 240, 0.2);
+            background: rgba(255, 224, 192, 0.25);
             padding: 10px 20px;
             border-radius: 40px;
             display: inline-block;
@@ -390,7 +395,7 @@
         .welcome-banner p {
             opacity: 0.95;
             margin-bottom: 15px;
-            background: rgba(255, 249, 240, 0.15);
+            background: rgba(255, 224, 192, 0.18);
             padding: 8px 20px;
             border-radius: 30px;
             display: inline-block;
@@ -440,12 +445,13 @@
         }
 
         .section-header h3 {
-            background: var(--cream-bg);
+            background: var(--light-orange);
             padding: 10px 20px;
             border-radius: 30px;
             display: inline-block;
             font-size: 1.3rem;
             border-left: 4px solid var(--primary-orange);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.12);
         }
 
         .section-header span {
@@ -465,7 +471,7 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 10px 25px var(--shadow-color);
-            border: 1px solid var(--light-orange);
+            border: 1px solid var(--medium-orange);
             transition: all 0.3s ease;
             cursor: pointer;
             animation: fadeIn 0.5s ease;
@@ -545,20 +551,22 @@
         .produk-header h3 {
             font-size: 1.1rem;
             margin-bottom: 0;
-            background: var(--cream-bg);
+            background: var(--medium-orange);
             padding: 6px 14px;
             border-radius: 30px;
             line-height: 1.4;
+            box-shadow: 0 2px 6px rgba(249, 115, 22, 0.08);
         }
 
         .produk-rating {
             color: var(--primary-orange);
             font-weight: 600;
             font-size: 0.85rem;
-            background: var(--cream-bg);
+            background: var(--light-orange);
             padding: 5px 10px;
             border-radius: 30px;
             white-space: nowrap;
+            box-shadow: 0 2px 6px rgba(249, 115, 22, 0.08);
         }
 
         .produk-rating i {
@@ -566,16 +574,17 @@
         }
 
         .produk-lokasi {
-            color: #666;
+            color: #555;
             font-size: 0.8rem;
             margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 5px;
-            background: var(--cream-bg);
+            background: var(--light-orange);
             padding: 5px 12px;
             border-radius: 30px;
             width: fit-content;
+            box-shadow: 0 2px 6px rgba(249, 115, 22, 0.06);
         }
 
         .produk-lokasi i {
@@ -584,15 +593,16 @@
         }
 
         .produk-deskripsi {
-            color: #666;
+            color: #555;
             font-size: 0.85rem;
             margin-bottom: 15px;
             line-height: 1.5;
-            background: var(--cream-bg);
+            background: var(--light-orange);
             padding: 12px 14px;
             border-radius: 15px;
             flex: 1;
             min-height: 70px;
+            box-shadow: 0 2px 8px rgba(249, 115, 22, 0.06);
         }
 
         .produk-footer {
@@ -607,10 +617,11 @@
         .produk-harga {
             font-weight: 700;
             color: var(--primary-blue);
-            background: var(--cream-bg);
+            background: var(--medium-orange);
             padding: 6px 14px;
             border-radius: 30px;
             font-size: 0.85rem;
+            box-shadow: 0 2px 6px rgba(249, 115, 22, 0.08);
         }
 
         .produk-harga span {
@@ -627,10 +638,11 @@
             align-items: center;
             gap: 5px;
             font-size: 0.85rem;
-            background: var(--cream-bg);
+            background: var(--medium-orange);
             padding: 6px 14px;
             border-radius: 30px;
             transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(249, 115, 22, 0.08);
         }
 
         .produk-link:hover {
@@ -692,7 +704,7 @@
 
         .modal-header h3 {
             font-size: 1.3rem;
-            background: var(--cream-bg);
+            background: var(--light-orange);
             padding: 8px 18px;
             border-radius: 30px;
         }
@@ -701,7 +713,7 @@
             width: 35px;
             height: 35px;
             border-radius: 50%;
-            background: var(--cream-bg);
+            background: var(--medium-orange);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -719,8 +731,9 @@
             gap: 15px;
             margin-bottom: 25px;
             padding: 15px;
-            background: var(--cream-bg);
+            background: var(--light-orange);
             border-radius: 15px;
+            box-shadow: 0 2px 8px rgba(249, 115, 22, 0.08);
         }
 
         .order-product-image {
@@ -757,7 +770,7 @@
             margin-bottom: 8px;
             font-weight: 600;
             color: var(--primary-blue);
-            background: var(--cream-bg);
+            background: var(--medium-orange);
             padding: 5px 15px;
             border-radius: 20px;
             display: inline-block;
@@ -774,7 +787,7 @@
             font-family: inherit;
             font-size: 0.95rem;
             transition: all 0.3s ease;
-            background: var(--cream-bg);
+            background: var(--light-orange);
         }
 
         .form-group input:focus,
@@ -843,7 +856,7 @@
 
         .payment-option {
             padding: 12px 10px;
-            background: var(--cream-bg);
+            background: var(--light-orange);
             border: 1px solid var(--border-light);
             border-radius: 15px;
             text-align: center;
@@ -1007,11 +1020,11 @@
 
         .region-option {
             padding: 12px 15px;
-            background: var(--cream-bg);
+            background: var(--light-orange);
             border-radius: 15px;
             cursor: pointer;
             transition: all 0.3s ease;
-            border: 1px solid var(--light-orange);
+            border: 1px solid var(--primary-orange);
             text-align: center;
             font-weight: 600;
             color: var(--primary-blue);
@@ -1051,7 +1064,7 @@
             color: white;
             font-size: 1.6rem;
             margin-bottom: 10px;
-            background: rgba(255, 249, 240, 0.2);
+            background: rgba(255, 224, 192, 0.25);
             padding: 12px 24px;
             border-radius: 50px;
             display: inline-block;
@@ -1063,12 +1076,12 @@
         }
 
         .community-cta p {
-            opacity: 0.9;
+            opacity: 0.95;
             margin-bottom: 20px;
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
-            background: rgba(255, 249, 240, 0.15);
+            background: rgba(255, 224, 192, 0.18);
             padding: 10px 20px;
             border-radius: 30px;
             line-height: 1.6;
@@ -1248,20 +1261,20 @@
 <body>
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="logo" onclick="window.location.href='index.html'">
+        <div class="logo" onclick="window.location.href='1-index.html'">
             <img src="Properti MakanDiSulSel/Logo MakanDiSulSel.png" alt="MakanDiSulSel Logo">
         </div>
         <div class="nav-links">
-            <a href="index.html">Beranda</a>
-            <a href="jelajahikuliner.html" class="active">Jelajahi Kuliner</a>
-            <a href="produk.html">Produk</a>
-            <a href="artikel.html">Artikel</a>
-            <a href="kontak.html">Kontak</a>
-            <a href="komunitas.html">Komunitas</a>
+            <a href="1-index.html">Beranda</a>
+            <a href="2-jelajahikuliner.html" class="active">Jelajahi Kuliner</a>
+            <a href="3-produk.html">Produk</a>
+            <a href="4-artikel.html">Artikel</a>
+            <a href="5-kontak.html">Kontak</a>
+            <a href="6-komunitas.html">Komunitas</a>
         </div>
         <div class="nav-icons">
             <i class="far fa-heart" onclick="alert('Fitur favorit akan segera hadir!')"></i>
-            <div class="profile-icon" onclick="window.location.href='login.html'">
+            <div class="profile-icon" onclick="window.location.href='7-login.html'">
                 <i class="far fa-user"></i>
             </div>
         </div>
@@ -1321,7 +1334,7 @@
                 <span class="filter-chip" onclick="filterProduk('cemilan', this)">Cemilan</span>
                 <span class="filter-chip" onclick="filterProduk('minuman', this)">Minuman</span>
                 <span class="filter-chip" onclick="filterProduk('rekomendasi', this)">Rekomendasi</span>
-                <span class="filter-chip community-chip" onclick="window.location.href='komunitas.html'">
+                <span class="filter-chip community-chip" onclick="window.location.href='6-komunitas.html'">
                     <i class="fas fa-users"></i> Komunitas
                 </span>
             </div>
@@ -1342,7 +1355,7 @@
     </section>
 
     <!-- CTA Komunitas -->
-    <div class="community-cta" onclick="window.location.href='komunitas.html'">
+    <div class="community-cta" onclick="window.location.href='6-komunitas.html'">
         <h3><i class="fas fa-users"></i> Gabung Komunitas Pecinta Kuliner!</h3>
         <p>Bagikan pengalaman, foto, video, dan lokasi tempat makan favoritmu bersama ribuan anggota lainnya!</p>
         <span class="btn">Gabung Sekarang <i class="fas fa-arrow-right"></i></span>
@@ -1512,12 +1525,12 @@
         <div class="footer-bottom">
             <p>&copy; 2026 MakanDiSulSel - Portal Komunitas & Pusat Kuliner Makassar Raya</p>
             <p style="margin-top: 5px;">
-                <a href="index.html">Beranda</a> • 
-                <a href="jelajahikuliner.html">Kuliner</a> • 
-                <a href="produk.html">Produk</a> • 
-                <a href="artikel.html">Artikel</a> • 
-                <a href="kontak.html">Kontak</a> • 
-                <a href="komunitas.html">Komunitas</a>
+                <a href="1-index.html">Beranda</a> • 
+                <a href="2-jelajahikuliner.html">Kuliner</a> • 
+                <a href="3-produk.html">Produk</a> • 
+                <a href="4-artikel.html">Artikel</a> • 
+                <a href="5-kontak.html">Kontak</a> • 
+                <a href="6-komunitas.html">Komunitas</a>
             </p>
         </div>
     </footer>
@@ -1813,19 +1826,13 @@
         function incrementQty() {
             const qtyInput = document.getElementById('orderQuantity');
             let qty = parseInt(qtyInput.value);
-            if (qty < 20) {
-                qtyInput.value = qty + 1;
-                updateOrderTotal();
-            }
+            if (qty < 20) { qtyInput.value = qty + 1; updateOrderTotal(); }
         }
 
         function decrementQty() {
             const qtyInput = document.getElementById('orderQuantity');
             let qty = parseInt(qtyInput.value);
-            if (qty > 1) {
-                qtyInput.value = qty - 1;
-                updateOrderTotal();
-            }
+            if (qty > 1) { qtyInput.value = qty - 1; updateOrderTotal(); }
         }
 
         function updateOrderTotal() {
@@ -1901,17 +1908,13 @@
                     const badge = card.querySelector('.produk-badge');
                     if (badge && (badge.textContent.includes('Best Seller') || badge.textContent.includes('Rekomendasi'))) {
                         card.style.display = 'flex'; visibleCount++;
-                    } else {
-                        card.style.display = 'none';
-                    }
+                    } else { card.style.display = 'none'; }
                 });
             } else {
                 cards.forEach(card => {
                     if (card.getAttribute('data-category') === kategori) {
                         card.style.display = 'flex'; visibleCount++;
-                    } else {
-                        card.style.display = 'none';
-                    }
+                    } else { card.style.display = 'none'; }
                 });
             }
             
@@ -1934,9 +1937,7 @@
                 
                 if (title.includes(term) || category.includes(term)) {
                     card.style.display = 'flex'; visibleCount++;
-                } else {
-                    card.style.display = 'none';
-                }
+                } else { card.style.display = 'none'; }
             });
             
             document.getElementById('itemCount').textContent = `${visibleCount} makanan ditemukan`;

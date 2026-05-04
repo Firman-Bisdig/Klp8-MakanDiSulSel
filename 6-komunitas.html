@@ -8,20 +8,22 @@
     <style>
         /* ============================================= */
         /* VARIABEL WARNA - ORANGE & BIRU LAUT */
+        /* DISAMAKAN DENGAN 1-index.html */
         /* ============================================= */
         :root {
             --primary-orange: #F97316;
             --secondary-orange: #ffb951;
-            --light-orange: #FFEDD5;
+            --light-orange: #FFF0E0;
+            --medium-orange: #FFE0C0;
             --primary-blue: #0F4C81;
             --secondary-blue: #1E6F9F;
-            --light-blue: #E6F0FA;
+            --light-blue: #E8F2FC;
             --text-dark: #334155;
             --text-light: #FFFFFF;
-            --cream-bg: #FFF9F0;
-            --gray-bg: #F8FAFC;
+            --cream-bg: #FFFCF5;
+            --gray-bg: #FAFBFC;
             --shadow-color: rgba(15, 76, 129, 0.15);
-            --border-light: rgba(0, 0, 0, 0.1);
+            --border-light: rgba(0, 0, 0, 0.08);
         }
 
         * {
@@ -41,6 +43,7 @@
         h1, h2, h3, h4, h5, h6 {
             font-weight: 700;
             color: var(--primary-blue);
+            letter-spacing: -0.02em;
         }
 
         a {
@@ -56,13 +59,14 @@
 
         /* Background cream untuk teks di dalam section */
         .section-title {
-            background: var(--cream-bg);
+            background: var(--light-orange);
             padding: 10px 20px;
             border-radius: 30px;
             display: inline-block;
             margin-bottom: 20px;
             font-size: 1.5rem;
             border-left: 4px solid var(--primary-orange);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.12);
         }
 
         /* ============================================= */
@@ -106,13 +110,14 @@
         }
 
         .nav-links a {
-            background: var(--cream-bg);
+            background: var(--medium-orange);
             padding: 8px 16px;
             border-radius: 30px;
             color: var(--primary-blue);
             font-weight: 600;
             font-size: 0.9rem;
             transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(249, 115, 22, 0.1);
         }
 
         .nav-links a:hover,
@@ -131,7 +136,7 @@
             color: white;
             font-size: 1.3rem;
             cursor: pointer;
-            background: rgba(255, 249, 240, 0.15);
+            background: rgba(255, 240, 224, 0.18);
             padding: 8px;
             border-radius: 50%;
             transition: all 0.3s ease;
@@ -180,29 +185,32 @@
         /* COMMUNITY HERO */
         /* ============================================= */
         .community-hero {
-            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            background: linear-gradient(145deg, white, var(--light-blue));
             padding: 50px 20px 40px;
             text-align: center;
-            color: white;
+            color: var(--primary-blue);
         }
 
         .community-hero h1 {
-            color: white;
+            color: var(--primary-blue);
             font-size: 2rem;
             margin-bottom: 10px;
-            background: rgba(255, 249, 240, 0.2);
+            background: var(--medium-orange);
             padding: 15px 25px;
             border-radius: 50px;
             display: inline-block;
+            box-shadow: 0 4px 14px rgba(249, 115, 22, 0.15);
         }
 
         .community-hero p {
             opacity: 0.9;
             max-width: 600px;
             margin: 0 auto 20px;
-            background: rgba(255, 249, 240, 0.15);
+            background: var(--light-orange);
             padding: 12px 24px;
             border-radius: 30px;
+            box-shadow: 0 3px 10px rgba(249, 115, 22, 0.1);
+            color: var(--text-dark);
         }
 
         .stats {
@@ -215,9 +223,11 @@
 
         .stat-item {
             text-align: center;
-            background: rgba(255, 249, 240, 0.15);
+            background: var(--light-orange);
             padding: 15px 25px;
             border-radius: 20px;
+            border: 1px solid var(--primary-orange);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.08);
         }
 
         .stat-number {
@@ -229,6 +239,8 @@
         .stat-label {
             font-size: 0.9rem;
             opacity: 0.9;
+            color: var(--primary-blue);
+            font-weight: 600;
         }
 
         /* ============================================= */
@@ -246,7 +258,7 @@
             padding: 20px;
             box-shadow: 0 10px 25px var(--shadow-color);
             margin-bottom: 25px;
-            border: 1px solid var(--light-orange);
+            border: 1px solid var(--medium-orange);
         }
 
         .post-header {
@@ -296,8 +308,8 @@
 
         .post-action-btn {
             flex: 1;
-            background: var(--cream-bg);
-            border: 1px solid var(--light-orange);
+            background: var(--light-orange);
+            border: 1px solid var(--primary-orange);
             padding: 10px;
             border-radius: 30px;
             font-weight: 600;
@@ -341,7 +353,7 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 10px 25px var(--shadow-color);
-            border: 1px solid var(--light-orange);
+            border: 1px solid var(--medium-orange);
             animation: fadeIn 0.5s ease;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -352,7 +364,7 @@
 
         .review-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 35px rgba(15, 76, 129, 0.2);
+            box-shadow: 0 15px 35px rgba(249, 115, 22, 0.15);
         }
 
         .review-header {
@@ -377,9 +389,10 @@
         }
 
         .reviewer-info {
-            background: var(--cream-bg);
+            background: var(--light-orange);
             padding: 8px 15px;
             border-radius: 30px;
+            border: 1px solid var(--primary-orange);
         }
 
         .reviewer-info h4 {
@@ -403,9 +416,10 @@
         .review-place span {
             font-weight: 600;
             color: var(--primary-blue);
-            background: var(--cream-bg);
+            background: var(--light-orange);
             padding: 5px 15px;
             border-radius: 30px;
+            border: 1px solid var(--primary-orange);
         }
 
         .review-place i {
@@ -436,11 +450,12 @@
             display: flex;
             align-items: center;
             gap: 5px;
-            background: var(--cream-bg);
+            background: var(--light-orange);
             margin: 10px 15px;
             padding: 8px 15px;
             border-radius: 30px;
             width: fit-content;
+            border: 1px solid var(--primary-orange);
         }
 
         .review-rating i {
@@ -460,14 +475,15 @@
             color: var(--text-dark);
             line-height: 1.5;
             flex: 1;
-            background: var(--cream-bg);
+            background: var(--light-orange);
             margin: 0 15px 15px;
             border-radius: 15px;
+            border: 1px solid var(--primary-orange);
         }
 
         .review-text i {
             color: var(--primary-orange);
-            opacity: 0.5;
+            opacity: 0.6;
             margin-right: 5px;
         }
 
@@ -539,7 +555,7 @@
             color: white;
             font-size: 1.6rem;
             margin-bottom: 10px;
-            background: rgba(255, 249, 240, 0.2);
+            background: rgba(255, 224, 192, 0.25);
             padding: 12px 24px;
             border-radius: 50px;
             display: inline-block;
@@ -551,14 +567,15 @@
         }
 
         .community-cta p {
-            opacity: 0.9;
+            opacity: 0.95;
             margin-bottom: 20px;
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
-            background: rgba(255, 249, 240, 0.15);
+            background: rgba(255, 224, 192, 0.18);
             padding: 10px 20px;
             border-radius: 30px;
+            line-height: 1.6;
         }
 
         .community-cta .btn {
@@ -761,12 +778,13 @@
         }
 
         .cancel-post {
-            background: #e2e8f0;
-            border: none;
+            background: var(--light-orange);
+            border: 1px solid var(--primary-orange);
             padding: 12px 24px;
             border-radius: 30px;
             font-weight: 600;
             cursor: pointer;
+            color: var(--primary-blue);
         }
     </style>
 </head>
@@ -774,20 +792,20 @@
 
     <!-- Navigation - SAMA DENGAN HOME -->
     <nav class="navbar">
-        <div class="logo" onclick="window.location.href='index.html'">
+        <div class="logo" onclick="window.location.href='1-index.html'">
             <img src="Properti MakanDiSulSel/Logo MakanDiSulSel.png" alt="MakanDiSulSel Logo">
         </div>
         <div class="nav-links">
-            <a href="index.html">Beranda</a>
-            <a href="jelajahikuliner.html">Jelajahi Kuliner</a>
-            <a href="produk.html">Produk</a>
-            <a href="artikel.html">Artikel</a>
-            <a href="kontak.html">Kontak</a>
-            <a href="komunitas.html" class="active">Komunitas</a>
+            <a href="1-index.html">Beranda</a>
+            <a href="2-jelajahikuliner.html">Jelajahi Kuliner</a>
+            <a href="3-produk.html">Produk</a>
+            <a href="4-artikel.html">Artikel</a>
+            <a href="5-kontak.html">Kontak</a>
+            <a href="6-komunitas.html" class="active">Komunitas</a>
         </div>
         <div class="nav-icons">
             <i class="far fa-heart" onclick="alert('Fitur favorit akan segera hadir!')"></i>
-            <div class="profile-icon" onclick="window.location.href='login.html'">
+            <div class="profile-icon" onclick="window.location.href='7-login.html'">
                 <i class="far fa-user"></i>
             </div>
         </div>
@@ -815,7 +833,7 @@
 
     <!-- Login Prompt untuk yang belum login -->
     <div class="login-prompt" id="loginPrompt">
-        <button class="btn-login-prompt" onclick="window.location.href='login.html'">
+        <button class="btn-login-prompt" onclick="window.location.href='7-login.html'">
             <i class="fas fa-sign-in-alt"></i> Masuk untuk Berbagi Ulasan
         </button>
     </div>
@@ -1033,7 +1051,7 @@
     </section>
 
     <!-- CTA Komunitas -->
-    <div class="community-cta" onclick="window.location.href='login.html'">
+    <div class="community-cta" onclick="window.location.href='7-login.html'">
         <h3><i class="fas fa-users"></i> Gabung Komunitas Sekarang!</h3>
         <p>Bagikan pengalaman, foto, video, dan lokasi tempat makan favoritmu bersama ribuan anggota lainnya!</p>
         <span class="btn">Gabung Sekarang <i class="fas fa-arrow-right"></i></span>
@@ -1083,12 +1101,12 @@
         <div class="footer-bottom">
             <p>&copy; 2026 MakanDiSulSel - Portal Komunitas & Pusat Kuliner Makassar Raya</p>
             <p style="margin-top: 5px;">
-                <a href="index.html">Beranda</a> • 
-                <a href="jelajahikuliner.html">Kuliner</a> • 
-                <a href="produk.html">Produk</a> • 
-                <a href="artikel.html">Artikel</a> • 
-                <a href="kontak.html">Kontak</a> • 
-                <a href="komunitas.html">Komunitas</a>
+                <a href="1-index.html">Beranda</a> • 
+                <a href="2-jelajahikuliner.html">Kuliner</a> • 
+                <a href="3-produk.html">Produk</a> • 
+                <a href="4-artikel.html">Artikel</a> • 
+                <a href="5-kontak.html">Kontak</a> • 
+                <a href="6-komunitas.html">Komunitas</a>
             </p>
         </div>
     </footer>
@@ -1097,7 +1115,7 @@
         // Update stats
         function updateStats() {
             const reviews = document.querySelectorAll('.review-card');
-            document.querySelector('.stat-number').innerText = '2.456';
+            // Stats sudah di-set di HTML
         }
         
         updateStats();

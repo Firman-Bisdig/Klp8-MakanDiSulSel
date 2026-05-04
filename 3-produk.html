@@ -8,20 +8,22 @@
     <style>
         /* ============================================= */
         /* VARIABEL WARNA - ORANGE & BIRU LAUT */
+        /* (DISAMAKAN DENGAN 1-index.html) */
         /* ============================================= */
         :root {
             --primary-orange: #F97316;
             --secondary-orange: #ffb951;
-            --light-orange: #FFEDD5;
+            --light-orange: #FFF0E0;
+            --medium-orange: #FFE0C0;
             --primary-blue: #0F4C81;
             --secondary-blue: #1E6F9F;
-            --light-blue: #E6F0FA;
+            --light-blue: #E8F2FC;
             --text-dark: #334155;
             --text-light: #FFFFFF;
-            --cream-bg: #FFF9F0;
-            --gray-bg: #F8FAFC;
+            --cream-bg: #FFFCF5;
+            --gray-bg: #FAFBFC;
             --shadow-color: rgba(15, 76, 129, 0.15);
-            --border-light: rgba(0, 0, 0, 0.1);
+            --border-light: rgba(0, 0, 0, 0.08);
         }
 
         * {
@@ -35,11 +37,13 @@
             background-color: var(--cream-bg);
             color: var(--text-dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         h1, h2, h3, h4, h5, h6 {
             font-weight: 700;
             color: var(--primary-blue);
+            letter-spacing: -0.02em;
         }
 
         a {
@@ -94,13 +98,14 @@
         }
 
         .nav-links a {
-            background: var(--cream-bg);
+            background: var(--medium-orange);
             padding: 8px 16px;
             border-radius: 30px;
             color: var(--primary-blue);
             font-weight: 600;
             font-size: 0.9rem;
             transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(249, 115, 22, 0.1);
         }
 
         .nav-links a:hover,
@@ -119,7 +124,7 @@
             color: white;
             font-size: 1.3rem;
             cursor: pointer;
-            background: rgba(255, 249, 240, 0.15);
+            background: rgba(255, 240, 224, 0.18);
             padding: 8px;
             border-radius: 50%;
             transition: all 0.3s ease;
@@ -165,50 +170,28 @@
         }
 
         /* ============================================= */
-        /* PAGE HEADER */
+        /* PAGE HEADER - DENGAN BACKGROUND GAMBAR */
         /* ============================================= */
         .page-header {
-            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-            padding: 40px 20px;
+            background: linear-gradient(rgba(15, 76, 129, 0.75), rgba(30, 111, 159, 0.85)), url('Properti MakanDiSulSel/Bumbu/Rempah.jpg');
+            background-size: cover;
+            background-position: center 30%;
+            padding: 60px 20px;
             text-align: center;
             color: white;
         }
 
         .page-header h1 {
             color: white;
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 10px;
-            background: rgba(255, 249, 240, 0.2);
-            padding: 15px 25px;
-            border-radius: 50px;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            padding: 15px 35px;
+            border-radius: 60px;
             display: inline-block;
-        }
-
-        .page-header p {
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto 20px;
-            background: rgba(255, 249, 240, 0.15);
-            padding: 12px 24px;
-            border-radius: 30px;
-        }
-
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: white;
-            padding: 10px 24px;
-            background: rgba(255, 249, 240, 0.2);
-            border-radius: 30px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .back-link:hover {
-            background: var(--primary-orange);
-            transform: translateX(-3px);
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
         /* ============================================= */
@@ -234,7 +217,7 @@
             padding: 8px 16px;
             display: flex;
             align-items: center;
-            border: 2px solid var(--light-orange);
+            border: 2px solid var(--primary-orange);
         }
 
         .search-box i {
@@ -260,10 +243,12 @@
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(249, 115, 22, 0.3);
         }
 
         .search-box button:hover {
             background: var(--secondary-orange);
+            transform: scale(1.02);
         }
 
         .filter-options {
@@ -280,10 +265,11 @@
             font-size: 0.9rem;
             font-weight: 600;
             color: var(--primary-blue);
-            border: 1px solid var(--light-orange);
+            border: 1px solid var(--primary-orange);
             white-space: nowrap;
             cursor: pointer;
             transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(249, 115, 22, 0.08);
         }
 
         .filter-chip:hover,
@@ -340,7 +326,7 @@
             transition: all 0.3s ease;
             background: var(--cream-bg);
             color: var(--primary-blue);
-            border: 1px solid var(--light-orange);
+            border: 1px solid var(--primary-orange);
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
@@ -383,7 +369,7 @@
             padding: 8px 15px;
             border-radius: 40px;
             box-shadow: 0 4px 12px var(--shadow-color);
-            border: 1px solid var(--light-orange);
+            border: 1px solid var(--medium-orange);
         }
 
         .page-btn-top {
@@ -391,7 +377,7 @@
             height: 40px;
             border-radius: 50%;
             background: var(--cream-bg);
-            border: 1px solid var(--light-orange);
+            border: 1px solid var(--primary-orange);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -438,7 +424,7 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 10px 25px var(--shadow-color);
-            border: 1px solid var(--light-orange);
+            border: 1px solid var(--medium-orange);
             transition: all 0.3s ease;
             cursor: pointer;
             animation: fadeIn 0.5s ease;
@@ -519,17 +505,18 @@
         .produk-header h3 {
             font-size: 1.1rem;
             margin-bottom: 0;
-            background: var(--cream-bg);
+            background: var(--medium-orange);
             padding: 6px 14px;
             border-radius: 30px;
             line-height: 1.4;
+            box-shadow: 0 2px 6px rgba(249, 115, 22, 0.08);
         }
 
         .produk-rating {
             color: var(--primary-orange);
             font-weight: 600;
             font-size: 0.85rem;
-            background: var(--cream-bg);
+            background: var(--light-orange);
             padding: 5px 10px;
             border-radius: 30px;
             white-space: nowrap;
@@ -546,7 +533,7 @@
             display: flex;
             align-items: center;
             gap: 5px;
-            background: var(--cream-bg);
+            background: var(--light-orange);
             padding: 5px 12px;
             border-radius: 30px;
             width: fit-content;
@@ -558,11 +545,11 @@
         }
 
         .produk-deskripsi {
-            color: #666;
+            color: #555;
             font-size: 0.85rem;
             margin-bottom: 15px;
             line-height: 1.5;
-            background: var(--cream-bg);
+            background: var(--light-orange);
             padding: 12px 14px;
             border-radius: 15px;
             flex: 1;
@@ -581,10 +568,11 @@
         .produk-harga {
             font-weight: 700;
             color: var(--primary-blue);
-            background: var(--cream-bg);
+            background: var(--medium-orange);
             padding: 6px 14px;
             border-radius: 30px;
             font-size: 0.85rem;
+            box-shadow: 0 2px 6px rgba(249, 115, 22, 0.08);
         }
 
         .produk-harga span {
@@ -601,10 +589,11 @@
             align-items: center;
             gap: 5px;
             font-size: 0.85rem;
-            background: var(--cream-bg);
+            background: var(--medium-orange);
             padding: 6px 14px;
             border-radius: 30px;
             transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(249, 115, 22, 0.1);
         }
 
         .produk-link:hover {
@@ -658,7 +647,7 @@
             color: white;
             font-size: 1.6rem;
             margin-bottom: 10px;
-            background: rgba(255, 249, 240, 0.2);
+            background: rgba(255, 224, 192, 0.25);
             padding: 12px 24px;
             border-radius: 50px;
             display: inline-block;
@@ -670,12 +659,12 @@
         }
 
         .community-cta p {
-            opacity: 0.9;
+            opacity: 0.95;
             margin-bottom: 20px;
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
-            background: rgba(255, 249, 240, 0.15);
+            background: rgba(255, 224, 192, 0.18);
             padding: 10px 20px;
             border-radius: 30px;
             line-height: 1.6;
@@ -875,7 +864,7 @@
 
         .modal-header h3 {
             font-size: 1.3rem;
-            background: var(--cream-bg);
+            background: var(--medium-orange);
             padding: 8px 18px;
             border-radius: 30px;
         }
@@ -884,7 +873,7 @@
             width: 35px;
             height: 35px;
             border-radius: 50%;
-            background: var(--cream-bg);
+            background: var(--light-orange);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -902,7 +891,7 @@
             gap: 15px;
             margin-bottom: 25px;
             padding: 15px;
-            background: var(--cream-bg);
+            background: var(--light-orange);
             border-radius: 15px;
         }
 
@@ -940,7 +929,7 @@
             margin-bottom: 8px;
             font-weight: 600;
             color: var(--primary-blue);
-            background: var(--cream-bg);
+            background: var(--light-orange);
             padding: 5px 15px;
             border-radius: 20px;
             display: inline-block;
@@ -1172,32 +1161,28 @@
 <body>
     <!-- Navigation - SAMA DENGAN HOME -->
     <nav class="navbar">
-        <div class="logo" onclick="window.location.href='index.html'">
+        <div class="logo" onclick="window.location.href='1-index.html'">
             <img src="Properti MakanDiSulSel/Logo MakanDiSulSel.png" alt="MakanDiSulSel Logo">
         </div>
         <div class="nav-links">
-            <a href="index.html">Beranda</a>
-            <a href="jelajahikuliner.html">Jelajahi Kuliner</a>
-            <a href="produk.html" class="active">Produk</a>
-            <a href="artikel.html">Artikel</a>
-            <a href="kontak.html">Kontak</a>
-            <a href="komunitas.html">Komunitas</a>
+            <a href="1-index.html">Beranda</a>
+            <a href="2-jelajahikuliner.html">Jelajahi Kuliner</a>
+            <a href="3-produk.html" class="active">Produk</a>
+            <a href="4-artikel.html">Artikel</a>
+            <a href="5-kontak.html">Kontak</a>
+            <a href="6-komunitas.html">Komunitas</a>
         </div>
         <div class="nav-icons">
             <i class="far fa-heart" onclick="alert('Fitur favorit akan segera hadir!')"></i>
-            <div class="profile-icon" onclick="window.location.href='login.html'">
+            <div class="profile-icon" onclick="window.location.href='7-login.html'">
                 <i class="far fa-user"></i>
             </div>
         </div>
     </nav>
 
-    <!-- Page Header -->
+    <!-- Page Header - dengan background gambar Rempah.jpg -->
     <section class="page-header">
-        <h1>Bumbu Siap Pakai Sulawesi Selatan</h1>
-        <p>Temukan aneka bumbu masak autentik dari berbagai daerah di Sulawesi Selatan</p>
-        <a href="jelajahikuliner.html" class="back-link">
-            <i class="fas fa-arrow-left"></i> Kembali ke Daftar Kuliner
-        </a>
+        <h1>Produk MakanDiSulSel</h1>
     </section>
 
     <!-- Search & Filter -->
@@ -1215,7 +1200,7 @@
                 <span class="filter-chip" onclick="filterProduk('bumbu-tumis', this)">Tumis</span>
                 <span class="filter-chip" onclick="filterProduk('bumbu-kue', this)">Kue & Cemilan</span>
                 <span class="filter-chip" onclick="filterProduk('terlaris', this)">Terlaris</span>
-                <span class="filter-chip community-chip" onclick="window.location.href='komunitas.html'">
+                <span class="filter-chip community-chip" onclick="window.location.href='6-komunitas.html'">
                     <i class="fas fa-users"></i> Komunitas
                 </span>
             </div>
@@ -1652,7 +1637,7 @@
                 <span class="page-btn-top nav-arrow" onclick="prevPage()"><i class="fas fa-chevron-left"></i></span>
                 <span class="page-btn-top" onclick="showPage(1)">1</span>
                 <span class="page-btn-top" onclick="showPage(2)">2</span>
-                <span class="page-btn-top active" onclick="showPage(3)">3</span>
+                <span class="page-btn-top" onclick="showPage(3)">3</span>
                 <span class="page-btn-top nav-arrow" onclick="nextPage()"><i class="fas fa-chevron-right"></i></span>
             </div>
         </div>
@@ -1845,7 +1830,7 @@
     </section>
 
     <!-- CTA Komunitas -->
-    <div class="community-cta" onclick="window.location.href='komunitas.html'">
+    <div class="community-cta" onclick="window.location.href='6-komunitas.html'">
         <h3><i class="fas fa-users"></i> Gabung Komunitas Pecinta Kuliner!</h3>
         <p>Bagikan pengalaman, foto, video, dan lokasi tempat makan favoritmu bersama ribuan anggota lainnya!</p>
         <span class="btn">Gabung Sekarang <i class="fas fa-arrow-right"></i></span>
@@ -2000,12 +1985,12 @@
         <div class="footer-bottom">
             <p>&copy; 2026 MakanDiSulSel - Portal Komunitas & Pusat Kuliner Makassar Raya</p>
             <p style="margin-top: 5px;">
-                <a href="index.html">Beranda</a> • 
-                <a href="jelajahikuliner.html">Kuliner</a> • 
-                <a href="produk.html">Produk</a> • 
-                <a href="artikel.html">Artikel</a> • 
-                <a href="kontak.html">Kontak</a> • 
-                <a href="komunitas.html">Komunitas</a>
+                <a href="1-index.html">Beranda</a> • 
+                <a href="2-jelajahikuliner.html">Kuliner</a> • 
+                <a href="3-produk.html">Produk</a> • 
+                <a href="4-artikel.html">Artikel</a> • 
+                <a href="5-kontak.html">Kontak</a> • 
+                <a href="6-komunitas.html">Komunitas</a>
             </p>
         </div>
     </footer>
