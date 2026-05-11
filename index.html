@@ -74,7 +74,7 @@
         }
 
         /* ============================================= */
-        /* NAVBAR */
+        /* NAVBAR - DENGAN ACTIVE COLOR ORANGE */
         /* ============================================= */
         .navbar {
             position: sticky;
@@ -125,6 +125,12 @@
         }
 
         .nav-links a:hover {
+            background: var(--primary-orange);
+            color: white;
+        }
+
+        /* Warna ORANGE untuk tombol yang aktif (halaman sedang dibuka) */
+        .nav-links a.active {
             background: var(--primary-orange);
             color: white;
         }
@@ -185,35 +191,26 @@
         }
 
         /* ============================================= */
-        /* HERO SECTION */
+        /* HERO SECTION - BACKGROUND TEKS DIHAPUS */
         /* ============================================= */
         .hero {
-            padding: 30px 20px;
+            padding: 60px 20px;
             background: linear-gradient(145deg, white, var(--light-blue));
             text-align: center;
         }
 
         .hero h1 {
-            font-size: 2rem;
-            margin-bottom: 12px;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
             color: var(--primary-blue);
-            background: var(--medium-orange);
-            padding: 15px 25px;
-            border-radius: 50px;
-            display: inline-block;
-            box-shadow: 0 4px 14px rgba(249, 115, 22, 0.15);
         }
 
         .hero p {
-            font-size: 1rem;
-            color: var(--text-dark);
-            margin-bottom: 25px;
-            opacity: 0.9;
-            background: var(--light-orange);
-            padding: 10px 20px;
-            border-radius: 30px;
-            display: inline-block;
-            box-shadow: 0 3px 10px rgba(249, 115, 22, 0.1);
+            font-size: 1.1rem;
+            color: var(--primary-blue);
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.85;
         }
 
         /* ============================================= */
@@ -281,7 +278,7 @@
         }
 
         .suggestion-chip {
-            background: var(--medium-orange);
+            background: var(--light-orange);
             padding: 6px 16px;
             border-radius: 30px;
             font-size: 0.8rem;
@@ -289,7 +286,7 @@
             border: 1px solid var(--primary-orange);
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 6px rgba(249, 115, 22, 0.1);
+            box-shadow: 0 2px 6px rgba(249, 115, 22, 0.08);
             font-weight: 600;
         }
 
@@ -392,10 +389,10 @@
         }
 
         .reviewer-info {
-            background: var(--medium-orange);
+            background: var(--light-orange);
             padding: 8px 15px;
             border-radius: 30px;
-            box-shadow: 0 2px 8px rgba(249, 115, 22, 0.1);
+            border: 1px solid var(--primary-orange);
         }
 
         .reviewer-info h4 {
@@ -405,7 +402,7 @@
 
         .reviewer-info p {
             font-size: 0.8rem;
-            color: #555;
+            color: #666;
         }
 
         .review-place {
@@ -422,7 +419,7 @@
             background: var(--light-orange);
             padding: 5px 15px;
             border-radius: 30px;
-            box-shadow: 0 2px 6px rgba(249, 115, 22, 0.08);
+            border: 1px solid var(--primary-orange);
         }
 
         .review-place i {
@@ -458,7 +455,7 @@
             padding: 8px 15px;
             border-radius: 30px;
             width: fit-content;
-            box-shadow: 0 2px 8px rgba(249, 115, 22, 0.1);
+            border: 1px solid var(--primary-orange);
         }
 
         .review-rating i {
@@ -481,7 +478,7 @@
             background: var(--light-orange);
             margin: 0 15px 15px;
             border-radius: 15px;
-            box-shadow: 0 2px 8px rgba(249, 115, 22, 0.08);
+            border: 1px solid var(--primary-orange);
         }
 
         .review-text i {
@@ -620,7 +617,7 @@
         }
 
         /* ============================================= */
-        /* REKOMENDASI ARTIKEL */
+        /* REKOMENDASI ARTIKEL - DISAMAKAN DENGAN 4-artikel.html */
         /* ============================================= */
         .article-section {
             padding: 30px 20px;
@@ -630,31 +627,33 @@
         .article-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 20px;
+            gap: 25px;
             margin-top: 20px;
         }
 
         .article-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 25px var(--shadow-color);
+            border: 1px solid var(--medium-orange);
             transition: all 0.3s ease;
-            border: 1px solid var(--light-blue);
             cursor: pointer;
-            height: 100%;
+            animation: fadeIn 0.5s ease;
             display: flex;
             flex-direction: column;
+            height: 100%;
         }
 
         .article-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(15, 76, 129, 0.1);
+            box-shadow: 0 15px 35px rgba(249, 115, 22, 0.15);
         }
 
         .article-image {
-            height: 150px;
+            height: 200px;
             overflow: hidden;
+            position: relative;
         }
 
         .article-image img {
@@ -669,52 +668,84 @@
         }
 
         .article-content {
-            padding: 15px;
+            padding: 18px;
             flex: 1;
-            background: var(--light-orange);
+            display: flex;
+            flex-direction: column;
         }
 
         .article-category {
+            display: inline-block;
             background: var(--primary-orange);
             color: white;
             padding: 4px 14px;
             border-radius: 20px;
             font-size: 0.7rem;
             font-weight: 700;
-            display: inline-block;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+            width: fit-content;
         }
 
-        .article-content h3 {
-            font-size: 1.1rem;
+        .article-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
             margin-bottom: 8px;
-            line-height: 1.4;
+            gap: 10px;
+        }
+
+        .article-header h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0;
             background: var(--medium-orange);
             padding: 6px 14px;
-            border-radius: 20px;
+            border-radius: 30px;
+            line-height: 1.4;
             box-shadow: 0 2px 6px rgba(249, 115, 22, 0.08);
         }
 
         .article-excerpt {
-            font-size: 0.9rem;
             color: #555;
-            margin-bottom: 12px;
-            line-height: 1.4;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
             background: var(--light-orange);
-            padding: 8px 14px;
+            padding: 12px 14px;
             border-radius: 15px;
+            flex: 1;
+            min-height: 70px;
+        }
+
+        .article-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-light);
+            margin-top: auto;
+        }
+
+        .article-tag {
+            background: var(--light-orange);
+            color: var(--primary-orange);
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border: 1px solid var(--primary-orange);
         }
 
         .article-link {
             color: var(--primary-orange);
             font-weight: 600;
-            font-size: 0.9rem;
-            display: inline-flex;
+            display: flex;
             align-items: center;
             gap: 5px;
+            font-size: 0.85rem;
             background: var(--medium-orange);
-            padding: 8px 18px;
+            padding: 6px 14px;
             border-radius: 30px;
+            transition: all 0.3s ease;
             box-shadow: 0 2px 8px rgba(249, 115, 22, 0.1);
         }
 
@@ -944,13 +975,13 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Navigation - Tombol Beranda diberi class active -->
     <nav class="navbar">
         <div class="logo" onclick="window.location.href='index.html'">
             <img src="Properti MakanDiSulSel/Logo MakanDiSulSel.png" alt="MakanDiSulSel Logo">
         </div>
         <div class="nav-links">
-            <a href="index.html">Beranda</a>
+            <a href="index.html" class="active">Beranda</a>
             <a href="2-jelajahikuliner.html">Jelajahi Kuliner</a>
             <a href="3-produk.html">Produk</a>
             <a href="4-artikel.html">Artikel</a>
@@ -965,7 +996,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section - Background teks dihapus -->
     <section class="hero">
         <div class="container">
             <h1>Jelajahi Kuliner Sulawesi Selatan</h1>
@@ -1170,46 +1201,64 @@
         </div>
     </section>
 
-    <!-- Artikel Rekomendasi -->
+    <!-- Artikel Rekomendasi - DISAMAKAN DENGAN 4-artikel.html -->
     <section class="article-section">
         <div class="container">
             <h2 class="section-title">
                 <i class="fas fa-newspaper"></i> Artikel Kuliner
             </h2>
             <div class="article-grid">
-                <div class="article-card" onclick="window.location.href='4-Artikel/4.1-Artikel-TmptBkrEnkDiGowaUtkMlmMggu.html'">
+                <!-- Artikel 1 - Sama dengan 4-artikel.html -->
+                <div class="article-card" onclick="window.location.href='4-artikel.html'">
                     <div class="article-image">
-                        <img src="Properti MakanDiSulSel/FotoSuasana/WarungMakanBakar.png" alt="5 Tempat Bakar-Bakar Enak di Gowa" onerror="this.style.background='linear-gradient(135deg, #F97316, #ffb951)'; this.style.padding='20px';">
+                        <img src="Properti MakanDiSulSel/FotoSuasana/WarungMakanBakar.png" alt="5 Tempat Bakar-Bakar" onerror="this.style.background='linear-gradient(135deg, #F97316, #ffb951)'; this.style.padding='20px';">
                     </div>
                     <div class="article-content">
-                        <span class="article-category">REKOMENDASI</span>
-                        <h3>5 Tempat Bakar-Bakar Enak di Gowa untuk Malam Minggu</h3>
-                        <p class="article-excerpt">Dari Ikan Bakar sampai Ayam Rica, ini dia tempat favorit warga Gowa untuk makan malam...</p>
-                        <a href="4-Artikel/4.1-Artikel-TmptBkrEnkDiGowaUtkMlmMggu.html" class="article-link">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                        <span class="article-category">Rekomendasi</span>
+                        <div class="article-header">
+                            <h3>5 Tempat Bakar-Bakar Enak di Gowa</h3>
+                        </div>
+                        <p class="article-excerpt">Dari Ikan Bakar sampai Ayam Rica, ini dia tempat favorit warga Gowa untuk dinner malam minggu...</p>
+                        <div class="article-footer">
+                            <span class="article-tag">Gowa</span>
+                            <span class="article-link" onclick="event.stopPropagation(); window.location.href='4-artikel.html'">Baca <i class="fas fa-arrow-right"></i></span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="article-card" onclick="window.location.href='4-Artikel/4.2-Artikel-PsngIjoSjrh-dan-5LgnDiMkasr.html'">
+                <!-- Artikel 2 - Sama dengan 4-artikel.html -->
+                <div class="article-card" onclick="window.location.href='4-artikel.html'">
                     <div class="article-image">
-                        <img src="Properti MakanDiSulSel/Foto Makanan/Pisang Ijo.jpg" alt="Pisang Ijo Legendaris" onerror="this.style.background='linear-gradient(135deg, #0F4C81, #1E6F9F)'; this.style.padding='20px';">
+                        <img src="Properti MakanDiSulSel/Foto Makanan/Pisang Ijo.jpg" alt="Pisang Ijo" onerror="this.style.background='linear-gradient(135deg, #0F4C81, #1E6F9F)'; this.style.padding='20px';">
                     </div>
                     <div class="article-content">
-                        <span class="article-category">SEJARAH</span>
-                        <h3>Pisang Ijo: Sejarah dan 5 Tempat Legendaris di Makassar</h3>
-                        <p class="article-excerpt">Kuliner khas Makassar yang wajib dicoba saat berkunjung ke Kota Daeng...</p>
-                        <a href="4-Artikel/4.2-Artikel-PsngIjoSjrh-dan-5LgnDiMkasr.html" class="article-link">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                        <span class="article-category">Sejarah</span>
+                        <div class="article-header">
+                            <h3>Pisang Ijo: Sejarah dan Tempat Legendaris</h3>
+                        </div>
+                        <p class="article-excerpt">Kuliner khas Makassar yang wajib dicoba. Ini dia sejarah dan tempat terbaiknya...</p>
+                        <div class="article-footer">
+                            <span class="article-tag">Makassar</span>
+                            <span class="article-link" onclick="event.stopPropagation(); window.location.href='4-artikel.html'">Baca <i class="fas fa-arrow-right"></i></span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="article-card" onclick="window.location.href='4-Artikel/4.3-Artikel-RahasiaKuahCotoMakassar.html'">
+                <!-- Artikel 3 - Sama dengan 4-artikel.html -->
+                <div class="article-card" onclick="window.location.href='4-artikel.html'">
                     <div class="article-image">
                         <img src="Properti MakanDiSulSel/Foto Makanan/Coto Makassar.png" alt="Coto Makassar" onerror="this.style.background='linear-gradient(135deg, #F97316, #ffb951)'; this.style.padding='20px';">
                     </div>
                     <div class="article-content">
-                        <span class="article-category">TIPS</span>
-                        <h3>Rahasia Kuah Coto Makassar yang Gurih, Bisa Dicoba di Rumah!</h3>
-                        <p class="article-excerpt">Resep turun-temurun dari penjual Coto legendaris di Sungguminasa...</p>
-                        <a href="4-Artikel/4.3-Artikel-RahasiaKuahCotoMakassar.html" class="article-link">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                        <span class="article-category">Resep</span>
+                        <div class="article-header">
+                            <h3>Rahasia Kuah Coto Makassar yang Gurih</h3>
+                        </div>
+                        <p class="article-excerpt">Resep turun-temurun dari penjual Coto legendaris. Simak tips dan triknya...</p>
+                        <div class="article-footer">
+                            <span class="article-tag">Makassar</span>
+                            <span class="article-link" onclick="event.stopPropagation(); window.location.href='4-artikel.html'">Baca <i class="fas fa-arrow-right"></i></span>
+                        </div>
                     </div>
                 </div>
             </div>
