@@ -187,11 +187,11 @@
         }
 
         /* ============================================= */
-        /* PAGE HEADER */
+        /* PAGE HEADER - BACKGROUND TEKS DIHAPUS & PARAGRAF DIHAPUS */
         /* ============================================= */
         .page-header {
             background: linear-gradient(145deg, white, var(--light-blue));
-            padding: 40px 20px;
+            padding: 60px 20px;
             text-align: center;
             color: var(--primary-blue);
         }
@@ -199,23 +199,7 @@
         .page-header h1 {
             color: var(--primary-blue);
             font-size: 2rem;
-            margin-bottom: 10px;
-            background: var(--medium-orange);
-            padding: 15px 25px;
-            border-radius: 50px;
-            display: inline-block;
-            box-shadow: 0 4px 14px rgba(249, 115, 22, 0.15);
-        }
-
-        .page-header p {
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-            background: var(--light-orange);
-            padding: 12px 24px;
-            border-radius: 30px;
-            box-shadow: 0 3px 10px rgba(249, 115, 22, 0.1);
-            color: var(--text-dark);
+            margin-bottom: 0;
         }
 
         /* ============================================= */
@@ -446,7 +430,7 @@
         }
 
         /* ============================================= */
-        /* MODAL ARTIKEL */
+        /* MODAL ARTIKEL - DENGAN PADDING YANG LEBIH LEGA */
         /* ============================================= */
         .modal-overlay {
             position: fixed;
@@ -514,7 +498,7 @@
             color: #666;
             font-size: 0.9rem;
             background: var(--light-orange);
-            padding: 10px 20px;
+            padding: 12px 25px;
             border-radius: 30px;
         }
 
@@ -543,10 +527,10 @@
         }
 
         .artikel-body h3 {
-            margin: 25px 0 15px;
+            margin: 30px 0 15px;
             font-size: 1.2rem;
             background: var(--medium-orange);
-            padding: 8px 16px;
+            padding: 10px 20px;
             border-radius: 30px;
             display: inline-block;
         }
@@ -554,19 +538,21 @@
         .artikel-body p {
             margin-bottom: 15px;
             background: var(--light-orange);
-            padding: 12px 18px;
+            padding: 15px 20px;
             border-radius: 15px;
+            line-height: 1.8;
         }
 
         .artikel-body ul, .artikel-body ol {
             margin: 15px 0 15px 25px;
             background: var(--light-orange);
-            padding: 12px 18px;
+            padding: 15px 20px 15px 40px;
             border-radius: 15px;
         }
 
         .artikel-body li {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            line-height: 1.8;
         }
 
         .artikel-tag-modal {
@@ -601,7 +587,7 @@
         }
 
         /* ============================================= */
-        /* CTA KOMUNITAS - SAMA DENGAN HOME */
+        /* CTA KOMUNITAS - BACKGROUND TEKS DIHAPUS */
         /* ============================================= */
         .community-cta {
             background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
@@ -624,10 +610,6 @@
             color: white;
             font-size: 1.6rem;
             margin-bottom: 10px;
-            background: rgba(255, 224, 192, 0.25);
-            padding: 12px 24px;
-            border-radius: 50px;
-            display: inline-block;
         }
 
         .community-cta h3 i {
@@ -641,9 +623,6 @@
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
-            background: rgba(255, 224, 192, 0.18);
-            padding: 10px 20px;
-            border-radius: 30px;
             line-height: 1.6;
         }
 
@@ -829,10 +808,9 @@
         </div>
     </nav>
 
-    <!-- Page Header -->
+    <!-- Page Header - BACKGROUND TEKS DIHAPUS & PARAGRAF DIHAPUS -->
     <section class="page-header">
         <h1>Artikel & Tips Kuliner</h1>
-        <p>Baca artikel menarik seputar kuliner Sulawesi Selatan</p>
     </section>
 
     <!-- Container Utama -->
@@ -1056,7 +1034,7 @@
             </div>
         </div>
 
-        <!-- CTA Komunitas -->
+        <!-- CTA Komunitas - BACKGROUND TEKS DIHAPUS -->
         <div class="community-cta" onclick="window.location.href='6-komunitas.html'">
             <h3><i class="fas fa-users"></i> Gabung Komunitas Pecinta Kuliner!</h3>
             <p>Bagikan pengalaman, foto, video, dan lokasi tempat makan favoritmu bersama ribuan anggota lainnya!</p>
@@ -1497,7 +1475,7 @@
             }
         }
 
-        // Fungsi buka artikel
+        // Fungsi buka artikel (modal popup)
         function openArtikel(id) {
             const artikel = artikelData[id];
             if (!artikel) return;
