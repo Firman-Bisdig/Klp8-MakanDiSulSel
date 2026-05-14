@@ -8,7 +8,7 @@
     <style>
         /* ============================================= */
         /* VARIABEL WARNA - ORANGE & BIRU LAUT */
-        /* DISAMAKAN DENGAN index.html */
+        /* DISAMAKAN DENGAN 1-index.html */
         /* ============================================= */
         :root {
             --primary-orange: #F97316;
@@ -184,11 +184,10 @@
             color: var(--primary-blue);
             font-size: 2rem;
             margin-bottom: 0;
-            /* BACKGROUND TEKS DIHAPUS */
         }
 
         /* ============================================= */
-        /* CONTAINER & CONTACT GRID */
+        /* CONTAINER & CONTACT GRID - TETAP 2 KOLOM */
         /* ============================================= */
         .container {
             max-width: 1200px;
@@ -207,9 +206,10 @@
             box-shadow: 0 4px 12px rgba(249, 115, 22, 0.12);
         }
 
+        /* INI YANG PENTING - TETAP 2 KOLOM SAMPINGAN */
         .contact-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 30px;
         }
 
@@ -416,12 +416,157 @@
             box-shadow: 0 10px 25px rgba(249, 115, 22, 0.4);
         }
 
-        @media (min-width: 768px) {
-            .contact-grid {
-                grid-template-columns: 1fr 1fr;
+        /* ============================================= */
+        /* TEAM SECTION - PROFIL PENDIRI (SEMUA SEJAJAR) */
+        /* ============================================= */
+        .team-section {
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 25px var(--shadow-color);
+            border: 1px solid var(--medium-orange);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(249, 115, 22, 0.15);
+        }
+
+        .team-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            border: 3px solid var(--primary-orange);
+            flex-shrink: 0;
+        }
+
+        .team-name {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            background: var(--medium-orange);
+            padding: 6px 12px;
+            border-radius: 30px;
+            display: inline-block;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .team-nim {
+            font-size: 0.75rem;
+            color: var(--primary-blue);
+            background: var(--light-orange);
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .team-role {
+            color: var(--primary-orange);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            background: var(--light-orange);
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        .team-desc {
+            color: #555;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            background: var(--light-orange);
+            padding: 12px;
+            border-radius: 15px;
+            flex: 1;
+        }
+
+        .team-quote {
+            font-size: 0.8rem;
+            font-style: italic;
+            color: var(--primary-orange);
+            background: var(--light-orange);
+            padding: 10px 12px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            border-left: 3px solid var(--primary-orange);
+            text-align: left;
+            flex-shrink: 0;
+        }
+
+        .team-quote i {
+            margin-right: 6px;
+            color: var(--primary-orange);
+            opacity: 0.7;
+        }
+
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+
+        .team-social-icon {
+            width: 35px;
+            height: 35px;
+            background: var(--light-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-orange);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid var(--primary-orange);
+        }
+
+        .team-social-icon:hover {
+            background: var(--primary-orange);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Team Grid */
+        @media (max-width: 1024px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
             }
-            
-            .info-grid {
+        }
+
+        @media (max-width: 640px) {
+            .team-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -449,7 +594,7 @@
         }
 
         /* ============================================= */
-        /* CTA KOMUNITAS - SAMA DENGAN HOME */
+        /* CTA KOMUNITAS - BACKGROUND TEKS DIHAPUS */
         /* ============================================= */
         .community-cta {
             background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
@@ -472,7 +617,6 @@
             color: white;
             font-size: 1.6rem;
             margin-bottom: 10px;
-            /* BACKGROUND TEKS DIHAPUS */
         }
 
         .community-cta h3 i {
@@ -486,7 +630,6 @@
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
-            /* BACKGROUND TEKS DIHAPUS */
             line-height: 1.6;
         }
 
@@ -647,17 +790,25 @@
                 padding-right: 40px;
             }
         }
+
+        /* Responsive Contact Grid - TETAP SAMPINGAN DI DESKTOP */
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
     </style>
 </head>
 <body>
 
     <!-- Navigation - SAMA DENGAN HOME -->
     <nav class="navbar">
-        <div class="logo" onclick="window.location.href='index.html'">
+        <div class="logo" onclick="window.location.href='1-index.html'">
             <img src="Properti MakanDiSulSel/Logo MakanDiSulSel.png" alt="MakanDiSulSel Logo">
         </div>
         <div class="nav-links">
-            <a href="index.html">Beranda</a>
+            <a href="1-index.html">Beranda</a>
             <a href="2-jelajahikuliner.html">Jelajahi Kuliner</a>
             <a href="3-produk.html">Produk</a>
             <a href="4-artikel.html">Artikel</a>
@@ -678,6 +829,7 @@
     </section>
 
     <div class="container">
+        <!-- Contact Grid - TETAP 2 KOLOM SAMPINGAN -->
         <div class="contact-grid">
             <!-- Info Kontak -->
             <div class="contact-info">
@@ -780,6 +932,90 @@
             </div>
         </div>
 
+        <!-- Team Section - Profil Pendiri MakanDiSulSel (SEMUA SEJAJAR) -->
+        <div class="team-section">
+            <h2 class="section-title">
+                <i class="fas fa-users"></i> Tim Pengembang MakanDiSulSel
+            </h2>
+            <div class="team-grid">
+                <!-- Founder 1 - Ahmad Naufal Dzaky -->
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <i class="fas fa-user-astronaut"></i>
+                    </div>
+                    <h3 class="team-name">Ahmad Naufal Dzaky</h3>
+                    <div class="team-nim">240907502037</div>
+                    <div class="team-role">Founder & CEO</div>
+                    <p class="team-desc">Pencetus ide dan pengembang utama website MakanDiSulSel. Bertanggung jawab atas keseluruhan pengembangan platform.</p>
+                    <div class="team-quote">
+                        <i class="fas fa-quote-left"></i> "Di dunia ada berbagai macam ketenangan, salah satunya makanan."
+                    </div>
+                    <div class="team-social">
+                        <a href="#" class="team-social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="team-social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="team-social-icon"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <!-- Founder 2 - Farel Ramadhani Putra (DESKRIPSI DIGANTI) -->
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <i class="fas fa-user-chef"></i>
+                    </div>
+                    <h3 class="team-name">Farel Ramadhani Putra</h3>
+                    <div class="team-nim">240907501043</div>
+                    <div class="team-role">Head of Content</div>
+                    <p class="team-desc">Mengurusi artikel-artikel yang ada dan ulasan kuliner dari seluruh Sulawesi Selatan.</p>
+                    <div class="team-quote">
+                        <i class="fas fa-quote-left"></i> "Kalau tanggal berarti besok aja"
+                    </div>
+                    <div class="team-social">
+                        <a href="#" class="team-social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="team-social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="team-social-icon"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <!-- Founder 3 - Firman -->
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="team-name">Firman</h3>
+                    <div class="team-nim">230101010003</div>
+                    <div class="team-role">Lead Developer</div>
+                    <p class="team-desc">Perancang antarmuka (UI/UX) yang bertanggung jawab atas tampilan dan pengalaman pengguna website MakanDiSulSel.</p>
+                    <div class="team-quote">
+                        <i class="fas fa-quote-left"></i> "Desain yang baik adalah ketika pengguna tidak menyadari adanya desain."
+                    </div>
+                    <div class="team-social">
+                        <a href="#" class="team-social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="team-social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="team-social-icon"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <!-- Founder 4 - Akhtar Naury -->
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3 class="team-name">Akhtar Naury</h3>
+                    <div class="team-nim">24097500009</div>
+                    <div class="team-role">Anggota</div>
+                    <p class="team-desc">&nbsp;</p>
+                    <div class="team-quote">
+                        <i class="fas fa-quote-left"></i> "Dunia sementara akhirat selamanya."
+                    </div>
+                    <div class="team-social">
+                        <a href="#" class="team-social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="team-social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="team-social-icon"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- CTA Komunitas -->
         <div class="community-cta" onclick="window.location.href='6-komunitas.html'">
             <h3><i class="fas fa-users"></i> Gabung Komunitas Pecinta Kuliner!</h3>
@@ -840,7 +1076,7 @@
         <div class="footer-bottom">
             <p>&copy; 2026 MakanDiSulSel - Portal Komunitas & Pusat Kuliner Makassar Raya</p>
             <p style="margin-top: 5px;">
-                <a href="index.html">Beranda</a> • 
+                <a href="1-index.html">Beranda</a> • 
                 <a href="2-jelajahikuliner.html">Kuliner</a> • 
                 <a href="3-produk.html">Produk</a> • 
                 <a href="4-artikel.html">Artikel</a> • 
