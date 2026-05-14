@@ -417,7 +417,7 @@
         }
 
         /* ============================================= */
-        /* TEAM SECTION - PROFIL PENDIRI (SEMUA SEJAJAR) */
+        /* TEAM SECTION - PROFIL PENDIRI (DENGAN ZOOM & POSISI) */
         /* ============================================= */
         .team-section {
             margin-top: 40px;
@@ -449,19 +449,53 @@
         }
 
         .team-avatar {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             margin: 0 auto 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 2.5rem;
-            font-weight: bold;
-            border: 3px solid var(--primary-orange);
+            overflow: hidden;
             flex-shrink: 0;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            border: 3px solid var(--primary-orange);
+        }
+
+        .team-avatar img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* Foto normal (tidak dizoom) */
+        .team-avatar img.normal {
+            object-fit: cover;
+        }
+
+        /* Foto zoom out + geser ke bawah - untuk Farel (wajah terlihat utuh) */
+        .team-avatar img.zoom-out-down {
+            object-fit: contain;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            transform: translateY(8px);
+        }
+
+        /* Foto zoom in lebih besar - untuk Firman (diperbesar 45%) */
+        .team-avatar img.zoom-in-more {
+            object-fit: cover;
+            transform: scale(1.45);
+        }
+
+        .team-avatar i {
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
         }
 
         .team-name {
@@ -932,16 +966,16 @@
             </div>
         </div>
 
-        <!-- Team Section - Profil Pendiri MakanDiSulSel (SEMUA SEJAJAR) -->
+        <!-- Team Section - Profil Pendiri MakanDiSulSel -->
         <div class="team-section">
             <h2 class="section-title">
                 <i class="fas fa-users"></i> Tim Pengembang MakanDiSulSel
             </h2>
             <div class="team-grid">
-                <!-- Founder 1 - Ahmad Naufal Dzaky -->
+                <!-- Founder 1 - Ahmad Naufal Dzaky (Foto Normal) -->
                 <div class="team-card">
                     <div class="team-avatar">
-                        <i class="fas fa-user-astronaut"></i>
+                        <img src="Properti MakanDiSulSel/TimPengembang/Naufal.jpeg" alt="Ahmad Naufal Dzaky" class="normal" onerror="this.style.background='linear-gradient(135deg, var(--primary-blue), var(--secondary-blue))'; this.innerHTML='<i class=\></i>';">
                     </div>
                     <h3 class="team-name">Ahmad Naufal Dzaky</h3>
                     <div class="team-nim">240907502037</div>
@@ -957,10 +991,10 @@
                     </div>
                 </div>
 
-                <!-- Founder 2 - Farel Ramadhani Putra (DESKRIPSI DIGANTI) -->
+                <!-- Founder 2 - Farel Ramadhani Putra (Zoom Out + Geser ke Bawah) -->
                 <div class="team-card">
                     <div class="team-avatar">
-                        <i class="fas fa-user-chef"></i>
+                        <img src="Properti MakanDiSulSel/TimPengembang/Farel.jpeg" alt="Farel Ramadhani Putra" onerror="this.style.background='linear-gradient(135deg, var(--primary-blue), var(--secondary-blue))'; this.innerHTML='<i class=\></i>';">
                     </div>
                     <h3 class="team-name">Farel Ramadhani Putra</h3>
                     <div class="team-nim">240907501043</div>
@@ -976,10 +1010,10 @@
                     </div>
                 </div>
 
-                <!-- Founder 3 - Firman -->
+                <!-- Founder 3 - Firman (Zoom In Lebih Besar - scale 1.45) -->
                 <div class="team-card">
                     <div class="team-avatar">
-                        <i class="fas fa-laptop-code"></i>
+                        <img src="Properti MakanDiSulSel/TimPengembang/Firman.jpeg" alt="Firman" class="zoom-in-more" onerror="this.style.background='linear-gradient(135deg, var(--primary-blue), var(--secondary-blue))'; this.innerHTML='<i class=\></i>';">
                     </div>
                     <h3 class="team-name">Firman</h3>
                     <div class="team-nim">24097501044</div>
@@ -995,10 +1029,10 @@
                     </div>
                 </div>
 
-                <!-- Founder 4 - Akhtar Naury -->
+                <!-- Founder 4 - Akhtar Naury (Foto Normal) -->
                 <div class="team-card">
                     <div class="team-avatar">
-                        <i class="fas fa-camera"></i>
+                        <img src="Properti MakanDiSulSel/TimPengembang/Naury.jpeg" alt="Akhtar Naury" class="normal" onerror="this.style.background='linear-gradient(135deg, var(--primary-blue), var(--secondary-blue))'; this.innerHTML='<i class=\></i>';">
                     </div>
                     <h3 class="team-name">Akhtar Naury</h3>
                     <div class="team-nim">24097500009</div>
